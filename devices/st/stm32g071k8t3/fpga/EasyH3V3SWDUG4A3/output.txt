@@ -1,0 +1,11 @@
+Storage Target: Xilinx Flash/PROM
+Storage Family: Platform Flash
+xcf04s          [4 M]
+FF
+EasyH3V3IICUG4A3
+D:/ALL1000/ALL1000_FPGA/EasyH3V3IICUG4A3
+
+BIN (Swap Bits ON)
+No
+
+No

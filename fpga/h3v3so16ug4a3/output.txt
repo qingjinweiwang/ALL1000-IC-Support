@@ -1,0 +1,11 @@
+Storage Target: Xilinx Flash/PROM
+Storage Family: Platform Flash
+xcf04s          [4 M]
+FF
+H3V3SO16UG4A3
+D:\H3V3SO16UG4A3/
+
+BIN (Swap Bits ON)
+No
+N (Swap Bits ON)
+No

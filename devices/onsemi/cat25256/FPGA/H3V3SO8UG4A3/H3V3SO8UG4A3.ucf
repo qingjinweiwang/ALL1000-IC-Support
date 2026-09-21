@@ -1,0 +1,147 @@
+############################
+### Socket A1 Pin Define ###
+############################
+NET CSPortA  			LOC = C2 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD21 */
+NET SDOPortA  		LOC = D1 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD22 */
+NET WPPortA  			LOC = C1 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD23 */
+NET GndPortA  	  LOC = D2 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD24 */
+NET SDIPortA  		LOC = A3 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD25 */
+NET SCKPortA  		LOC = A2 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD26 */
+NET HoldPortA  		LOC = A4 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD27 */
+NET VccPortA  		LOC = B2 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLDOWN ; /* PD28 */
+
+//NET CSPortA  			LOC = H4 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD37 */ 
+//NET SDOPortA  		LOC = F3 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD41 */
+//NET WPPortA  			LOC = E4 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD43 */
+//NET GndPortA  	  LOC = E3 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD48 */
+//NET SDIPortA  		LOC = N4 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD29 */
+//NET SCKPortA  		LOC = A3 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD25 */
+//NET HoldPortA  		LOC = L3 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD33 */ 
+//NET VccPortA  		LOC = C4 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLDOWN ; /* PD47 */
+
+
+############################
+### Socket B1 Pin Define ###
+############################
+NET CSPortB  			LOC = P7 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD69 */
+NET SDOPortB  		LOC = P8 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD70 */
+NET WPPortB  			LOC = N8 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD71 */
+NET GndPortB  		LOC = R7 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD72 */
+NET SDIPortB  		LOC = L7 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD73 */
+NET SCKPortB  		LOC = M8 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD74 */
+NET HoldPortB  		LOC = J7 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD75 */
+NET VccPortB  		LOC = N7 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLDOWN ; /* PD76 */
+
+//NET CSPortB  			LOC = A8 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD85 */
+//NET SDOPortB  		LOC = A10 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD89 */
+//NET WPPortB  			LOC = B11 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD91 */
+//NET GndPortB  		LOC = A11 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD96 */
+//NET SDIPortB  		LOC = F8 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD77 */
+//NET SCKPortB  		LOC = L7 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD73 */
+//NET HoldPortB  		LOC = D8 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD81 */
+//NET VccPortB  		LOC = A13 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLDOWN ; /* PD95 */
+
+
+############################
+### Socket C1 Pin Define ###
+############################
+NET CSPortC  			LOC = G11 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD117 */
+NET SDOPortC  		LOC = F11 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD118 */
+NET WPPortC  			LOC = H12 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD119 */
+NET GndPortC  		LOC = F12 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD120 */
+NET SDIPortC  		LOC = M11 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD121 */
+NET SCKPortC  		LOC = L12 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD122 */
+NET HoldPortC  		LOC = N11 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD123 */
+NET VccPortC  		LOC = K12 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLDOWN ; /* PD124 */
+
+//NET CSPortC  			LOC = G14 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD133 */
+//NET SDOPortC  		LOC = J13 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD137 */ 
+//NET WPPortC  			LOC = K13 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD139 */
+//NET GndPortC  		LOC = K14 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD144 */
+//NET SDIPortC  		LOC = P11 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD125 */
+//NET SCKPortC  		LOC = M11 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD121 */
+//NET HoldPortC  		LOC = D14 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD129 */
+//NET VccPortC  		LOC = M13 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLDOWN ; /* PD143 */
+
+
+############################
+### Socket D1 Pin Define ###
+############################
+NET CSPortD  			LOC = N16 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD165 */
+NET SDOPortD  		LOC = C17 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD166 */
+NET WPPortD 			LOC = P15 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD167 */
+NET GndPortD  		LOC = C18 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD168 */
+NET SDIPortD  		LOC = E18 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD169 */ 
+NET SCKPortD  		LOC = D17 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD170 */
+NET HoldPortD  	  LOC = F18 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD171 */
+NET VccPortD  		LOC = D18 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLDOWN ; /* PD172 */
+
+//NET CSPortD  			LOC = N18 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD181 */
+//NET SDOPortD  		LOC = P18 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD185 */ 
+//NET WPPortD 			LOC = P17 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD187 */
+//NET GndPortD  		LOC = T18 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD192 */
+//NET SDIPortD  		LOC = H18 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD173 */
+//NET SCKPortD  		LOC = E18 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD169 */ 
+//NET HoldPortD  	  LOC = K17 | SLEW = FAST | IOSTANDARD = "LVTTL" ; /* PD177 */ 
+//NET VccPortD  		LOC = U17 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLDOWN ; /* PD191 */
+
+
+
+
+######################################################################################################
+#####  Below For System Define, CAN NOT Modify!!! ####################################################
+######################################################################################################
+##################################
+# FPGA global system clock input #
+##################################
+NET "FPGAGCLK0"			LOC = V10 | SLEW = FAST | IOSTANDARD = "LVTTL"; /* ARM 66M-CLK */
+NET "FPGAGCLK1"			LOC = V9 | SLEW = FAST | IOSTANDARD = "LVTTL"; /* 50M-CLK */
+
+
+#######################################
+### FPGA read/write control port ######
+######################################
+NET "FPGAWR"			LOC = V4 | SLEW = FAST | IOSTANDARD = LVTTL ;
+NET "FPGARD"			LOC = T4 | SLEW = FAST | IOSTANDARD = LVTTL ;
+
+#########################################
+# FPGA Data port communication with CPU #
+#########################################
+NET FPGAData<0>			LOC = R13 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<1>			LOC = T14 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<2>			LOC = V14 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<3>			LOC = U5  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<4>			LOC = V5  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<5>			LOC = R3  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<6>			LOC = T3  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<7>			LOC = R5  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<8>			LOC = N5  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<9>			LOC = P6  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<10>		LOC = P12 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<11>		LOC = U13 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<12>		LOC = V13 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<13>		LOC = U10 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<14>		LOC = R8  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<15>		LOC = T8  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+
+###########################################
+# FPGA Address port communicatin with CPU #
+###########################################
+NET FPGAAddr<0>			LOC = V6  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<1>			LOC = T6  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<2>			LOC = V7  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<3>			LOC = U7  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<4>			LOC = T7  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<5>			LOC = V8  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<6>			LOC = U8  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<7>			LOC = V11 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<8>			LOC = U11 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<9>			LOC = T11 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<10>		LOC = V12 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<11>		LOC = T12 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<12>		LOC = V15 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<13>		LOC = U15 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<14>		LOC = V16 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<15>		LOC = U16 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+
+

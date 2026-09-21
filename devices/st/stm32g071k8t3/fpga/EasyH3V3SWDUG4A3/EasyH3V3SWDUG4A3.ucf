@@ -1,0 +1,277 @@
+###########################################
+# FPGA 192 pins communication with socket #
+###########################################
+NET DioPort<1>  		LOC = T2 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD1 */          
+NET DioPort<2>  		LOC = U1 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD2 */          
+NET DioPort<3>  		LOC = T1 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD3 */          
+NET DioPort<4>  		LOC = U2 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD4 */          
+NET DioPort<5>  		LOC = N1 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD5 */          
+NET DioPort<6>  		LOC = P2 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD6 */          
+NET DioPort<7>  		LOC = N2 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD7 */          
+NET DioPort<8>  		LOC = P1 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD8 */          
+                  	  	                                                                  
+NET DioPort<9>  		LOC = L1 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD9 */          
+NET DioPort<10>  		LOC = L2 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD10 */         
+NET DioPort<11>  		LOC = K2 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD11 */         
+NET DioPort<12>  		LOC = M1 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD12 */         
+NET DioPort<13>  		LOC = H2 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD13 */         
+NET DioPort<14>  		LOC = J1 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD14 */         
+NET DioPort<15>  		LOC = H1 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD15 */         
+NET DioPort<16>  		LOC = K1 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD16 */         
+                  	   	                                                                  
+NET DioPort<17>  		LOC = F1 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD17 */         
+NET DioPort<18>  		LOC = F2 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD18 */         
+NET DioPort<19>  		LOC = E1 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD19 */         
+NET DioPort<20>  		LOC = G1 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD20 */         
+NET DioPort<21>  		LOC = C2 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD21 */         
+NET DioPort<22>  		LOC = D1 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD22 */         
+NET DioPort<23>  		LOC = C1 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD23 */         
+NET DioPort<24>  		LOC = D2 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD24 */         
+                  	   	                                                                  
+NET DioPort<25>  		LOC = A3 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD25 */         
+NET DioPort<26>  		LOC = A2 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD26 */         
+NET DioPort<27>  		LOC = A4 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD27 */         
+NET DioPort<28>  		LOC = B2 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD28 */         
+NET DioPort<29>  		LOC = N4 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD29 */         
+NET DioPort<30>  		LOC = P3 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD30 */         
+NET DioPort<31>  		LOC = N3 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD31 */         
+NET DioPort<32>  		LOC = P4 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD32 */         
+                  	   	                                                                  
+NET DioPort<33>  		LOC = L3 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD33 */         
+NET DioPort<34>  		LOC = L4 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD34 */         
+NET DioPort<35>  		LOC = K4 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD35 */         
+NET DioPort<36>  		LOC = M3 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD36 */         
+NET DioPort<37>  		LOC = H4 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD37 */         
+NET DioPort<38>  		LOC = J3 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD38 */         
+NET DioPort<39>  		LOC = H3 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD39 */         
+NET DioPort<40>  		LOC = K3 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD40 */         
+                  	                                                                      
+NET DioPort<41>  		LOC = F3 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD41 */         
+NET DioPort<42>  		LOC = F4 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD42 */         
+NET DioPort<43>  		LOC = E4 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD43 */         
+NET DioPort<44>  		LOC = G3 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD44 */         
+NET DioPort<45>  		LOC = D3 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD45 */         
+NET DioPort<46>  		LOC = D4 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /*** PD46 ***/     
+NET DioPort<47>  		LOC = C4 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD47 */         
+NET DioPort<48>  		LOC = E3 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD48 */         
+                  	                                                                      
+NET DioPort<49>  		LOC = N6 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD49 */         
+NET DioPort<50>  		LOC = B3 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD50 */         
+NET DioPort<51>  		LOC = M5 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD51 */         
+NET DioPort<52>  		LOC = B4 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD52 */         
+NET DioPort<53>  		LOC = K6 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD53 */         
+NET DioPort<54>  		LOC = L5 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD54 */         
+NET DioPort<55>  		LOC = K5 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD55 */         
+NET DioPort<56>  		LOC = L6 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD56 */         
+                  	   	                                                                  
+NET DioPort<57>  		LOC = H5 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD57 */         
+NET DioPort<58>  		LOC = H6 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD58 */         
+NET DioPort<59>  		LOC = G6 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD59 */         
+NET DioPort<60>  		LOC = J6 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD60 */         
+NET DioPort<61>  		LOC = E6 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD61 */         
+NET DioPort<62>  		LOC = F5 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD62 */         
+NET DioPort<63>  		LOC = D6 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD63 */         
+NET DioPort<64>  		LOC = F6 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD64 */         
+                  	   	                                                                  
+NET DioPort<65>  		LOC = B6 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD65 */         
+NET DioPort<66>  		LOC = C5 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD66 */         
+NET DioPort<67>  		LOC = A6 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD67 */         
+NET DioPort<68>  		LOC = C6 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD68 */         
+NET DioPort<69>  		LOC = P7 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD69 */         
+NET DioPort<70>  		LOC = P8 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD70 */         
+NET DioPort<71>  		LOC = N8 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD71 */         
+NET DioPort<72>  		LOC = R7 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD72 */         
+                  	   	                                                                  
+NET DioPort<73>  		LOC = L7 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD73 */         
+NET DioPort<74>  		LOC = M8 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD74 */         
+NET DioPort<75>  		LOC = J7 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD75 */         
+NET DioPort<76>  		LOC = N7 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD76 */         
+NET DioPort<77>  		LOC = F8 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD77 */         
+NET DioPort<78>  		LOC = G8 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD78 */         
+NET DioPort<79>  		LOC = F7 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD79 */         
+NET DioPort<80>  		LOC = H7 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD80 */         
+                  	   	                                                                  
+NET DioPort<81>  		LOC = D8 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD81 */         
+NET DioPort<82>  		LOC = E7 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD82 */         
+NET DioPort<83>  		LOC = C7 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD83 */         
+NET DioPort<84>  		LOC = E8 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD84 */         
+NET DioPort<85>  		LOC = A8 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD85 */         
+NET DioPort<86>  		LOC = C8 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD86 */         
+NET DioPort<87>  		LOC = B8 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD87 */         
+NET DioPort<88>  		LOC = A7 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD88 */         
+                  	   	                                                                  
+NET DioPort<89>  		LOC = A10 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD89 */        
+NET DioPort<90>  		LOC = B9  | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD90 */         
+NET DioPort<91>  		LOC = B11 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD91 */        
+NET DioPort<92>  		LOC = A9  | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD92 */         
+NET DioPort<93>  		LOC = A12 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD93 */        
+NET DioPort<94>  		LOC = B12 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD94 */        
+NET DioPort<95>  		LOC = A13 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD95 */        
+NET DioPort<96>  		LOC = A11 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD96 */        
+                  	                                                                      
+NET DioPort<97>  		LOC = C10 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD97 */        
+NET DioPort<98>  		LOC = A16 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD98 */        
+NET DioPort<99>  		LOC = C9  | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD99 */         
+NET DioPort<100>  	LOC = A5  | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD100 */        
+NET DioPort<101>  	LOC = F9  | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD101 */        
+NET DioPort<102>  	LOC = F10 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD102 */       
+NET DioPort<103>  	LOC = G9  | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD103 */        
+NET DioPort<104>  	LOC = D9  | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD104 */        
+                                                                                          
+NET DioPort<105>  	LOC = N9  | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD105 */        
+NET DioPort<106>  	LOC = N10 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD106 */       
+NET DioPort<107>  	LOC = R10 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD107 */       
+NET DioPort<108>  	LOC = M10 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD108 */       
+NET DioPort<109>  	LOC = C12 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD109 */       
+NET DioPort<110>  	LOC = T9  | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD110 */        
+NET DioPort<111>  	LOC = C11 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD111 */       
+NET DioPort<112>  	LOC = T10 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD112 */       
+                                                                                          
+NET DioPort<113>  	LOC = E12 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD113 */       
+NET DioPort<114>  	LOC = D11 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD114 */       
+NET DioPort<115>  	LOC = E11 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD115 */       
+NET DioPort<116>  	LOC = D12 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD116 */       
+NET DioPort<117>  	LOC = G11 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD117 */       
+NET DioPort<118>  	LOC = F11 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD118 */       
+NET DioPort<119>  	LOC = H12 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD119 */       
+NET DioPort<120>  	LOC = F12 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD120 */       
+                                                                                          
+NET DioPort<121>  	LOC = M11 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD121 */       
+NET DioPort<122>  	LOC = L12 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD122 */       
+NET DioPort<123>  	LOC = N11 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD123 */       
+NET DioPort<124>  	LOC = K12 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD124 */       
+NET DioPort<125>  	LOC = P11 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD125 */       
+NET DioPort<126>  	LOC = A14 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD126 */       
+NET DioPort<127>  	LOC = R11 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD127 */       
+NET DioPort<128>  	LOC = B14 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD128 */       
+                                                                                          
+NET DioPort<129>  	LOC = D14 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD129 */       
+NET DioPort<130>  	LOC = C14 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD130 */       
+NET DioPort<131>  	LOC = E13 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD131 */       
+NET DioPort<132>  	LOC = C13 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD132 */       
+NET DioPort<133>  	LOC = G14 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD133 */       
+NET DioPort<134>  	LOC = F13 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD134 */       
+NET DioPort<135>  	LOC = G13 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD135 */       
+NET DioPort<136>  	LOC = F14 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD136 */       
+                                                                                          
+NET DioPort<137>  	LOC = J13 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD137 */       
+NET DioPort<138>  	LOC = H14 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD138 */       
+NET DioPort<139>  	LOC = K13 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD139 */       
+NET DioPort<140>  	LOC = H13 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD140 */       
+NET DioPort<141>  	LOC = L14 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD141 */       
+NET DioPort<142>  	LOC = L13 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD142 */       
+NET DioPort<143>  	LOC = M13 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD143 */       
+NET DioPort<144>  	LOC = K14 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD144 */       
+                                                                                          
+NET DioPort<145>   LOC = N14 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD145 */       
+NET DioPort<146>   LOC = M14 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD146 */       
+NET DioPort<147>   LOC = T13 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD147 */       
+NET DioPort<148>   LOC = P16 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /*** PD148 ***/   
+NET DioPort<149>   LOC = C15 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD149 */       
+NET DioPort<150>   LOC = B16 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD150 */       
+NET DioPort<151>   LOC = E16 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD151 */       
+NET DioPort<152>   LOC = A15 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD152 */       
+                                                                                          
+NET DioPort<153>     LOC = G16 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD153 */       
+NET DioPort<154>     LOC = F16 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD154 */       
+NET DioPort<155>     LOC = H16 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD155 */       
+NET DioPort<156>     LOC = F15 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD156 */       
+NET DioPort<157>     LOC = K16 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD157 */       
+NET DioPort<158>     LOC = J16 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD158 */       
+NET DioPort<159>     LOC = K15 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD159 */       
+NET DioPort<160>     LOC = H15 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD160 */       
+                                                                                          
+NET DioPort<161>    LOC = M16 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD161 */       
+NET DioPort<162>    LOC = L15 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD162 */       
+NET DioPort<163>    LOC = N15 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD163 */       
+NET DioPort<164>    LOC = L16 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD164 */       
+NET DioPort<165>    LOC = N16 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD165 */       
+NET DioPort<166>    LOC = C17 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD166 */       
+NET DioPort<167>    LOC = P15 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD167 */       
+NET DioPort<168>    LOC = C18 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD168 */       
+                                                                                          
+NET DioPort<169>    LOC = E18 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD169 */       
+NET DioPort<170>    LOC = D17 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD170 */       
+NET DioPort<171>    LOC = F18 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD171 */       
+NET DioPort<172>    LOC = D18 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD172 */       
+NET DioPort<173>    LOC = H18 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD173 */       
+NET DioPort<174>    LOC = G18 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD174 */       
+NET DioPort<175>    LOC = H17 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD175 */       
+NET DioPort<176>    LOC = F17 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD176 */       
+                                                                                          
+NET DioPort<177>    LOC = K17 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD177 */       
+NET DioPort<178>    LOC = K18 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD178 */       
+NET DioPort<179>    LOC = L18 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD179 */       
+NET DioPort<180>    LOC = J18 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD180 */       
+NET DioPort<181>    LOC = N18 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD181 */       
+NET DioPort<182>    LOC = M18 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD182 */       
+NET DioPort<183>    LOC = N17 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD183 */       
+NET DioPort<184>    LOC = L17 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD184 */       
+                                                                                          
+NET DioPort<185>    LOC = P18 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD185 */       
+NET DioPort<186>    LOC = U3  | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /*** PD186 ***/    
+NET DioPort<187>    LOC = P17 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD187 */       
+NET DioPort<188>    LOC = T5  | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /*** PD188 ***/    
+NET DioPort<189>    LOC = U18 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD189 */       
+NET DioPort<190>    LOC = T17 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD190 */       
+NET DioPort<191>    LOC = U17 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD191 */       
+NET DioPort<192>    LOC = T18 | SLEW = FAST | IOSTANDARD = "LVTTL" | PULLUP ; /* PD192 */       
+
+
+
+
+######################################################################################################
+#####  Below For System Define, CAN NOT Modify!!! ####################################################
+######################################################################################################
+##################################
+# FPGA global system clock input #
+##################################
+NET "FPGAGCLK0"			LOC = V10 | SLEW = FAST | IOSTANDARD = "LVTTL"; /* ARM 66M-CLK */
+NET "FPGAGCLK1"			LOC = V9 | SLEW = FAST | IOSTANDARD = "LVTTL"; /* 50M-CLK */
+
+
+#######################################
+### FPGA read/write control port ######
+######################################
+NET "FPGAWR"			LOC = V4 | SLEW = FAST | IOSTANDARD = LVTTL ;
+NET "FPGARD"			LOC = T4 | SLEW = FAST | IOSTANDARD = LVTTL ;
+
+#########################################
+# FPGA Data port communication with CPU #
+#########################################
+NET FPGAData<0>			LOC = R13 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<1>			LOC = T14 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<2>			LOC = V14 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<3>			LOC = U5  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<4>			LOC = V5  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<5>			LOC = R3  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<6>			LOC = T3  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<7>			LOC = R5  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<8>			LOC = N5  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<9>			LOC = P6  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<10>		LOC = P12 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<11>		LOC = U13 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<12>		LOC = V13 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<13>		LOC = U10 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<14>		LOC = R8  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAData<15>		LOC = T8  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+
+###########################################
+# FPGA Address port communicatin with CPU #
+###########################################
+NET FPGAAddr<0>			LOC = V6  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<1>			LOC = T6  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<2>			LOC = V7  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<3>			LOC = U7  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<4>			LOC = T7  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<5>			LOC = V8  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<6>			LOC = U8  | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<7>			LOC = V11 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<8>			LOC = U11 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<9>			LOC = T11 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<10>		LOC = V12 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<11>		LOC = T12 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<12>		LOC = V15 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<13>		LOC = U15 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<14>		LOC = V16 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
+NET FPGAAddr<15>		LOC = U16 | SLEW = FAST | IOSTANDARD = "LVTTL" ;
