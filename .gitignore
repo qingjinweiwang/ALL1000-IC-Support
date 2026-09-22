@@ -7,6 +7,14 @@
 .tmp-*/
 .build-check/
 
+# ── 与 IC 支撑无关的烧录器本体产物(固件 / 硬件设计 / 归档)──
+code/
+cir/
+build/
+AD-S32K3XX-BG257*/
+*.zip
+*.rar
+
 # ── C / ARM 编译中间产物 ────────────────
 *.o
 *.obj
@@ -60,3 +68,14 @@ Ahelp1/
 *.drc
 *.bgn
 xlnx_auto_0_xdb/
+
+# Xilinx ISE 报告文件
+*.log
+*.csv
+*.html
+*.xml
+*.ptwx
+*.xreport
+output.txt
+*_pad.txt
+iseconfig/
