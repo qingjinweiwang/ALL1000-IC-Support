@@ -4,11 +4,11 @@
 #ifndef ProgramDrv_H_
 #define ProgramDrv_H_
 
-#include "h\Type.h"
-#include "h\FirmWare.h"
-#include "h\BlockSectorDef.h"
-#include "h\Subroutine.h"
-#include "h\PinDef.h"
+#include "Type.h"
+#include "FirmWare.h"
+#include "BlockSectorDef.h"
+#include "Subroutine.h"
+#include "PinDef.h"
 
 
 /********************* total 13 algorithm subroutine entance define *********************/

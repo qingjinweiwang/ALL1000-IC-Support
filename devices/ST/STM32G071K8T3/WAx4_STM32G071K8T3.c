@@ -9,19 +9,19 @@ PROTECT_FUN								UNPROTECT_FUN
 \*******************************************************************************/
 
 #include "WAx4_STM32G071K8T3.h"
-#include "h\Type.h"
-#include "h\Disp.h"
-#include "h\Key.h"
-#include "h\FirmWare.h"
-#include "h\BlockSectorDef.h"
-#include "h\SystemTask.h"
-#include "h\Subroutine.h"
-#include "h\ErrorCode.h"
-#include "h\PassedCode.h"
-#include "h\USBCom.h"
-#include "h\CFControl.h"
-#include "h\StatusCode.h"
-#include "h\hs0_mmc.h"
+#include "Type.h"
+#include "Disp.h"
+#include "Key.h"
+#include "FirmWare.h"
+#include "BlockSectorDef.h"
+#include "SystemTask.h"
+#include "Subroutine.h"
+#include "ErrorCode.h"
+#include "PassedCode.h"
+#include "USBCom.h"
+#include "CFControl.h"
+#include "StatusCode.h"
+#include "hs0_mmc.h"
 
 /****************************************************************************\
 			Type Definitions

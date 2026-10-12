@@ -55,11 +55,13 @@ set "Driver_O=%Driver_Root%\%Driver_Name%.o"
 set "Map_Txt=%Driver_Root%\map.txt"
 
 for %%I in ("%Driver_Root%\..") do set "Driver_Dir=%%~fI\"
-set "Object_Lib=%Driver_Dir%ALL1000Code"
-set "Header_Lib=%Driver_Dir%ALL1000Code\h"
+@REM Prebuilt main-firmware objects + ABI headers live outside the repo at
+@REM D:\ALL-1000\All1000Code (22 .o files + h dir). The in-repo common\h is a
+@REM byte-identical copy kept for version control only (see driver-development-guide.md 1.2/6.2).
+set "Object_Lib=D:\ALL-1000\All1000Code"
+set "Header_Lib=D:\ALL-1000\All1000Code\h"
 for %%I in ("%Driver_Root%\..\..") do set "Dev_Root=%%~fI\"
-set "Algo1_Path=C:\Program Files (x86)\Hi-Lo\ALL1000\Algo1\"
-::set "Algo1_Path=D:\HILO\ALL-1000\Algo1"
+set "Algo1_Path=D:\Hi-Lo\ALL1000\Algo1\"
 
 set "ARMCC=%ARMCC_PATH%\armcc.exe"
 set "ARMLINK=%ARMCC_PATH%\armlink.exe"
