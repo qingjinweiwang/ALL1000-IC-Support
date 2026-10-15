@@ -1,0 +1,18 @@
+{
+  "configurations": [
+    {
+      "name": "ALL1000-IC-Support",
+      "includePath": [
+        "${workspaceFolder}/common/h",
+        "${workspaceFolder}/devices/**"
+      ],
+      "browse": {
+        "path": [
+          "${workspaceFolder}/common/h",
+          "${workspaceFolder}/devices"
+        ]
+      }
+    }
+  ],
+  "version": 4
+}
