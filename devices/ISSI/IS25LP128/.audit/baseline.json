@@ -1,0 +1,47 @@
+[
+  {
+    "path": "D:\\ALL-1000\\ALL1000-IC-Support\\devices\\ISSI\\IS25LP128\\WAx4_IS25LP128-JLLE.c",
+    "sha256": "763cbdfe09ad4d4cf30eb080f6c94240328b4d6341b69e383ed909d1c878188e",
+    "lines": 1669
+  },
+  {
+    "path": "D:\\ALL-1000\\ALL1000-IC-Support\\devices\\ISSI\\IS25LP128\\WAx4_IS25LP128-JLLE.h",
+    "sha256": "35e8f48cdce784334d6e1c0288b9fae8f5412d31a14de3b18d5c90268d967402",
+    "lines": 356
+  },
+  {
+    "path": "D:\\ALL-1000\\ALL1000-IC-Support\\devices\\ISSI\\IS25LP128\\WAx4_IS25LP128-JLLE.spc",
+    "sha256": "2e1f2506caa911ef812fa0076e556e6dd819ae3c7161905942e69bd40d9e7741",
+    "lines": 51
+  },
+  {
+    "path": "D:\\ALL-1000\\ALL1000-IC-Support\\devices\\ST-Memory\\M25PE40\\WAx4_M25PE40-VMPxxx.c",
+    "sha256": "3e109853b997b89fa62f4ed96d3048eab61af95723b79917c2226c4ff9fd2864",
+    "lines": 1005
+  },
+  {
+    "path": "D:\\ALL-1000\\ALL1000-IC-Support\\devices\\ST-Memory\\M25PE40\\WAx4_M25PE40-VMPxxx.h",
+    "sha256": "6e985ec38805e435a9f966264e5f9d3ba199096eb5121caa5e3f530406e0ccbb",
+    "lines": 356
+  },
+  {
+    "path": "D:\\ALL-1000\\ALL1000-IC-Support\\devices\\ST-Memory\\M25PE40\\WAx4_M25PE40-VMPxxx.spc",
+    "sha256": "a83f26c30b5974f93ac334d0edda3c379882d46c2bf7dc95a07f6a75bd8b6a27",
+    "lines": 13
+  },
+  {
+    "path": "D:\\ALL-1000\\ALL1000-IC-Support\\devices\\Micron\\N25Q256\\WAx4_N25Q256Ax3ESFxxx.c",
+    "sha256": "ef51f5f74f091dda6cd2b5664c86b3ebba55ed6e77c8fa8311925ce474c6d56b",
+    "lines": 1682
+  },
+  {
+    "path": "D:\\ALL-1000\\ALL1000-IC-Support\\devices\\Micron\\N25Q256\\WAx4_N25Q256Ax3ESFxxx.h",
+    "sha256": "d95ed20595f696a64eaa4cb1663cb30d60d441ffc9ffc4f8d5da639362d8d191",
+    "lines": 359
+  },
+  {
+    "path": "D:\\ALL-1000\\ALL1000-IC-Support\\devices\\Micron\\N25Q256\\WAx4_N25Q256Ax3ESFxxx.spc",
+    "sha256": "e8b01db643a3c4c3faf4eb3bb7b3c0e4cd65fcd696ca4e47e9cc748bff3049d4",
+    "lines": 51
+  }
+]

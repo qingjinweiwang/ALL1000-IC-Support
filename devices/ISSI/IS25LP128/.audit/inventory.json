@@ -1,0 +1,757 @@
+[
+  {
+    "file": "D:\\ALL-1000\\ALL1000-IC-Support\\devices\\ISSI\\IS25LP128\\WAx4_IS25LP128-JLLE.c",
+    "functions": [
+      {
+        "name": "PowerOnFun",
+        "line": 113,
+        "end": 132,
+        "params": "void",
+        "locals": []
+      },
+      {
+        "name": "PowerOffFun",
+        "line": 138,
+        "end": 146,
+        "params": "void",
+        "locals": []
+      },
+      {
+        "name": "ReadFun",
+        "line": 154,
+        "end": 269,
+        "params": "void",
+        "locals": [
+          "stuShort DevWordData ;",
+          "uShort TempCnt ;",
+          "uChar OTPData[OTPDataSize], OTPControlData ;"
+        ]
+      },
+      {
+        "name": "ProgramFun",
+        "line": 275,
+        "end": 444,
+        "params": "void",
+        "locals": [
+          "uChar StatusData ;",
+          "uShort RamWordData, PageTempCnt, PollingTimeCnt ;",
+          "uChar OTPData[OTPDataSize], OTPControlData, OTPControlProgramData ;"
+        ]
+      },
+      {
+        "name": "VerifyFun",
+        "line": 450,
+        "end": 570,
+        "params": "void",
+        "locals": [
+          "uChar DevByteData ;",
+          "uShort RamWordData, TempCnt ;",
+          "uChar OTPData[OTPDataSize], OTPControlData ;"
+        ]
+      },
+      {
+        "name": "EraseFun",
+        "line": 578,
+        "end": 643,
+        "params": "void",
+        "locals": [
+          "uShort StatusData, PollingTimeCnt ;"
+        ]
+      },
+      {
+        "name": "BlankCheckFun",
+        "line": 650,
+        "end": 747,
+        "params": "void",
+        "locals": [
+          "uChar DevByteData, OTPData[OTPDataSize], OTPControlData ;",
+          "uShort TempCnt ;"
+        ]
+      },
+      {
+        "name": "IDCheckFun",
+        "line": 754,
+        "end": 800,
+        "params": "void",
+        "locals": [
+          "uChar MftID, DevIDLo;"
+        ]
+      },
+      {
+        "name": "CheckSumFun",
+        "line": 806,
+        "end": 858,
+        "params": "void",
+        "locals": [
+          "uShort RamWordData ;",
+          "uInt32 ChecksumAll ;"
+        ]
+      },
+      {
+        "name": "ProtectFun",
+        "line": 866,
+        "end": 953,
+        "params": "void",
+        "locals": [
+          "uShort PollingTimeCnt;",
+          "uChar SR1Data ;",
+          "uChar StatusData ;",
+          "uChar CurrSRData ;"
+        ]
+      },
+      {
+        "name": "UnProtectFun",
+        "line": 961,
+        "end": 1046,
+        "params": "void",
+        "locals": [
+          "uShort PollingTimeCnt;",
+          "uChar SR1Data ;",
+          "uChar StatusData ;",
+          "uChar CurrSRData ;"
+        ]
+      },
+      {
+        "name": "SecureFun",
+        "line": 1049,
+        "end": 1053,
+        "params": "void",
+        "locals": []
+      },
+      {
+        "name": "GetDeviceParameterInfo",
+        "line": 1058,
+        "end": 1066,
+        "params": "void",
+        "locals": []
+      },
+      {
+        "name": "ReadStatusData",
+        "line": 1070,
+        "end": 1087,
+        "params": "void",
+        "locals": [
+          "uChar TempData ;"
+        ]
+      },
+      {
+        "name": "ReadFlagStatusData",
+        "line": 1089,
+        "end": 1106,
+        "params": "void",
+        "locals": [
+          "uChar TempData ;"
+        ]
+      },
+      {
+        "name": "CheckAllStatusData",
+        "line": 1108,
+        "end": 1122,
+        "params": "uChar DevData",
+        "locals": []
+      },
+      {
+        "name": "Send4ByteAddress",
+        "line": 1125,
+        "end": 1135,
+        "params": "uInt32 Address",
+        "locals": []
+      },
+      {
+        "name": "ClearFlagStatusData",
+        "line": 1138,
+        "end": 1147,
+        "params": "void",
+        "locals": []
+      },
+      {
+        "name": "CheckAllFlagStatusData",
+        "line": 1150,
+        "end": 1164,
+        "params": "uChar DevData",
+        "locals": []
+      },
+      {
+        "name": "SkipOTPBlockData",
+        "line": 1167,
+        "end": 1179,
+        "params": "void",
+        "locals": [
+          "uShort TempCnt ;"
+        ]
+      },
+      {
+        "name": "ReadOTPArrayData",
+        "line": 1182,
+        "end": 1204,
+        "params": "uChar Address, uChar *Data, uChar Count",
+        "locals": [
+          "uChar TempCnt ;"
+        ]
+      },
+      {
+        "name": "ProgramOTPArray",
+        "line": 1207,
+        "end": 1258,
+        "params": "uChar Address, uChar *Data, uChar Count",
+        "locals": [
+          "uShort PollingTimeCnt ;",
+          "uChar StatusData, TempCnt ;"
+        ]
+      },
+      {
+        "name": "VerifyOTPArray",
+        "line": 1261,
+        "end": 1292,
+        "params": "uChar Address, uChar *Data, uChar Count, uChar Mask",
+        "locals": [
+          "uChar StatusData, TempCnt ;"
+        ]
+      },
+      {
+        "name": "ReadNVCRData",
+        "line": 1295,
+        "end": 1312,
+        "params": "void",
+        "locals": [
+          "stuShort TempData ;"
+        ]
+      },
+      {
+        "name": "CheckAllNVCRData",
+        "line": 1315,
+        "end": 1341,
+        "params": "uShort Data",
+        "locals": [
+          "uChar LowStatus, HighStatus ;"
+        ]
+      },
+      {
+        "name": "NVCRDataIsValid",
+        "line": 1344,
+        "end": 1355,
+        "params": "uShort Data",
+        "locals": [
+          "uChar XIPData, DriverData ;"
+        ]
+      },
+      {
+        "name": "WriteNVCRData",
+        "line": 1358,
+        "end": 1412,
+        "params": "uShort Data",
+        "locals": [
+          "uShort PollingTimeCnt ;",
+          "uChar StatusData ;"
+        ]
+      },
+      {
+        "name": "Enter4ByteAddressMode",
+        "line": 1418,
+        "end": 1436,
+        "params": "void",
+        "locals": [
+          "uChar FlagStatusData ;"
+        ]
+      },
+      {
+        "name": "WriteStatusWELBit",
+        "line": 1439,
+        "end": 1483,
+        "params": "void",
+        "locals": [
+          "uChar PollingTimeCnt, StatusData;"
+        ]
+      },
+      {
+        "name": "Get1PageDataChkBlank",
+        "line": 1490,
+        "end": 1502,
+        "params": "void",
+        "locals": [
+          "uShort BufferCnt ;"
+        ]
+      },
+      {
+        "name": "GetDrvElementLen",
+        "line": 1510,
+        "end": 1515,
+        "params": "void",
+        "locals": []
+      },
+      {
+        "name": "DevSNProgAndVerify",
+        "line": 1523,
+        "end": 1669,
+        "params": "void",
+        "locals": [
+          "uShort TempCnt, SNBufCnt, SNWrAddrOffset, PollingTimeCnt ;",
+          "uInt32 DevSNStrAddr ;",
+          "uChar SNPageBuff[256], StatusData ;"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "D:\\ALL-1000\\ALL1000-IC-Support\\devices\\ST-Memory\\M25PE40\\WAx4_M25PE40-VMPxxx.c",
+    "functions": [
+      {
+        "name": "PowerOnFun",
+        "line": 75,
+        "end": 92,
+        "params": "void",
+        "locals": []
+      },
+      {
+        "name": "PowerOffFun",
+        "line": 98,
+        "end": 109,
+        "params": "void",
+        "locals": []
+      },
+      {
+        "name": "ReadFun",
+        "line": 115,
+        "end": 176,
+        "params": "void",
+        "locals": [
+          "stuShort DevWordData ;",
+          "uShort TempCnt ;"
+        ]
+      },
+      {
+        "name": "ProgramFun",
+        "line": 182,
+        "end": 296,
+        "params": "void",
+        "locals": [
+          "uChar StatusData ;",
+          "uShort RamWordData, PageTempCnt, PollingTimeCnt ;"
+        ]
+      },
+      {
+        "name": "VerifyFun",
+        "line": 302,
+        "end": 383,
+        "params": "void",
+        "locals": [
+          "uChar DevByteData ;",
+          "uShort RamWordData, TempCnt ;"
+        ]
+      },
+      {
+        "name": "EraseFun",
+        "line": 389,
+        "end": 467,
+        "params": "void",
+        "locals": [
+          "uShort StatusData, PollingTimeCnt ;"
+        ]
+      },
+      {
+        "name": "BlankCheckFun",
+        "line": 473,
+        "end": 552,
+        "params": "void",
+        "locals": [
+          "uChar DevByteData, RamWordData ;",
+          "uShort TempCnt ;"
+        ]
+      },
+      {
+        "name": "IDCheckFun",
+        "line": 559,
+        "end": 607,
+        "params": "void",
+        "locals": [
+          "uChar MftID, DevIDLo;"
+        ]
+      },
+      {
+        "name": "CheckSumFun",
+        "line": 613,
+        "end": 624,
+        "params": "void",
+        "locals": []
+      },
+      {
+        "name": "ProtectFun",
+        "line": 630,
+        "end": 646,
+        "params": "void",
+        "locals": [
+          "uChar SR1Data ;"
+        ]
+      },
+      {
+        "name": "UnProtectFun",
+        "line": 652,
+        "end": 663,
+        "params": "void",
+        "locals": []
+      },
+      {
+        "name": "GetDeviceParameterInfo",
+        "line": 668,
+        "end": 676,
+        "params": "void",
+        "locals": []
+      },
+      {
+        "name": "ReadStatusData",
+        "line": 679,
+        "end": 697,
+        "params": "void",
+        "locals": [
+          "uChar TempData ;"
+        ]
+      },
+      {
+        "name": "CheckAllStatusData",
+        "line": 699,
+        "end": 713,
+        "params": "uChar DevData",
+        "locals": []
+      },
+      {
+        "name": "WriteStatusWELBit",
+        "line": 716,
+        "end": 758,
+        "params": "void",
+        "locals": [
+          "uChar PollingTimeCnt, StatusData;"
+        ]
+      },
+      {
+        "name": "WriteStatusBPBits",
+        "line": 761,
+        "end": 806,
+        "params": "uChar BPData",
+        "locals": [
+          "uShort PollingTimeCnt ;",
+          "uChar StatusData ;"
+        ]
+      },
+      {
+        "name": "Get1PageDataChkBlank",
+        "line": 811,
+        "end": 823,
+        "params": "void",
+        "locals": [
+          "uShort BufferCnt ;"
+        ]
+      },
+      {
+        "name": "GetDrvElementLen",
+        "line": 831,
+        "end": 836,
+        "params": "void",
+        "locals": []
+      },
+      {
+        "name": "DevSNProgAndVerify",
+        "line": 843,
+        "end": 1005,
+        "params": "void",
+        "locals": [
+          "uShort TempCnt, SNBufCnt, SNWrAddrOffset, PollingTimeCnt ;",
+          "uInt32 DevSNStrAddr ;",
+          "uChar SNPageBuff[256], StatusData ;"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "D:\\ALL-1000\\ALL1000-IC-Support\\devices\\Micron\\N25Q256\\WAx4_N25Q256Ax3ESFxxx.c",
+    "functions": [
+      {
+        "name": "PowerOnFun",
+        "line": 126,
+        "end": 145,
+        "params": "void",
+        "locals": []
+      },
+      {
+        "name": "PowerOffFun",
+        "line": 151,
+        "end": 159,
+        "params": "void",
+        "locals": []
+      },
+      {
+        "name": "ReadFun",
+        "line": 167,
+        "end": 282,
+        "params": "void",
+        "locals": [
+          "stuShort DevWordData ;",
+          "uShort TempCnt ;",
+          "uChar OTPData[OTPDataSize], OTPControlData ;"
+        ]
+      },
+      {
+        "name": "ProgramFun",
+        "line": 288,
+        "end": 457,
+        "params": "void",
+        "locals": [
+          "uChar StatusData ;",
+          "uShort RamWordData, PageTempCnt, PollingTimeCnt ;",
+          "uChar OTPData[OTPDataSize], OTPControlData, OTPControlProgramData ;"
+        ]
+      },
+      {
+        "name": "VerifyFun",
+        "line": 463,
+        "end": 583,
+        "params": "void",
+        "locals": [
+          "uChar DevByteData ;",
+          "uShort RamWordData, TempCnt ;",
+          "uChar OTPData[OTPDataSize], OTPControlData ;"
+        ]
+      },
+      {
+        "name": "EraseFun",
+        "line": 591,
+        "end": 656,
+        "params": "void",
+        "locals": [
+          "uShort StatusData, PollingTimeCnt ;"
+        ]
+      },
+      {
+        "name": "BlankCheckFun",
+        "line": 663,
+        "end": 760,
+        "params": "void",
+        "locals": [
+          "uChar DevByteData, OTPData[OTPDataSize], OTPControlData ;",
+          "uShort TempCnt ;"
+        ]
+      },
+      {
+        "name": "IDCheckFun",
+        "line": 767,
+        "end": 813,
+        "params": "void",
+        "locals": [
+          "uChar MftID, DevIDLo;"
+        ]
+      },
+      {
+        "name": "CheckSumFun",
+        "line": 819,
+        "end": 871,
+        "params": "void",
+        "locals": [
+          "uShort RamWordData ;",
+          "uInt32 ChecksumAll ;"
+        ]
+      },
+      {
+        "name": "ProtectFun",
+        "line": 879,
+        "end": 966,
+        "params": "void",
+        "locals": [
+          "uShort PollingTimeCnt;",
+          "uChar SR1Data ;",
+          "uChar StatusData ;",
+          "uChar CurrSRData ;"
+        ]
+      },
+      {
+        "name": "UnProtectFun",
+        "line": 974,
+        "end": 1059,
+        "params": "void",
+        "locals": [
+          "uShort PollingTimeCnt;",
+          "uChar SR1Data ;",
+          "uChar StatusData ;",
+          "uChar CurrSRData ;"
+        ]
+      },
+      {
+        "name": "SecureFun",
+        "line": 1062,
+        "end": 1066,
+        "params": "void",
+        "locals": []
+      },
+      {
+        "name": "GetDeviceParameterInfo",
+        "line": 1071,
+        "end": 1079,
+        "params": "void",
+        "locals": []
+      },
+      {
+        "name": "ReadStatusData",
+        "line": 1083,
+        "end": 1100,
+        "params": "void",
+        "locals": [
+          "uChar TempData ;"
+        ]
+      },
+      {
+        "name": "ReadFlagStatusData",
+        "line": 1102,
+        "end": 1119,
+        "params": "void",
+        "locals": [
+          "uChar TempData ;"
+        ]
+      },
+      {
+        "name": "CheckAllStatusData",
+        "line": 1121,
+        "end": 1135,
+        "params": "uChar DevData",
+        "locals": []
+      },
+      {
+        "name": "Send4ByteAddress",
+        "line": 1138,
+        "end": 1148,
+        "params": "uInt32 Address",
+        "locals": []
+      },
+      {
+        "name": "ClearFlagStatusData",
+        "line": 1151,
+        "end": 1160,
+        "params": "void",
+        "locals": []
+      },
+      {
+        "name": "CheckAllFlagStatusData",
+        "line": 1163,
+        "end": 1177,
+        "params": "uChar DevData",
+        "locals": []
+      },
+      {
+        "name": "SkipOTPBlockData",
+        "line": 1180,
+        "end": 1192,
+        "params": "void",
+        "locals": [
+          "uShort TempCnt ;"
+        ]
+      },
+      {
+        "name": "ReadOTPArrayData",
+        "line": 1195,
+        "end": 1217,
+        "params": "uChar Address, uChar *Data, uChar Count",
+        "locals": [
+          "uChar TempCnt ;"
+        ]
+      },
+      {
+        "name": "ProgramOTPArray",
+        "line": 1220,
+        "end": 1271,
+        "params": "uChar Address, uChar *Data, uChar Count",
+        "locals": [
+          "uShort PollingTimeCnt ;",
+          "uChar StatusData, TempCnt ;"
+        ]
+      },
+      {
+        "name": "VerifyOTPArray",
+        "line": 1274,
+        "end": 1305,
+        "params": "uChar Address, uChar *Data, uChar Count, uChar Mask",
+        "locals": [
+          "uChar StatusData, TempCnt ;"
+        ]
+      },
+      {
+        "name": "ReadNVCRData",
+        "line": 1308,
+        "end": 1325,
+        "params": "void",
+        "locals": [
+          "stuShort TempData ;"
+        ]
+      },
+      {
+        "name": "CheckAllNVCRData",
+        "line": 1328,
+        "end": 1354,
+        "params": "uShort Data",
+        "locals": [
+          "uChar LowStatus, HighStatus ;"
+        ]
+      },
+      {
+        "name": "NVCRDataIsValid",
+        "line": 1357,
+        "end": 1368,
+        "params": "uShort Data",
+        "locals": [
+          "uChar XIPData, DriverData ;"
+        ]
+      },
+      {
+        "name": "WriteNVCRData",
+        "line": 1371,
+        "end": 1425,
+        "params": "uShort Data",
+        "locals": [
+          "uShort PollingTimeCnt ;",
+          "uChar StatusData ;"
+        ]
+      },
+      {
+        "name": "Enter4ByteAddressMode",
+        "line": 1431,
+        "end": 1449,
+        "params": "void",
+        "locals": [
+          "uChar FlagStatusData ;"
+        ]
+      },
+      {
+        "name": "WriteStatusWELBit",
+        "line": 1452,
+        "end": 1496,
+        "params": "void",
+        "locals": [
+          "uChar PollingTimeCnt, StatusData;"
+        ]
+      },
+      {
+        "name": "Get1PageDataChkBlank",
+        "line": 1503,
+        "end": 1515,
+        "params": "void",
+        "locals": [
+          "uShort BufferCnt ;"
+        ]
+      },
+      {
+        "name": "GetDrvElementLen",
+        "line": 1523,
+        "end": 1528,
+        "params": "void",
+        "locals": []
+      },
+      {
+        "name": "DevSNProgAndVerify",
+        "line": 1536,
+        "end": 1682,
+        "params": "void",
+        "locals": [
+          "uShort TempCnt, SNBufCnt, SNWrAddrOffset, PollingTimeCnt ;",
+          "uInt32 DevSNStrAddr ;",
+          "uChar SNPageBuff[256], StatusData ;"
+        ]
+      }
+    ]
+  }
+]

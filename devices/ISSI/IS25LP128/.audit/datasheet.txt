@@ -1,0 +1,8078 @@
+
+=== PDF PAGE 1 ===
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+IS25LP128 
+ 
+ 
+ 
+128Mb 
+3V SERIAL FLASH MEMORY WITH 133MHZ MULTI I/O SPI & 
+QUAD I/O QPI DTR INTERFACE 
+ 
+ 
+DATA SHEET 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+=== PDF PAGE 2 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  2   
+Rev. L11 
+06/27/2024 
+ 
+ 
+ 
+ 
+ 
+FEATURES 
+• Industry Standard Serial Interface 
+- IS25LP128: 128Mbit/16Mbyte 
+- 256 bytes per Programmable Page 
+- Supports standard SPI, Fast, Dual, Dual 
+I/O, Quad I/O, SPI DTR, Dual I/O DTR, 
+Quad I/O DTR, and QPI 
+- Double Transfer Rate (DTR) option 
+- Supports Serial Flash Discoverable 
+Parameters (SFDP) 
+ 
+• High Performance Serial Flash (SPI) 
+- 133Mhz Fast Read at Vcc=2.7V to 3.6V 
+- 104Mhz Fast Read at Vcc=2.3V to 3.6V 
+- 532MHz equivalent at QPI operation  
+- 50MHz Normal Read 
+- DTR (Dual Transfer Rate) up to 66MHz 
+- Selectable dummy cycles 
+- Configurable drive strength 
+- Supports SPI Modes 0 and 3 
+- More than 100,000 erase/program cycles 
+- More than 20-year data retention 
+ 
+• Flexible & Efficient Memory Architecture 
+- Chip Erase with Uniform Sector/Block 
+Erase (4/32/64 Kbyte) 
+- Program 1 to 256 bytes per page 
+- Program/Erase Suspend & Resume 
+ 
+• Efficient Read and Program modes 
+- Low Instruction Overhead Operations 
+- Continuous Read 8/16/32/64-Byte Burst 
+Wrap 
+- Selectable burst length 
+- QPI for reduced instruction overhead 
+• Low Power with Wide Temp. Ranges 
+- Single 2.3V to 3.6V Voltage Supply 
+- 5 mA Active Read Current 
+- 10 µA Standby Current 
+-  5 µA Deep Power Down 
+- Temp Grades: 
+Extended: -40°C to +105°C 
+Auto Grade (A3): -40°C to +125°C 
+ 
+• Advanced Security Protection 
+- Software and Hardware Write Protection 
+- Power Supply lock protect 
+- 4x256-Byte dedicated security area 
+with OTP user-lockable bits 
+- 128 bit Unique ID for each device (Call 
+Factory) 
+ 
+• Industry Standard Pin-out & Packages(1) 
+- B = 8-pin SOIC 208mil 
+- K = 8-contact WSON 6x5mm 
+- L = 8-contact WSON 8x6mm 
+- M = 16-pin SOIC 300mil 
+- G= 24-ball TFBGA 6x8mm 4x6 
+- H = 24-ball TFBGA 6x8mm 5x5 (Call 
+Factory) 
+- W = KGD (Call Factory) 
+- Green Package (RoHS Compliant, 
+Halogen-Free) and TSCA Compliant 
+ 
+      Note: 
+1. Call Factory for other package options available. 
+ 
+ 
+128Mb 
+3V SERIAL FLASH MEMORY WITH 133MHZ MULTI I/O SPI &  
+QUAD I/O QPI DTR INTERFACE 
+
+
+=== PDF PAGE 3 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  3   
+Rev. L11 
+06/27/2024 
+GENERAL DESCRIPTION 
+ 
+The IS25LP128 Serial Flash memory offers a versatile storage solution with high flexibility and performance in a 
+simplified pin count package. ISSI’s “Industry Standard Serial Interface” Flash are for systems that require limited 
+space, a low pin count, and low power consumption. The device is accessed through a 4-wire SPI Interface 
+consisting of a Serial Data Input (SI), Serial Data Output (SO), Serial Clock (SCK), and Chip Enable (CE#) pins, 
+which can also be configured to serve as multi-I/O (see pin descriptions). 
+ 
+The device supports Dual and Quad I/O as well as standard and Dual Output SPI. Clock frequencies of up to 
+133MHz allow for equivalent clock rates of up to 532MHz (133MHz x 4) which equates to 66Mbytes/s of data 
+throughput. The IS25xP series of Flash adds support for DTR (Double Transfer Rate) commands that transfer 
+addresses and read data on both edges of the clock. These transfer rates can outperform 16-bit Parallel Flash 
+memories allowing for efficient memory access to support XIP (execute in place) operation. 
+ 
+Initial state of the memory array is erased (all bits are set to 1) when shipped from the factory.  
+ 
+QPI (Quad Peripheral Interface) supports 2-cycle instruction further reducing instruction times. Pages can be 
+erased in groups of 4Kbyte sectors, 32Kbyte blocks, 64Kbyte blocks, and/or the entire chip. The uniform sector 
+and block architecture allows for a high degree of flexibility so that the device can be utilized for a broad variety 
+of applications requiring solid data retention. 
+ 
+ 
+ 
+GLOSSARY 
+ 
+Standard SPI 
+In this operation, a 4-wire SPI Interface is utilized, consisting of Serial Data Input (SI), Serial Data Output (SO), 
+Serial Clock (SCK), and Chip Enable (CE#) pins. Instructions are sent via the SI pin to encode instructions, 
+addresses, or input data to the device on the rising edge of SCK. The SO pin is used to read data or to check the 
+status of the device. This device supports SPI bus operation modes (0,0) and (1,1). 
+ 
+Multi I/O SPI 
+Multi-I/O operation utilizes an enhanced SPI protocol to allow the device to function with Dual Output, Dual Input 
+and Output, Quad Output, and Quad Input and Output capability. Executing these instructions through SPI mode 
+will achieve double or quadruple the transfer bandwidth for READ and PROGRAM operations. 
+ 
+QPI 
+The device supports Quad Peripheral Interface (QPI) operations only when the device is switched from 
+Standard/Dual/Quad SPI mode to QPI mode using the enter QPI (35h) instruction. The typical SPI protocol 
+requires that the byte-long instruction code being shifted into the device only via SI pin in eight serial clocks. The 
+QPI mode utilizes all four I/O pins to input the instruction code thus requiring only two serial clocks. This can 
+significantly reduce the SPI instruction overhead and improve system performance. Only QPI mode or 
+SPI/Dual/Quad mode can be active at any given time. Enter QPI (35h) and Exit QPI (F5h) instructions are used 
+to switch between these two modes, regardless of the non-volatile Quad Enable (QE) bit status in the Status 
+Register. Power Reset or Hardware/Software Reset will return the device into the standard SPI mode. SI and SO 
+pins become bidirectional I/O0 and I/O1, and WP# and HOLD# pins become I/O2 and I/O3 respectively during 
+QPI mode.  
+ 
+DTR 
+In addition to SPI and QPI features, the device also supports Fast READ DTR operation, which allows high data 
+throughput while running at lower clock frequencies. DTR READ mode uses both rising and falling edges of the 
+clock to drive output, resulting in reducing input and output cycles by half. 
+ 
+ 
+
+
+=== PDF PAGE 4 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  4   
+Rev. L11 
+06/27/2024 
+TABLE OF CONTENTS 
+ 
+FEATURES .......................................................................................................................................................... 2 
+GENERAL DESCRIPTION .................................................................................................................................. 3 
+TABLE OF CONTENTS ....................................................................................................................................... 4 
+1. 
+PIN CONFIGURATION ................................................................................................................................. 7 
+2. 
+PIN DESCRIPTIONS .................................................................................................................................... 9 
+3. 
+BLOCK DIAGRAM ...................................................................................................................................... 10 
+4. 
+SPI MODES DESCRIPTION ...................................................................................................................... 11 
+5. 
+SYSTEM CONFIGURATION ...................................................................................................................... 13 
+5.1 BLOCK/SECTOR ADDRESSES .......................................................................................................... 13 
+5.2 Serial Flash Discoverable Parameters ................................................................................................. 14 
+6. 
+REGISTERS ............................................................................................................................................... 15 
+6.1 STATUS REGISTER ............................................................................................................................ 15 
+6.2 FUNCTION REGISTER ........................................................................................................................ 18 
+6.3 READ REGISTERS .............................................................................................................................. 19 
+7. 
+PROTECTION MODE................................................................................................................................. 21 
+7.1 HARDWARE WRITE PROTECTION.................................................................................................... 21 
+7.2 SOFTWARE WRITE PROTECTION .................................................................................................... 21 
+8. 
+DEVICE OPERATION ................................................................................................................................ 22 
+8.1 NORMAL READ OPERATION (NORD, 03h) ....................................................................................... 24 
+8.2 FAST READ OPERATION (FRD, 0Bh) ................................................................................................ 26 
+8.3 HOLD OPERATION .............................................................................................................................. 28 
+8.4 FAST READ DUAL I/O OPERATION (FRDIO, BBh) ........................................................................... 28 
+8.5 FAST READ DUAL OUTPUT OPERATION (FRDO, 3Bh) ................................................................... 31 
+8.6 FAST READ QUAD OUTPUT OPERATION (FRQO, 6Bh) ............................................................. 32 
+8.7 FAST READ QUAD I/O OPERATION (FRQIO, EBh) .......................................................................... 34 
+8.8 PAGE PROGRAM OPERATION (PP, 02h) .......................................................................................... 38 
+8.9 QUAD INPUT PAGE PROGRAM OPERATION (PPQ, 32h/38h) ........................................................ 40 
+8.10 ERASE OPERATION ......................................................................................................................... 41 
+8.11 SECTOR ERASE OPERATION (SER, D7h/20h) ............................................................................... 42 
+8.12 BLOCK ERASE OPERATION (BER32K:52h, BER64K:D8h) ............................................................ 43 
+8.13 CHIP ERASE OPERATION (CER, C7h/60h) ..................................................................................... 45 
+8.14 WRITE ENABLE OPERATION (WREN, 06h) .................................................................................... 46 
+8.15 WRITE DISABLE OPERATION (WRDI, 04h) ..................................................................................... 47 
+8.16 READ STATUS REGISTER OPERATION (RDSR, 05h) ................................................................... 48 
+8.17 WRITE STATUS REGISTER OPERATION (WRSR, 01h) ................................................................. 49 
+8.18 READ FUNCTION REGISTER OPERATION (RDFR, 48h) ............................................................... 50 
+8.19 WRITE FUNCTION REGISTER OPERATION (WRFR, 42h)............................................................. 51 
+
+
+=== PDF PAGE 5 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  5   
+Rev. L11 
+06/27/2024 
+8.20 ENTER QUAD PERIPHERAL INTERFACE (QPI) MODE OPERATION (QPIEN,35h; QPIDI,F5h) .. 52 
+8.21 PROGRAM/ERASE SUSPEND & RESUME ...................................................................................... 53 
+8.22 ENTER DEEP POWER DOWN (DP, B9h) ......................................................................................... 55 
+8.23 RELEASE DEEP POWER DOWN (RDPD, ABh) ............................................................................... 56 
+8.24 SET READ PARAMETERS OPERATION (SRP, C0h) ...................................................................... 57 
+8.25 READ PRODUCT IDENTIFICATION (RDID, ABh) ............................................................................ 59 
+8.26 READ PRODUCT IDENTIFICATION BY JEDEC ID OPERATION (RDJDID, 9Fh; RDJDIDQ, AFh) 61 
+8.27 READ DEVICE MANUFACTURER AND DEVICE ID OPERATION (RDMDID, 90h) ........................ 62 
+8.28 READ UNIQUE ID NUMBER (RDUID, 4Bh) ...................................................................................... 63 
+8.29 READ SFDP OPERATION (RDSFDP, 5Ah) ...................................................................................... 64 
+8.30 NO OPERATION (NOP, 00h) ............................................................................................................. 64 
+8.31 SOFTWARE RESET (RESET-ENABLE (RSTEN, 66h) AND RESET (RST, 99h)) AND HARDWARE 
+RESET ........................................................................................................................................................ 65 
+8.32 SECURITY INFORMATION ROW ...................................................................................................... 66 
+8.33 INFORMATION ROW ERASE OPERATION (IRER, 64h) ................................................................. 67 
+8.34 INFORMATION ROW PROGRAM OPERATION (IRP, 62h) ............................................................. 68 
+8.35 INFORMATION ROW READ OPERATION (IRRD, 68h) ................................................................... 69 
+8.36 FAST READ DTR MODE OPERATION (FRDTR, 0Dh) ..................................................................... 70 
+8.37 FAST READ DUAL IO DTR MODE OPERATION (FRDDTR, BDh) .................................................. 72 
+8.38 FAST READ QUAD IO DTR MODE OPERATION (FRQDTR, EDh) ................................................. 75 
+8.39 SECTOR LOCK/UNLOCK FUNCTIONS ............................................................................................ 79 
+9. 
+ELECTRICAL CHARACTERISTICS ........................................................................................................... 81 
+9.1 ABSOLUTE MAXIMUM RATINGS (1) ................................................................................................... 81 
+9.2 OPERATING RANGE ........................................................................................................................... 81 
+9.3 DC CHARACTERISTICS ...................................................................................................................... 82 
+9.4 AC MEASUREMENT CONDITIONS .................................................................................................... 83 
+9.5 PIN CAPACITANCE (TA = 25°C, VCC=3V , 1MHz) ............................................................................ 83 
+9.6 AC CHARACTERISTICS ...................................................................................................................... 84 
+9.7 SERIAL INPUT/OUTPUT TIMING ........................................................................................................ 86 
+9.8 POWER-UP AND POWER-DOWN ...................................................................................................... 88 
+9.9 PROGRAM/ERASE PERFORMANCE ................................................................................................. 89 
+9.10 RELIABILITY CHARACTERISTICS ................................................................................................... 89 
+10. 
+PACKAGE TYPE INFORMATION ......................................................................................................... 90 
+10.1 8-Pin JEDEC 208mil Broad Small Outline Integrated Circuit (SOIC) Package (B) ............................ 90 
+10.2 8-Contact Ultra-Thin Small Outline No-Lead (WSON) Package 6x5mm (K)...................................... 91 
+10.3 8-Contact Ultra-Thin Small Outline No-Lead (WSON) Package 8x6mm (L) ...................................... 92 
+10.4 16-lead Plastic Small Outline package (300 mils body width) (M) ..................................................... 93 
+10.5 24-Ball Thin Profile Fine Pitch BGA 6x8mm 4x6 BALL ARRAY (G) .................................................. 94 
+
+
+=== PDF PAGE 6 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  6   
+Rev. L11 
+06/27/2024 
+10.6 24-Ball Thin Profile Fine Pitch BGA 6x8mm 5x5 BALL ARRAY (H) ................................................... 95 
+11. 
+ORDERING INFORMATION- Valid Part Numbers ................................................................................ 96 
+
+
+=== PDF PAGE 7 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  7   
+Rev. L11 
+06/27/2024 
+1. PIN CONFIGURATION 
+ 
+ 
+ 
+ 
+ 
+                                                                                                                
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+ 
+ 
+ 
+Note1: For RESET# pin option instead of HOLD# pin, call Factory. 
+ 
+ 
+HOLD# (IO3) (1) 
+Vcc 
+CE# 
+GND 
+SCK 
+1 
+2 
+3 
+4 
+7 
+6 
+5 
+SO (IO1) 
+SI (IO0) 
+8 
+WP# (IO2) 
+6
+3 
+CE# 
+Vcc 
+SCK 
+SI (IO0) 
+7 
+8 
+5 
+4 
+1 
+2 
+GND 
+WP# (IO2) 
+SO (IO1) 
+HOLD# (IO3) (1) 
+8-pin SOIC 208mil 
+ 
+8-contact WSON 6x5mm 
+8-contact WSON 8x6mm 
+16-pin SOIC 300mil 
+12 
+10 
+11 
+9 
+13 
+15 
+14 
+5 
+7 
+6 
+8 
+4 
+2 
+3 
+16 
+1 
+Vcc 
+ (1) HOLD# (IO3)
+SCK 
+CE#
+ WP# (IO2) 
+GND 
+NC 
+NC 
+NC 
+NC 
+NC 
+SI (IO0) 
+SO (IO1)
+NC
+NC
+NC 
+
+
+=== PDF PAGE 8 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  8   
+Rev. L11 
+06/27/2024 
+ 
+ 
+ 
+ 
+NC
+NC
+NC
+NC
+SCK
+GND
+VCC
+NC
+CE#
+NC
+WP#(IO2)
+NC
+SO(IO1)
+SI(IO0)
+HOLD# (IO3) 
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+Top View, Balls Facing Down
+NC
+24-ball TFBGA, 5x5 Ball Array (Package:H)
+A2
+A3
+A4
+B1
+B2
+B3
+B4
+C1
+C2
+C3
+C4
+D1
+D2
+D3
+D4
+E1
+E2
+E3
+E4
+A5
+B5
+C5
+D5
+E5
+NC
+(1)
+Top View, Balls Facing Down
+NC
+NC
+NC
+NC
+F1
+F2
+F3
+F4
+NC
+NC
+NC
+SCK
+GND
+VCC
+NC
+CE#
+NC
+WP#(IO2)
+NC
+SO(IO1)
+SI(IO0)
+HOLD#(IO3) 
+NC
+NC
+NC
+NC
+NC
+A2
+A3
+A4
+B1
+B2
+B3
+B4
+C1
+C2
+C3
+C4
+D1
+D2
+D3
+D4
+E1
+E2
+E3
+E4
+A1
+(1)
+NC
+24-ball TFBGA, 4x6 Ball Array (Package:G)
+ 
+ 
+Note1: For RESET# pin option instead of HOLD# pin, call Factory. 
+ 
+ 
+ 
+
+
+=== PDF PAGE 9 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  9   
+Rev. L11 
+06/27/2024 
+ 
+2. PIN DESCRIPTIONS 
+SYMBOL 
+TYPE 
+DESCRIPTION 
+CE# 
+INPUT 
+Chip Enable: The Chip Enable (CE#) pin enables and disables the devices 
+operation. When CE# is high the device is deselected and output pins are in a high 
+impedance state. When deselected the devices non-critical internal circuitry power 
+down to allow minimal levels of power consumption while in a standby state. 
+When CE# is pulled low the device will be selected and brought out of standby mode. 
+The device is considered active and instructions can be written to, data read, and 
+written to the device. After power-up, CE# must transition from high to low before a 
+new instruction will be accepted. 
+Keeping CE# in a high state deselects the device and switches it into its low power 
+state. Data will not be accepted when CE# is high. 
+SI (IO0), 
+SO (IO1) 
+INPUT/OUTPUT 
+Serial Data Input, Serial Output, and IOs (SI, SO, IO0, and IO1): 
+This device supports standard SPI, Dual SPI, and Quad SPI operation. Standard 
+SPI instructions use the unidirectional SI (Serial Input) pin to write instructions, 
+addresses, or data to the device on the rising edge of the Serial Clock (SCK). 
+Standard SPI also uses the unidirectional SO (Serial Output) to read data or status 
+from the device on the falling edge of the serial clock (SCK). 
+In Dual and Quad SPI mode, SI and SO become bidirectional IO pins to write 
+instructions, addresses or data to the device on the rising edge of the Serial Clock 
+(SCK) and read data or status from the device on the falling edge of SCK. Quad SPI 
+instructions use the WP# and HOLD# pins as IO2 and IO3 respectively. 
+WP# (IO2) 
+INPUT/OUTPUT 
+Write Protect/Serial Data IO (IO2): The WP# pin protects the Status Register from 
+being written in conjunction with the SRWD bit. When the SRWD is set to “1” and 
+the WP# is pulled low, the Status Register bits (SRWD, QE, BP3, BP2, BP1, BP0) 
+are write-protected and vice-versa for WP# high. When the SRWD is set to “0”, the 
+Status Register is not write-protected regardless of WP# state. 
+When the QE bit is set to “1”, the WP# pin (Write Protect) function is not available 
+since this pin is used for IO2. 
+HOLD# or 
+RESET# (IO3) 
+INPUT/OUTPUT 
+HOLD# or RESET#/Serial Data IO (IO3): When the QE bit of Status Register is set 
+to “1”, HOLD# pin or RESET# is not available since it becomes IO3. When QE=0 
+the pin acts as HOLD# or RESET#. 
+RESET# pin can be selected with dedicated parts (Call Factory). 
+The HOLD# pin allows the device to be paused while it is selected. It pauses serial 
+communication by the master device without resetting the serial sequence. The 
+HOLD# pin is active low. When HOLD# is in a low state and CE# is low, the SO pin 
+will be at high impedance. Device operation can resume when HOLD# pin is brought 
+to a high state. 
+RESET# pin is a hardware RESET signal. When RESET# is driven HIGH, the 
+memory is in the normal operating mode. When RESET# is driven LOW, the memory 
+enters reset mode and output is High-Z. If RESET# is driven LOW while an internal 
+WRITE, PROGRAM, or ERASE operation is in progress, data may be lost. 
+SCK 
+INPUT 
+Serial Data Clock: Synchronized Clock for input and output timing operations. 
+Vcc 
+POWER 
+Power: Device Core Power Supply 
+GND 
+GROUND 
+Ground: Connect to ground when referenced to Vcc 
+NC 
+Unused 
+NC: Pins labeled “NC” stand for “No Connect”. Not internally connected. 
+ 
+ 
+ 
+
+
+=== PDF PAGE 10 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  10   
+Rev. L11 
+06/27/2024 
+3. BLOCK DIAGRAM 
+ 
+Note1: For RESET# pin option instead of HOLD# pin, call Factory. 
+ 
+ 
+Control Logic
+High Voltage Generator
+I/O Buffers and 
+Data Latches
+256 Bytes
+Page Buffer
+Y-Decoder
+X-Decoder
+Serial Peripheral Interface
+Status
+Register
+Address Latch & 
+Counter
+Memory Array
+CE#
+SCK
+WP#
+(IO2)
+SI
+(IO0)
+SO
+(IO1)
+HOLD# or RESET#
+       (IO3)
+(1)
+
+
+=== PDF PAGE 11 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  11   
+Rev. L11 
+06/27/2024 
+4. SPI MODES DESCRIPTION 
+Multiple IS25LP128 devices can be connected on the SPI serial bus and controlled by a SPI Master, i.e. 
+microcontroller, as shown in Figure 4.1. The devices support either of two SPI modes: 
+ 
+Mode 0 (0, 0) 
+Mode 3 (1, 1) 
+ 
+The difference between these two modes is the clock polarity. When the SPI master is in stand-by mode, the 
+serial clock remains at “0” (SCK = 0) for Mode 0 and the clock remains at “1” (SCK = 1) for Mode 3. Please refer 
+to Figure 4.2 and Figure 4.3 for SPI and QPI mode. In both modes, the input data is latched on the rising edge of 
+Serial Clock (SCK), and the output data is available from the falling edge of SCK. 
+ 
+Figure 4.1 Connection Diagram among SPI Master and SPI Slaves (Memory Devices) 
+ 
+Notes: 
+1. For RESET# pin option instead of HOLD# pin, call Factory. 
+2. SI and SO pins become bidirectional IO0 and IO1, and WP# and HOLD# pins become IO2 and IO3 respectively 
+during QPI mode. 
+ 
+ 
+ 
+SPI interface with
+(0,0) or (1,1)
+SPI Master
+(i.e. Microcontroller)
+SPI
+Memory
+Device
+SPI
+Memory
+Device
+SPI
+Memory
+Device
+SCK
+SO
+SI
+SCK
+SDI
+SDO
+CE#
+WP#
+HOLD# or 
+RESET
+SCK
+SO
+SI
+CE#
+WP# HOLD# or 
+RESET#
+SCK
+SO
+SI
+CE#
+WP#
+CS3
+CS2
+CS1
+HOLD# or 
+RESET#
+(1) 
+(1) 
+(1) 
+
+
+=== PDF PAGE 12 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  12   
+Rev. L11 
+06/27/2024 
+Figure 4.2 SPI Mode Support 
+ 
+SCK
+SO
+SI
+Mode 0 (0,0)
+Mode 3 (1,1)
+MSB
+MSB
+SCK
+ 
+ 
+ 
+Figure 4.3 QPI Mode Support 
+ 
+20
+CE#
+SCK
+4
+0
+4
+0
+3-byte Address
+16
+12
+8
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+Mode 3
+Mode 0
+IO0
+IO1
+21
+5
+1
+5
+1
+17
+13
+9
+22
+6
+2
+6
+2
+18
+14
+10
+7
+3
+3
+19
+15
+11
+Mode Bits
+IO2
+IO3
+C4
+C0
+C1
+C5
+C2
+C6
+C3
+C71
+4
+0
+4
+0
+5
+1
+5
+1
+6
+2
+6
+2
+3
+3
+4
+5
+6
+0
+1
+2
+3
+...
+...
+...
+...
+Data 1
+Data 2
+Data 3
+231
+71
+71
+71
+71
+6
+ 
+ 
+Note1: MSB (Most Significant Bit) 
+ 
+ 
+ 
+
+
+=== PDF PAGE 13 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  13   
+Rev. L11 
+06/27/2024 
+5. SYSTEM CONFIGURATION 
+The memory array is divided into uniform 4 Kbyte sectors or uniform 32/64 Kbyte blocks (a block consists of 
+eight/sixteen adjacent sectors respectively). 
+ 
+Table 5.1 illustrates the memory map of the device. The Status Register controls how the memory is protected. 
+ 
+5.1 BLOCK/SECTOR ADDRESSES 
+ 
+Table 5.1 Block/Sector Addresses of IS25LP128 
+ 
+ 
+ 
+Memory Density 
+Block No. 
+(64Kbyte) 
+Block No. 
+(32Kbyte) 
+Sector No. 
+Sector Size 
+(Kbyte) 
+Address Range 
+128Mb 
+Block 0 
+Block 0 
+Sector 0  
+4 
+000000h – 000FFFh 
+: 
+: 
+: 
+Block 1 
+: 
+: 
+: 
+Sector 15 
+4 
+00F000h - 00FFFFh 
+Block 1 
+Block 2 
+Sector 16 
+4 
+010000h – 010FFFh 
+: 
+: 
+: 
+Block 3 
+: 
+: 
+: 
+Sector 31 
+4 
+01F000h - 01FFFFh 
+Block 2 
+Block 4 
+Sector 32 
+4 
+020000h – 020FFFh 
+: 
+: 
+: 
+Block 5 
+: 
+: 
+: 
+Sector 47 
+4 
+02F000h – 02FFFFh 
+: 
+: 
+: 
+: 
+: 
+Block 63 
+Block 126 
+Sector 1008 
+4 
+3F0000h – 3F0FFFh 
+: 
+: 
+: 
+Block 127 
+: 
+: 
+: 
+Sector 1023 
+4 
+3FF000h – 3FFFFFh 
+: 
+: 
+: 
+: 
+: 
+Block 127 
+Block 254 
+Sector 2032 
+4 
+7F0000h – 7F0FFFh 
+: 
+: 
+: 
+Block 255 
+: 
+: 
+: 
+Sector 2047 
+4 
+7FF000h – 7FFFFFh 
+: 
+: 
+: 
+: 
+: 
+Block 254 
+Block 508 
+Sector 4064 
+4 
+FE0000h – FE0FFFh 
+: 
+: 
+: 
+Block 509 
+: 
+: 
+: 
+Sector 4079 
+4 
+FEF000h – FEFFFFh 
+Block 255 
+Block 510 
+Sector 4080 
+4 
+FF0000h – FF0FFFh 
+: 
+: 
+: 
+Block 511 
+: 
+: 
+: 
+Sector 4095 
+4 
+FFF000h – FFFFFFh 
+
+
+=== PDF PAGE 14 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  14   
+Rev. L11 
+06/27/2024 
+ 
+5.2 SERIAL FLASH DISCOVERABLE PARAMETERS 
+The Serial Flash Discoverable Parameters (SFDP) standard defines the structure of the SFDP database within 
+the memory device. SFDP is the standard of JEDEC JESD216.  
+The JEDEC-defined header with Parameter ID FF00h and related Basic Parameter Table is mandatory. Additional 
+parameter headers and tables are optional.  
+ 
+Note: Order with SPA# U1635A for SFDP support 
+ 
+ 
+
+
+=== PDF PAGE 15 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  15   
+Rev. L11 
+06/27/2024 
+6. REGISTERS 
+The device has three sets of Registers: Status, Function and Read. 
+When the register is read continuously, the same byte is output repeatedly until CE# goes HIGH. 
+ 
+6.1 STATUS REGISTER 
+Status Register Format and Status Register Bit Definitions are described in Tables 6.1 & 6.2. 
+ 
+Table 6.1 Status Register Format 
+ 
+Bit 7 
+Bit 6 
+Bit 5 
+Bit 4 
+Bit 3 
+Bit 2 
+Bit 1 
+Bit 0 
+ 
+SRWD 
+QE 
+BP3 
+BP2 
+BP1 
+BP0 
+WEL 
+WIP 
+Default 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+ 
+Table 6.2 Status Register Bit Definition 
+Bit 
+Name 
+Definition 
+Read- 
+/Write 
+Type 
+Bit 0 
+WIP 
+Write In Progress Bit: 
+"0" indicates the device is ready(default) 
+"1" indicates a write cycle is in progress and the device is busy 
+R 
+Volatile 
+Bit 1 
+WEL 
+Write Enable Latch: 
+"0" indicates the device is not write enabled (default) 
+"1" indicates the device is write enabled 
+R/W1 
+Volatile 
+Bit 2 
+BP0 
+Block Protection Bit: (See Tables 6.4 for details) 
+"0" indicates the specific blocks are not write-protected (default) 
+"1" indicates the specific blocks are write-protected 
+R/W 
+Non-Volatile 
+Bit 3 
+BP1 
+Bit 4 
+BP2 
+Bit 5 
+BP3 
+Bit 6 
+QE 
+Quad Enable bit: 
+“0” indicates the Quad output function disable (default) 
+“1” indicates the Quad output function enable 
+R/W 
+Non-Volatile 
+Bit 7 
+SRWD 
+Status Register Write Disable: (See Table 7.1 for details) 
+"0" indicates the Status Register is not write-protected (default) 
+"1" indicates the Status Register is write-protected 
+R/W 
+Non-Volatile 
+Note1: WEL bit can be written by WREN and WRDI commands, but cannot by WRSR command. 
+ 
+The BP0, BP1, BP2, BP3, QE, and SRWD are non-volatile memory cells that can be written by a Write Status 
+Register (WRSR) instruction. The default value of the BP0, BP1, BP2, BP3, QE, and SRWD bits were set to “0” 
+at factory. The Status Register can be read by the Read Status Register (RDSR). 
+ 
+The function of Status Register bits are described as follows: 
+ 
+WIP bit: The Write In Progress (WIP) bit is read-only, and can be used to detect the progress or completion of a 
+program or erase operation. When the WIP bit is “0”, the device is ready for Write Status Register, program or 
+erase operation. When the WIP bit is “1”, the device is busy. 
+ 
+WEL bit: The Write Enable Latch (WEL) bit indicates the status of the internal write enable latch. When the WEL 
+is “0”, the write enable latch is disabled and the write operations described in Table 6.3 are inhibited. When the 
+WEL bit is “1”, the write operations are allowed. The WEL bit is set by a Write Enable (WREN) instruction. Each 
+write register, program and erase instruction except for Set volatile Read Register must be preceded by a WREN 
+instruction. The WEL bit can be reset by a Write Disable (WRDI) instruction. It will automatically reset after the 
+completion of any write operation. 
+ 
+ 
+
+
+=== PDF PAGE 16 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  16   
+Rev. L11 
+06/27/2024 
+Table 6.3 Instructions requiring WREN instruction ahead 
+Instructions must be preceded by the WREN instruction 
+Name 
+Hex Code 
+Operation 
+PP 
+02h 
+Serial Input Page Program 
+PPQ 
+32h/38h 
+Quad Input Page Program  
+SER 
+D7h/20h 
+Sector Erase 
+BER32 (32KB) 
+52h 
+Block Erase 32KB 
+BER64 (64KB) 
+D8h 
+Block Erase 64KB 
+CER 
+C7h/60h 
+Chip Erase 
+WRSR 
+01h 
+Write Status Register 
+WRFR 
+42h 
+Write Function Register 
+IRER 
+64h 
+Erase Information Row 
+IRP 
+62h 
+Program Information Row 
+ 
+BP3, BP2, BP1, BP0 bits: The Block Protection (BP3, BP2, BP1 and BP0) bits are used to define the portion of 
+the memory area to be protected. Refer to Tables 6.4 for the Block Write Protection (BP) bit settings. When a 
+defined combination of BP3, BP2, BP1 and BP0 bits are set, the corresponding memory area is protected. Any 
+program or erase operation to that area will be inhibited. 
+Note: A Chip Erase (CER) instruction will be ignored unless all the Block Protection Bits are “0”s. 
+ 
+SRWD bit: The Status Register Write Disable (SRWD) bit operates in conjunction with the Write Protection (WP#) 
+signal to provide a Hardware Protection Mode. When the SRWD is set to “0”, the Status Register is not write-
+protected. When the SRWD is set to “1” and the WP# is pulled low (VIL), the bits of Status Register (SRWD, QE, 
+BP3, BP2, BP1, BP0) become read-only, and a WRSR instruction will be ignored. If the SRWD is set to “1” and 
+WP# is pulled high (VIH), the Status Register can be changed by a WRSR instruction. 
+ 
+QE bit: The Quad Enable (QE) is a non-volatile bit in the status register that allows quad operation. When the QE 
+bit is set to “0”, the pin WP# and HOLD# are enabled. When the QE bit is set to “1”, the IO2 and IO3 pins are 
+enabled. 
+WARNING: The QE bit must be set to 0 if WP# or HOLD# pin is tied directly to the power supply. 
+ 
+ 
+ 
+
+
+=== PDF PAGE 17 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  17   
+Rev. L11 
+06/27/2024 
+Table 6.4 Block (64Kbyte) assignment by Block Write Protect (BP) Bits 
+Status Register Bits 
+Protected Memory Area (IS25LP128, 256Blocks) 
+BP3 
+BP2 
+BP1 
+BP0 
+TBS(T/B selection) = 0, Top area 
+TBS(T/B selection) = 1, Bottom area 
+0 
+0 
+0 
+0 
+0( None) 
+0( None) 
+0 
+0 
+0 
+1 
+1(1 block : 255th) 
+1(1 block : 0th) 
+0 
+0 
+1 
+0 
+2(2 blocks : 254th and 255th) 
+2(2 blocks : 0th and 1st) 
+0 
+0 
+1 
+1 
+3(4 blocks : 252nd to 255th) 
+3(4 blocks : 0th to 3rd) 
+0 
+1 
+0 
+0 
+4(8 blocks : 248th to 255th) 
+4(8 blocks : 0th to 7th) 
+0 
+1 
+0 
+1 
+5(16 blocks : 240th to 255th) 
+5(16 blocks : 0th to 15th) 
+0 
+1 
+1 
+0 
+6(32 blocks : 224th to 255th) 
+6(32 blocks : 0th to 31st) 
+0 
+1 
+1 
+1 
+7(64 blocks : 192nd to 255th) 
+7(64 blocks : 0th to 63rd) 
+1 
+0 
+0 
+0 
+8(128 blocks : 128th to 255th) 
+8(128 blocks : 0th to 127th) 
+1 
+0 
+0 
+1 
+9(256 blocks : 0th to 255th) All blocks 
+9(256 blocks : 0th to 255th) All blocks 
+1 
+0 
+1 
+x 
+10-11(256 blocks : 0th to 255th) All blocks 
+10-11(256 blocks : 0th to 255th) All blocks 
+1 
+1 
+x 
+x 
+12-15(256 blocks : 0th to 255th) All blocks 
+12-15(256 blocks : 0th to 255th) All blocks 
+Note: x is don’t care 
+ 
+ 
+ 
+
+
+=== PDF PAGE 18 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  18   
+Rev. L11 
+06/27/2024 
+6.2 FUNCTION REGISTER 
+Function Register Format and Bit definition are described in Table 6.5 and Table 6.6 
+ 
+Table 6.5 Function Register Format 
+ 
+ 
+Bit 7 
+Bit 6 
+Bit 5 
+Bit 4 
+Bit 3 
+Bit 2 
+Bit 1 
+Bit 0 
+ 
+IRL3 
+IRL2 
+IRL1 
+IRL0 
+ESUS 
+PSUS 
+TBS 
+Reserved 
+Default 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+ 
+Table 6.6 Function Register Bit Definition 
+Bit 
+Name 
+Definition 
+Read- 
+/Write 
+Type 
+Bit 0 
+Reserved 
+Reserved 
+R 
+Reserved 
+Bit 1 
+Top/Bottom 
+Selection 
+Top/Bottom Selection. (See Tables 6.4 for details) 
+“0” indicates Top area. 
+“1” indicates Bottom area. 
+R/W 
+OTP 
+Bit 2 
+PSUS 
+Program suspend bit: 
+“0” indicates program is not suspend 
+“1” indicates program is suspend 
+R 
+Volatile 
+Bit 3 
+ESUS 
+Erase suspend bit: 
+"0" indicates Erase is not suspend 
+"1" indicates Erase is suspend 
+R 
+Volatile 
+Bit 4 
+ 
+IR Lock 0 
+ 
+Lock the Information Row 0: 
+“0” indicates the Information Row can be programmed 
+“1” indicates the Information Row cannot be programmed 
+R/W 
+OTP 
+Bit 5 
+IR Lock 1 
+Lock the Information Row 1: 
+“0” indicates the Information Row can be programmed 
+“1” indicates the Information Row cannot be programmed 
+R/W 
+OTP 
+Bit 6 
+IR Lock 2 
+Lock the Information Row 2: 
+“0” indicates the Information Row can be programmed 
+“1” indicates the Information Row cannot be programmed 
+R/W 
+OTP 
+Bit 7 
+IR Lock 3 
+Lock the Information Row 3: 
+“0” indicates the Information Row can be programmed 
+“1” indicates the Information Row cannot be programmed 
+R/W 
+OTP 
+Note: Function Register bits are only one time programmable and cannot be modified once set to “1”.  
+ 
+Top/Bottom Selection: BP0~3 area assignment can be changed from Top (default) to Bottom by setting TBS 
+bit to “1”. However, once Bottom is selected, it cannot be changed back to Top since TBS bit is OTP. See 
+Tables 6.4 for details. 
+ 
+PSUS bit: The Program Suspend Status bit indicates when a Program operation has been suspended. The PSUS 
+changes to “1” after a suspend command is issued during the program operation. Once the suspended Program 
+resumes, the PSUS bit is reset to “0”. 
+ 
+ESUS bit: The Erase Suspend Status indicates when an Erase operation has been suspended. The ESUS bit is 
+“1” after a suspend command is issued during an Erase operation. Once the suspended Erase resumes, the 
+ESUS bit is reset to “0”. 
+ 
+IR Lock bit 0 ~ 3: The Information Row Lock bits are programmable. If the bit set to “1”, the Information Row 
+can’t be programmed. 
+ 
+ 
+ 
+
+
+=== PDF PAGE 19 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  19   
+Rev. L11 
+06/27/2024 
+6.3 READ REGISTERS 
+Read Register format and Bit definitions pertaining to QPI mode are described below. 
+ 
+READ PARAMETER BITS 
+ 
+Table 6.7 defines all bits that control features in SPI/QPI modes. The ODS2, ODS1, ODS0 (P7, P6, P5) bits 
+provide a method to set and control driver strength. The Dummy Cycle bits (P4, P3) define how many dummy 
+cycles are used during various READ modes. The wrap selection bits (P2, P1, P0) define burst length with wrap 
+around. 
+ 
+The SET READ PARAMETERS Operation (SRP, C0h) is used to set all the Read Register bits, and can thereby 
+define the output driver strength, number of dummy cycles used during READ modes, burst length with wrap 
+around. 
+ 
+Table 6.7 Read Parameter Table 
+ 
+P7 
+P6 
+P5 
+P4 
+P3 
+P2 
+P1 
+P0 
+ 
+ODS2 
+ODS1 
+ODS0 
+Dummy 
+Cycles 
+Dummy 
+Cycles 
+Wrap 
+Enable 
+Burst 
+Length 
+Burst 
+Length 
+Default (Volatile) 
+1 
+1 
+1 
+0 
+0 
+0 
+0 
+0 
+ 
+Table 6.8 Burst Length Data 
+ 
+P1 
+P0 
+8 bytes 
+0 
+0 
+16 bytes 
+0 
+1 
+32 bytes 
+1 
+0 
+64 bytes 
+1 
+1 
+ 
+Table 6.9 Wrap Function 
+Wrap around boundary 
+P2 
+Whole array regardless of P1 and P0 value 
+0 
+Burst Length set by P1 and P0 
+1 
+ 
+ 
+ 
+
+
+=== PDF PAGE 20 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  20   
+Rev. L11 
+06/27/2024 
+Table 6.1 Table 6.10 Read Dummy Cycles vs Max Frequency 
+Read Modes 
+P4,P3 = 00 
+(Default) 
+P4,P3 = 01 
+P4,P3 = 10 
+P4,P3 = 11 
+Remark 
+Mode 
+Normal Read 
+03h 
+0 
+0 
+0 
+0 
+Max. 50MHz 
+SPI 
+Fast Read (2) 
+0Bh 
+8 
+8 
+8 
+8 
+Max. 133MHz(1) 
+SPI 
+6 
+(104MHz) 
+4 
+(84MHz) 
+8(1) 
+(133MHz) 
+10(1) 
+(133MHz) 
+ 
+QPI 
+Fast Read DTR  
+0Dh 
+4 
+4 
+4 
+4 
+Max.66MHz 
+SPI 
+3 
+(51MHz) 
+2 
+(38MHz) 
+4 
+(64MHz) 
+5 
+(66MHz) 
+ 
+QPI 
+Fast Read Dual Output 
+3Bh 
+8 
+8 
+8 
+8 
+Max. 133MHz(1) 
+SPI 
+Fast Read Dual IO 
+BBh 
+4 
+(104MHz) 
+4 
+(104MHz) 
+8(1) 
+(133MHz) 
+8(1) 
+(133MHz) 
+ 
+SPI 
+Fast Read Dual IO DTR 
+BDh 
+2 
+(52MHz) 
+2 
+(52MHz) 
+4 
+(66MHz) 
+4 
+(66MHz) 
+ 
+SPI 
+Fast Read Quad Output 
+6Bh 
+8 
+8 
+8 
+8 
+Max. 133MHz(1) 
+SPI 
+Fast Read Quad IO 
+EBh 
+6 
+(104MHz) 
+4 
+(84MHz) 
+8(1) 
+(133MHz) 
+10(1) 
+(133MHz) 
+ 
+SPI , QPI 
+Fast Read Quad IO DTR  
+EDh 
+3 
+(51MHz) 
+2 
+(38MHz) 
+4 
+(64MHz) 
+5 
+(66MHz) 
+ 
+SPI , QPI 
+Notes: 
+1. Max frequency is 133 MHz at Vcc=2.7V~3.6V and 104MHz at Vcc=2.3V~3.6V. 
+2. RDUID, RDSFDP, IRRD instructions are also applied.  
+3. In Fast Read DTR mode the dummy cycles are reduced by half.  
+4. Dummy cycles in the table are including Mode bit cycles. 
+5. Must satisfy bus I/O contention. For instance, if the number of dummy cycles and AX bit cycles are same, then X 
+must be Hi-Z.  
+ 
+Table 6.11 Driver Strength Table 
+ODS2 
+ODS1 
+ODS0 
+Description 
+Remark 
+0 
+0 
+0 
+Reserved 
+ 
+0 
+0 
+1 
+12.50% 
+ 
+0 
+1 
+0 
+25% 
+ 
+0 
+1 
+1 
+37.50% 
+ 
+1 
+0 
+0 
+Reserved 
+ 
+1 
+0 
+1 
+75% 
+ 
+1 
+1 
+0 
+100% 
+ 
+1 
+1 
+1 
+50% 
+Default 
+ 
+ 
+ 
+
+
+=== PDF PAGE 21 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  21   
+Rev. L11 
+06/27/2024 
+7. PROTECTION MODE 
+The device supports hardware and software write-protection mechanisms. 
+ 
+7.1 HARDWARE WRITE PROTECTION 
+The Write Protection (WP#) pin provides a hardware write protection method for BP3, BP2, BP1, BP0, SRWD, 
+and QE in the Status Register. Refer to the section 6.1 STATUS REGISTER. 
+ 
+Write inhibit voltage (VWI) is specified in the section 9.8 POWER-UP AND POWER-DOWN. All write sequence will 
+be ignored when Vcc drops to VWI. 
+ 
+Table 7.1 Hardware Write Protection on Status Register 
+SRWD 
+WP# 
+Status Register 
+0 
+Low 
+Writable 
+1 
+Low 
+Protected 
+0 
+High 
+Writable 
+1 
+High 
+Writable 
+Note: Before the execution of any program, erase or write Status/Function Register instruction, the Write Enable 
+Latch (WEL) bit must be enabled by executing a Write Enable (WREN) instruction. If the WEL bit is not enabled, 
+the program, erase or write register instruction will be ignored. 
+ 
+7.2 SOFTWARE WRITE PROTECTION 
+The device also provides a software write protection feature. The Block Protection (BP3, BP2, BP1, BP0) bits 
+allow part or the whole memory area to be write-protected. 
+ 
+ 
+ 
+ 
+
+
+=== PDF PAGE 22 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  22   
+Rev. L11 
+06/27/2024 
+8. DEVICE OPERATION 
+The device utilizes an 8-bit instruction register. Refer to Table 8.1. Instruction Set for details on instructions and 
+instruction codes. All instructions, addresses, and data are shifted in with the most significant bit (MSB) first on 
+Serial Data Input (SI) or Serial Data IOs (IO0, IO1, IO2, IO3). The input data on SI or IOs is latched on the rising 
+edge of Serial Clock (SCK) for normal mode and both of rising and falling edges for DTR mode after Chip Enable 
+(CE#) is driven low (VIL). Every instruction sequence starts with a one-byte instruction code and is followed by 
+address bytes, data bytes, or both address bytes and data bytes, depending on the type of instruction. CE# must 
+be driven high (VIH) after the last bit of the instruction sequence has been shifted in to end the operation. 
+ 
+Table 8.1 Instruction Set 
+Instructio
+n  
+Name 
+Operation 
+Mode 
+Byte0 
+Byte1 
+Byte2 
+Byte3 
+Byte4 
+Byte5 
+Byte6 
+NORD 
+Normal Read 
+Mode 
+SPI 
+03h 
+A 
+<23:16> 
+A 
+<15:8> 
+A 
+<7:0> 
+Data out 
+  
+  
+FRD 
+Fast Read 
+Mode 
+SPI 
+QPI 
+0Bh 
+A 
+<23:16> 
+A 
+<15:8> 
+A 
+<7:0> 
+Dummy(1) 
+Byte 
+Data out 
+  
+FRDIO 
+Fast Read 
+Dual I/O 
+SPI 
+BBh 
+A 
+<23:16> 
+Dual 
+A 
+<15:8> 
+Dual 
+A 
+<7:0> 
+Dual 
+AXh(1),(2) 
+Dual 
+Dual 
+Data out 
+  
+FRDO 
+Fast Read 
+Dual Output 
+SPI 
+3Bh 
+A 
+<23:16> 
+A 
+<15:8> 
+A 
+<7:0> 
+Dummy(1) 
+Byte 
+Dual 
+Data out 
+  
+FRQIO 
+Fast Read 
+Quad I/O 
+SPI 
+QPI 
+EBh 
+A 
+<23:16> 
+Quad 
+A 
+<15:8> 
+ Quad 
+A 
+<7:0> 
+Quad 
+AXh(1), (2) 
+Quad 
+Quad 
+Data out 
+  
+FRQO 
+Fast Read 
+Quad Output 
+SPI 
+6Bh 
+A 
+<23:16> 
+A 
+<15:8> 
+A 
+<7:0> 
+Dummy(1) 
+Byte 
+Quad 
+Data out 
+ 
+FRDTR 
+Fast Read 
+DTR Mode 
+SPI 
+QPI 
+0Dh 
+A 
+<23:16> 
+A 
+<15:8> 
+A 
+<7:0> 
+Dummy(1) 
+Byte 
+Dual 
+Data out 
+  
+FRDDTR 
+Fast Read 
+Dual I/O DTR  
+SPI 
+BDh 
+A 
+<23:16> 
+Dual 
+A 
+<15:8> 
+Dual 
+A 
+<7:0> 
+Dual 
+AXh(1), (2) 
+Dual 
+Dual 
+Data out 
+  
+FRQDTR 
+Fast Read 
+Quad I/O DTR 
+SPI 
+QPI 
+EDh 
+A 
+<23:16> 
+A 
+<15:8> 
+A 
+<7:0> 
+AXh(1), (2) 
+Quad 
+Quad 
+Data out 
+  
+PP 
+Input Page 
+Program 
+SPI 
+QPI 
+02h 
+A 
+<23:16> 
+A 
+<15:8> 
+A 
+<7:0> 
+PD 
+(256byte) 
+ 
+  
+PPQ 
+Quad Input 
+Page Program  
+SPI  
+32h 
+38h 
+A 
+<23:16> 
+A 
+<15:8> 
+A 
+<7:0> 
+Quad PD 
+(256byte) 
+  
+  
+SER 
+Sector Erase 
+SPI 
+QPI 
+D7h 
+20h 
+A 
+<23:16> 
+A 
+<15:8> 
+A 
+<7:0> 
+  
+  
+  
+BER32 
+(32Kbyte) 
+Block Erase 
+32KB 
+SPI 
+QPI 
+52h 
+A 
+<23:16> 
+A 
+<15:8> 
+A 
+<7:0> 
+  
+  
+  
+BER64 
+(64Kbyte) 
+Block Erase 
+64KB 
+SPI 
+QPI 
+D8h 
+A 
+<23:16> 
+A 
+<15:8> 
+A 
+<7:0> 
+  
+  
+  
+CER 
+Chip Erase 
+SPI 
+QPI 
+C7h 
+60h 
+  
+  
+  
+  
+  
+  
+WREN 
+Write Enable 
+SPI 
+QPI 
+06h 
+  
+  
+  
+  
+  
+  
+WRDI 
+Write Disable 
+SPI 
+QPI 
+04h 
+  
+  
+  
+  
+  
+  
+RDSR(5) 
+Read Status 
+Register 
+SPI 
+QPI 
+05h 
+SR 
+  
+  
+  
+  
+  
+WRSR 
+Write Status  
+Register 
+SPI 
+QPI 
+01h 
+WSR  
+Data 
+  
+  
+  
+  
+  
+RDFR(5) 
+Read Function 
+Register 
+SPI 
+QPI 
+48h 
+Data 
+out 
+  
+  
+  
+  
+  
+ 
+
+
+=== PDF PAGE 23 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  23   
+Rev. L11 
+06/27/2024 
+Instructio
+n  
+Name 
+Operation 
+Mode 
+Byte0 
+Byte1 
+Byte2 
+Byte3 
+Byte4 
+Byte5 
+Byte6 
+WRFR 
+Write Function 
+Register 
+SPI 
+QPI 
+42h 
+WFR 
+Data 
+  
+  
+  
+  
+  
+QPIEN 
+Enter  
+QPI mode 
+SPI 
+35h 
+  
+  
+  
+  
+  
+  
+QPIDI 
+Exit  
+QPI mode 
+QPI 
+F5h 
+  
+  
+  
+  
+  
+  
+PERSUS 
+Suspend during 
+program/erase 
+SPI 
+QPI 
+75h 
+B0h 
+  
+  
+  
+  
+  
+  
+PERRSM 
+Resume 
+program/erase 
+SPI 
+QPI 
+7Ah 
+30h 
+  
+  
+  
+  
+  
+  
+DP 
+Deep Power 
+Down 
+SPI 
+QPI 
+B9h 
+ 
+  
+ 
+  
+ 
+ 
+RDID(5), 
+RDPD 
+Read ID / 
+Release 
+Power Down 
+SPI 
+QPI 
+ABh 
+XXh(3) 
+XXh(3) 
+XXh(3) 
+ID7-ID0 
+  
+  
+SRP 
+Set Read 
+Parameters 
+SPI 
+QPI 
+C0h 
+Data in 
+ 
+ 
+ 
+  
+  
+RDJDID(5) 
+Read JEDEC 
+ID Command 
+SPI 
+QPI 
+9Fh 
+MF7-MF0 
+ID15-ID8 
+ID7-ID0 
+  
+  
+  
+RDMDID(5) 
+Read 
+Manufacturer 
+& Device ID 
+SPI 
+QPI 
+90h 
+XXh(3) 
+XXh(3) 
+00h 
+MF7-MF0 
+ID7-ID0  
+ 
+01h 
+ID7-ID0 
+MF7-MF0 
+ 
+RDJDIDQ(5) 
+Read JEDEC 
+ID 
+QPI mode 
+QPI 
+AFh 
+MF7-MF0 
+ID15-ID8 
+ID7-ID0 
+  
+  
+  
+RDUID 
+Read 
+Unique ID 
+SPI 
+QPI 
+4Bh 
+A(4) 
+<23:16> 
+A(4) 
+<15:8> 
+A(4) 
+<7:0> 
+Dummy 
+Byte 
+Data out 
+  
+RDSFDP 
+SFDP Read 
+SPI 
+QPI 
+5Ah 
+A 
+<23:16> 
+A 
+<15:8> 
+A 
+<7:0> 
+Dummy 
+Byte 
+Data out 
+  
+RSTEN 
+Software  
+Reset 
+Enable 
+SPI 
+QPI 
+66h 
+  
+  
+  
+  
+  
+  
+RST 
+Software Reset 
+SPI 
+QPI 
+99h 
+  
+  
+  
+  
+  
+  
+IRER 
+Erase  
+Information 
+Row 
+SPI 
+QPI 
+64h 
+A 
+<23:16> 
+A 
+<15:8> 
+A 
+<7:0> 
+  
+  
+  
+IRP 
+Program 
+Information 
+Row 
+SPI 
+QPI 
+62h 
+A 
+<23:16> 
+A 
+<15:8> 
+A 
+<7:0> 
+PD 
+(256byte) 
+  
+  
+IRRD 
+Read  
+Information 
+Row 
+SPI 
+QPI 
+68h 
+A 
+<23:16> 
+A 
+<15:8> 
+A 
+<7:0> 
+Dummy 
+Byte 
+Data out 
+  
+SECUN-
+LOCK 
+Sector Unlock 
+SPI 
+QPI 
+26h 
+A 
+<23:16> 
+A 
+<15:8> 
+A 
+<7:0> 
+ 
+ 
+ 
+SECLOCK 
+Sector Lock 
+SPI 
+QPI 
+24h 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Notes: 
+1. The number of dummy cycles depends on the value setting in the Table 6.10 Read Dummy Cycles. 
+2. AXh has to be counted as a part of dummy cycles. X means “don’t care”. 
+3. XX means “don’t care”. 
+4. A<23:9> are “don’t care” and A<8:4> are always “0”. 
+5. The maximum clock frequency is 104MHz for Vcc=2.3V~2.7V and 133MHz for Vcc=2.7V~3.6V. 
+ 
+ 
+
+
+=== PDF PAGE 24 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  24   
+Rev. L11 
+06/27/2024 
+8.1 NORMAL READ OPERATION (NORD, 03h) 
+The NORMAL READ (NORD) instruction is used to read memory contents of the device at a maximum frequency 
+of 50MHz. 
+ 
+The NORD instruction code is transmitted via the SI line, followed by three address bytes (A23 - A0) of the first 
+memory location to be read. A total of 24 address bits are shifted in, but only AMSB (most significant bit) - A0 are 
+decoded. The remaining bits (A23 – AMSB+1) are ignored. The first byte addressed can be at any memory location. 
+Upon completion, any data on the SI will be ignored. Refer to Table 8.2 for the related Address Key. 
+ 
+The first byte data (D7 - D0) is shifted out on the SO line, MSB first. A single byte of data, or up to the whole 
+memory array, can be read out in one NORMAL READ instruction. The address is automatically incremented by 
+one after each byte of data is shifted out. The read operation can be terminated at any time by driving CE# high 
+(VIH) after the data comes out. When the highest address of the device is reached, the address counter will roll 
+over to the 000000h address, allowing the entire memory to be read in one continuous READ instruction. 
+ 
+If the NORMAL READ instruction is issued while an Erase, Program or Write operation is in process (WIP=1) the 
+instruction is ignored and will not have any effects on the current operation. 
+ 
+Table 8.2 Address Key 
+Address 
+IS25LP128 
+AMSB – A0 
+A23 - A0 
+Note: X=Don’t Care 
+ 
+ 
+ 
+
+
+=== PDF PAGE 25 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  25   
+Rev. L11 
+06/27/2024 
+Figure 8.1 Normal Read Sequence 
+ 
+7
+6
+CE#
+SCK
+SI
+5
+3
+2
+SO
+4
+1
+0
+Data Out 1
+Instruction = 03h
+23
+CE#
+SCK
+SI
+3
+2
+SO
+1
+0
+3-byte Address
+High Impedance
+22
+21
+...
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+...
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+Mode 3
+Mode 0
+...
+7
+6
+5
+3
+2
+4
+1
+0
+tV
+Data Out 2
+...
+ 
+ 
+ 
+
+
+=== PDF PAGE 26 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  26   
+Rev. L11 
+06/27/2024 
+8.2 FAST READ OPERATION (FRD, 0Bh) 
+The FAST READ (FRD) instruction is used to read memory data at up to a 133MHz clock. 
+ 
+The FAST READ instruction code is followed by three address bytes (A23 - A0) and a dummy byte (8 clocks), 
+transmitted via the SI line, with each bit latched-in during the rising edge of SCK. Then the first data byte from the 
+address is shifted out on the SO line, with each bit shifted out at a maximum frequency fCT, during the falling edge 
+of SCK. 
+ 
+The first byte addressed can be at any memory location. The address is automatically incremented by one after 
+each byte of data is shifted out. When the highest address is reached, the address counter will roll over to the 
+000000h address, allowing the entire memory to be read with a single FAST READ instruction. The FAST READ 
+instruction is terminated by driving CE# high (VIH). 
+ 
+If the FAST READ instruction is issued while an Erase, Program or Write cycle is in process (WIP=1) the instruction 
+is ignored without affecting the current cycle. 
+ 
+Figure 8.2 Fast Read Sequence 
+ 
+Instruction = 0Bh
+3-byte Address
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+...
+7
+6
+CE#
+SCK
+SI
+5
+3
+2
+SO
+4
+1
+Data Out
+31
+CE#
+SCK
+SI
+3
+2
+SO
+1
+0
+High Impedance
+30
+29
+...
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+...
+Mode 3
+Mode 0
+tV
+Dummy Cycles
+0
+...
+ 
+
+
+=== PDF PAGE 27 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  27   
+Rev. L11 
+06/27/2024 
+FAST READ QPI OPERATION (FRD QPI, 0Bh) 
+The FAST READ QPI (FRD QPI) instruction is used to read memory data at up to a 133MHz clock. 
+ 
+The FAST READ QPI instruction code (2 clocks) is followed by three address bytes (A23-A0—6clocks) and 
+dummy cycles (configurable, default is 6 clocks), transmitted via the IO3, IO2, IO1 and IO0 lines, with each bit 
+latched-in during the rising edge of SCK. Then the first data byte addressed is shifted out on the IO3, IO2, IO1 
+and IO0 lines, with each bit shifted out at a maximum frequency fCT, during the falling edge of SCK. 
+ 
+The first byte addressed can be at any memory location. The address is automatically incremented by one after 
+each byte of data is shifted out. When the highest address is reached, the address counter will roll over to the 
+000000h address, allowing the entire memory to be read with a single FAST READ QPI instruction. The FAST 
+READ QPI instruction is terminated by driving CE# high (VIH). 
+ 
+If the FAST READ QPI instruction is issued while an Erase, Program or Write cycle is in process (WIP=1) the 
+instruction is ignored without affecting the current cycle. 
+ 
+Figure 8.3 Fast Read QPI Sequence 
+ 
+0Bh
+CE#
+SCK
+IO[3:0]
+6 Dummy Cycles
+3-byte Address
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+...
+13
+14
+15
+16
+17
+Mode 3
+Mode 0
+23:20
+7:4
+3:0
+7:4
+3:0
+Data 1
+Data 2
+19:16 15:12 11:8
+7:4
+3:0
+...
+tV
+...
+Instruction
+ 
+Note: Number of dummy cycles depends on Read Parameter setting. Detailed information in Table 6.10 Read Dummy 
+Cycles. 
+ 
+ 
+ 
+ 
+
+
+=== PDF PAGE 28 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  28   
+Rev. L11 
+06/27/2024 
+8.3 HOLD OPERATION 
+HOLD# is used in conjunction with CE# to select the device. When the device is selected and a serial sequence 
+is underway, HOLD# can be used to pause the serial communication with the master device without resetting the 
+serial sequence. To pause, HOLD# is brought low while the SCK signal is low. To resume serial communication, 
+HOLD# is brought high while the SCK signal is low (SCK may still toggle during HOLD). Inputs to SI will be ignored 
+while SO is in the high impedance state, during HOLD. 
+Note: HOLD is not supported in DTR mode or with QE=1 or for the specific parts that do not have HOLD# pin. 
+ 
+Timing graph can be referenced in AC Parameters Figure 9.4. 
+ 
+8.4 FAST READ DUAL I/O OPERATION (FRDIO, BBh) 
+The FRDIO allows the address bits to be input two bits at a time. This may allow for code to be executed directly 
+from the SPI in some applications. 
+ 
+The FRDIO instruction code is followed by three address bytes (A23 – A0) and dummy cycles (configurable, 
+default is 4 clocks), transmitted via the IO0 and IO1 lines, with each pair of bits latched-in during the rising edge 
+of SCK. The address MSB is input on IO1, the next bit on IO0, and this shift pattern continues to alternate between 
+the two lines. Depending on the usage of AX read operation mode, a mode byte may be located after address 
+input. 
+ 
+The first data byte addressed is shifted out on the IO1 and IO0 lines, with each pair of bits shifted out at a maximum 
+frequency fCT, during the falling edge of SCK. The MSB is output on IO1, while simultaneously the second bit is 
+output on IO0. Figure 8.4 illustrates the timing sequence. 
+ 
+The first byte addressed can be at any memory location. The address is automatically incremented by one after 
+each byte of data is shifted out. When the highest address is reached, the address counter will roll over to the 
+000000h address, allowing the entire memory to be read with a single FRDIO instruction. FRDIO instruction is 
+terminated by driving CE# high (VIH). 
+ 
+The device supports the AX read operation by applying mode bits during dummy period. Mode bits consist of 8 
+bits, such as M7 to M0. Four cycles after address input are reserved for Mode bits in FRDIO execution. M7 to M4 
+are important for enabling this mode. M3 to M0 become don’t care for future use. When M[7:4]=1010(Ah), it 
+enables the AX read operation and subsequent FRDIO execution skips command code. It saves cycles as 
+described in Figure 8.5. When the code is different from AXh (where X is don’t care), the device exits the AX read 
+operation. After finishing the read operation, device becomes ready to receive a new command. SPI or QPI mode 
+configuration retains the prior setting. Mode bit must be applied during dummy cycles. Number of dummy cycle in 
+Table 6.10 includes number of mode bit cycles. If dummy cycles is configured as 4 cycles, data output will starts 
+right after mode bit applied. 
+ 
+If the FRDIO instruction is issued while an Erase, Program or Write cycle is in process (WIP=1) the instruction is 
+ignored and will not affect the current cycle. 
+ 
+ 
+ 
+
+
+=== PDF PAGE 29 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  29   
+Rev. L11 
+06/27/2024 
+Figure 8.4 Fast Read Dual I/O Sequence (with command decode cycles) 
+ 
+7
+5
+3
+7
+5
+1
+3
+1
+Data Out 1
+Instruction = BBh
+22
+CE#
+SCK
+2
+0
+6
+4
+3-byte Address
+High Impedance
+20
+18
+...
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+...
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+Mode 3
+Mode 0
+...
+tV
+23
+3
+1
+7
+5
+21
+19
+...
+IO0
+IO1
+3
+1
+2
+0
+6
+4
+2
+6
+4
+0
+2
+0
+4 Dummy Cycles
+7
+5
+3
+1
+6
+4
+2
+0
+7
+5
+...
+6
+4
+...
+CE#
+SCK
+IO0
+IO1
+Data Out 2
+Data Out 3
+Mode Bits
+Mode Bits
+ 
+Notes: 
+1. If the mode bits=AXh (where X is don’t care), it can execute the AX read mode (without command). When the mode 
+bits are different from AXh, the device exits the AX read operation. 
+2. Number of dummy cycles depends on clock speed. Detailed information in Table 6.10 Read Dummy Cycles. 
+3. Since the number of dummy cycles and AX bit cycles are same in the above Figure, X should be Hi-Z to avoid I/O 
+contention. 
+ 
+ 
+ 
+
+
+=== PDF PAGE 30 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  30   
+Rev. L11 
+06/27/2024 
+Figure 8.5 Fast Read Dual I/O AX Read Sequence (without command decode cycles) 
+ 
+22
+CE#
+SCK
+2
+0
+3-byte Address
+20
+18
+...
+0
+1
+2
+3
+...
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+Mode 3
+Mode 0
+23
+3
+1
+21
+19
+...
+IO0
+IO1
+4 Dummy Cycles
+6
+7
+6
+4
+7
+5
+2
+0
+3
+1
+Data Out 1
+tV
+6
+4
+7
+5
+2
+0
+3
+1
+4
+5
+Mode Bits
+...
+...
+Data Out 2
+...
+ 
+Notes: 
+1. If the mode bits=AXh (where X is don’t care), it will keep executing the AX read mode (without command). When 
+the mode bits are different from AXh, the device exits the AX read operation. 
+2. Number of dummy cycles depends on clock speed. Detailed information in Table 6.10 Read Dummy Cycles. 
+3. Since the number of dummy cycles and AX bit cycles are same in the above Figure, X should be Hi-Z to avoid I/O 
+contention. 
+ 
+ 
+ 
+
+
+=== PDF PAGE 31 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  31   
+Rev. L11 
+06/27/2024 
+8.5 FAST READ DUAL OUTPUT OPERATION (FRDO, 3Bh) 
+The FRDO instruction is used to read memory data on two output pins each at up to a 133MHz clock. 
+ 
+The FRDO instruction code is followed by three address bytes (A23 – A0) and a dummy byte (8 clocks), transmitted 
+via the IO0 line, with each bit latched-in during the rising edge of SCK. Then the first data byte addressed is shifted 
+out on the IO1 and IO0 lines, with each pair of bits shifted out at a maximum frequency fC, during the falling edge 
+of SCK. The first bit (MSB) is output on IO1, while simultaneously the second bit is output on IO0. 
+ 
+The first byte addressed can be at any memory location. The address is automatically incremented by one after 
+each byte of data is shifted out. When the highest address is reached, the address counter will roll over to the 
+000000h address, allowing the entire memory to be read with a single FRDO instruction. The FRDO instruction is 
+terminated by driving CE# high (VIH). 
+ 
+If the FRDO instruction is issued while an Erase, Program or Write cycle is in process (BUSY=1) the instruction is 
+ignored and will not have any effects on the current cycle. 
+ 
+Figure 8.6 Fast Read Dual Output Sequence 
+ 
+CE#
+SCK
+7
+5
+Data Out 1
+Instruction = 3Bh
+23
+CE#
+SCK
+3
+2
+1
+0
+3-byte Address
+High Impedance
+22
+21
+...
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+...
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+Mode 3
+Mode 0
+...
+tV
+IO0
+IO1
+6
+4
+3
+1
+7
+5
+2
+0
+6
+4
+3
+1
+...
+2
+0
+...
+Data Out 2
+IO0
+IO1
+8 Dummy Cycles
+ 
+ 
+ 
+ 
+ 
+
+
+=== PDF PAGE 32 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  32   
+Rev. L11 
+06/27/2024 
+8.6 FAST READ QUAD OUTPUT OPERATION (FRQO, 6Bh) 
+The FRQO instruction is used to read memory data on four output pins each at up to a 133 MHz clock. 
+ 
+A Quad Enable (QE) bit of Status Register must be set to "1" before sending the Fast Read Quad Output 
+instruction.  
+ 
+The FRQO instruction code is followed by three address bytes (A23 – A0) and a dummy byte (8 clocks), 
+transmitted via the IO0 line, with each bit latched-in during the rising edge of SCK. Then the first data 
+byte addressed is shifted out on the IO3, IO2, IO1 and IO0 lines, with each group of four bits shifted out 
+at a maximum frequency fCT, during the falling edge of SCK. The first bit (MSB) is output on IO3, while 
+simultaneously the second bit is output on IO2, the third bit is output on IO1, etc. 
+ 
+The first byte addressed can be at any memory location. The address is automatically incremented after 
+each byte of data is shifted out. When the highest address is reached, the address counter will roll over 
+to the 000000h address, allowing the entire memory to be read with a single FRQO instruction. FRQO 
+instruction is terminated by driving CE# high (VIH). 
+ 
+If a FRQO instruction is issued while an Erase, Program or Write cycle is in process (BUSY=1) the 
+instruction is ignored and will not have any effects on the current cycle. 
+ 
+ 
+ 
+
+
+=== PDF PAGE 33 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  33   
+Rev. L11 
+06/27/2024 
+Figure 8.7 Fast Read Quad Output Sequence 
+ 
+CE#
+SCK
+5
+1
+Data Out 1
+Instruction = 6Bh
+23
+CE#
+SCK
+3
+2
+1
+0
+3-byte Address
+High Impedance
+22
+21
+...
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+...
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+Mode 3
+Mode 0
+...
+tV
+IO0
+IO1
+4
+0
+5
+1
+5
+1
+4
+0
+4
+0
+5
+1
+...
+4
+0
+...
+IO0
+IO1
+8 Dummy Cycles
+High Impedance
+IO2
+High Impedance
+IO3
+7
+3
+6
+2
+7
+3
+7
+3
+6
+2
+6
+2
+7
+3
+...
+6
+2
+...
+IO2
+IO3
+Data Out 2
+Data Out 3 Data Out 4
+ 
+ 
+ 
+ 
+
+
+=== PDF PAGE 34 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  34   
+Rev. L11 
+06/27/2024 
+8.7 FAST READ QUAD I/O OPERATION (FRQIO, EBh) 
+The FRQIO instruction allows the address bits to be input four bits at a time. This may allow for code to be 
+executed directly from the SPI in some applications. 
+ 
+A Quad Enable (QE) bit of Status Register must be set to "1" before sending the Fast Read Quad I/O instruction.  
+ 
+The FRQIO instruction code is followed by three address bytes (A23 – A0) and dummy cycles (configurable, 
+default is 6 clocks), transmitted via the IO3, IO2, IO0 and IO1 lines, with each group of four bits latched-in during 
+the rising edge of SCK. The address of MSB inputs on IO3, the next bit on IO2, the next bit on IO1, the next bit 
+on IO0, and continue to shift in alternating on the four. Depending on the usage of AX read operation mode, a 
+mode byte may be located after address input. 
+ 
+The first data byte addressed is shifted out on the IO3, IO2, IO1 and IO0 lines, with each group of four bits shifted 
+out at a maximum frequency fCT, during the falling edge of SCK. The first bit (MSB) is output on IO3, while 
+simultaneously the second bit is output on IO2, the third bit is output on IO1, etc. Figure 8.8 illustrates the timing 
+sequence. 
+ 
+The first byte addressed can be at any memory location. The address is automatically incremented after each 
+byte of data is shifted out. When the highest address is reached, the address counter will roll over to the 000000h 
+address, allowing the entire memory to be read with a single FRQIO instruction. FRQIO instruction is terminated 
+by driving CE# high (VIH). 
+ 
+The device supports the AX read operation by applying mode bits during dummy period. Mode bits consists of 8 
+bits, such as M7 to M0. Two cycles after address input are reserved for Mode bits in FRQIO execution. M7 to M4 
+are important for enabling this mode. M3 to M0 become don’t care for future use. When M[7:4]=1010(Ah), it 
+enables the AX read operation and subsequent FRQIO execution skips command code. It saves cycles as 
+described in Figure 8.9. When the code is different from AXh (where X is don’t care), the device exits the AX read 
+operation. After finishing the read operation, device becomes ready to receive a new command. SPI or QPI mode 
+configuration retains the prior setting. Mode bit must be applied during dummy cycles. Number of dummy cycle in 
+Table 6.10 includes number of mode bit cycles. If dummy cycles is configured as 6 cycles, data output will starts 
+right after mode bits and 4 additional dummy cycles are applied 
+ 
+If the FRQIO instruction is issued while an Erase, Program or Write cycle is in process (WIP=1) the instruction is 
+ignored and will not have any effects on the current cycle. 
+ 
+
+
+=== PDF PAGE 35 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  35   
+Rev. L11 
+06/27/2024 
+Figure 8.8 Fast Read Quad I/O Sequence (with command decode cycles) 
+ 
+CE#
+SCK
+5
+1
+Data Out 1
+Instruction = EBh
+20
+CE#
+SCK
+4
+0
+4
+0
+3-byte Address
+High Impedance
+16
+12
+8
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+Mode 3
+Mode 0
+...
+tV
+IO0
+IO1
+4
+0
+5
+1
+5
+1
+4
+0
+4
+0
+5
+1
+4
+0
+IO0
+IO1
+21
+5
+1
+5
+1
+17
+13
+9
+22
+6
+2
+6
+2
+18
+14
+10
+23
+7
+3
+7
+3
+19
+15
+11
+Mode Bits
+IO2
+IO3
+6
+2
+6
+2
+6
+2
+6
+2
+7
+3
+7
+3
+7
+3
+7
+3
+Data Out 2
+Data Out 3
+Data Out 4
+IO2
+IO3
+1
+0
+5
+1
+...
+4
+0
+...
+2
+6
+2
+...
+3
+7
+3
+...
+5
+4
+6
+7
+6 Dummy Cycles
+Data Out 5
+Data Out 6
+ 
+ 
+Notes: 
+1. If the mode bits=AXh (where X is don’t care), it can execute the AX read mode (without command). When the mode 
+bits are different from AXh, the device exits the AX read operation. 
+2. Number of dummy cycles depends on clock speed. Detailed information in Table 6.10 Read Dummy Cycles. 
+ 
+ 
+ 
+
+
+=== PDF PAGE 36 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  36   
+Rev. L11 
+06/27/2024 
+Figure 8.9 Fast Read Quad I/O AX Read Sequence (without command decode cycles) 
+ 
+20
+CE#
+SCK
+4
+0
+4
+0
+3-byte Address
+16
+12
+8
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+Mode 3
+Mode 0
+IO0
+IO1
+21
+5
+1
+5
+1
+17
+13
+9
+22
+6
+2
+6
+2
+18
+14
+10
+23
+7
+3
+7
+3
+19
+15
+11
+Mode Bits
+IO2
+IO3
+5
+1
+4
+0
+5
+1
+4
+0
+6
+2
+6
+2
+7
+3
+7
+3
+...
+...
+...
+...
+Data Out 1
+Data Out 2
+...
+tV
+6 Dummy Cycles
+ 
+Notes: 
+1. If the mode bits=AXh (where X is don’t care), it will keep executing the AX read mode (without command).  
+When the mode bits are different from AXh, the device exits the AX read operation. 
+2. Number of dummy cycles depends on clock speed. Detailed information in Table 6.10 Read Dummy Cycles. 
+ 
+ 
+ 
+
+
+=== PDF PAGE 37 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  37   
+Rev. L11 
+06/27/2024 
+FAST READ QUAD I/O OPERATION IN QPI MODE (FRQIO, EBh) 
+The FRQIO instruction in QPI mode is used to read memory data. 
+ 
+It is not required to set QE bit to “1”.before Fast Read Quad I/O instruction in QPI mode. 
+ 
+The FRQIO instruction in QPI mode utilizes all four IO lines to input the instruction code so that only two clocks 
+are required, while the FRQIO instruction in QPI mode requires that the byte-long instruction code is shifted into 
+the device only via IO0 line in eight clocks. As a result, 6 command cycles will be reduced by the FRQIO instruction 
+in QPI mode. In addition, subsequent address and data out are shifted in/out via all four IO lines like the FRQIO 
+instruction in SPI mode. In fact, except for the command cycle, the FRQIO operation in QPI mode is exactly same 
+as the FRQIO operation in SPI mode.  
+ 
+The device supports the AX read operation by applying mode bits during dummy period. Mode bits consist of 8 
+bits, such as M7 to M0. Two cycles after address input are reserved for Mode bits in FRQIO execution. M7 to M4 
+are important for enabling this mode. M3 to M0 become don’t care for future use. When M[7:4]=1010(Ah), it 
+enables the AX read operation and subsequent FRQIO execution skips command code. It saves cycles as 
+described in Figure 8.9. When the code is different from AXh (where X is don’t care), the device exits the AX read 
+operation. After finishing the read operation, device becomes ready to receive a new command. SPI or QPI mode 
+configuration retains the prior setting. Mode bit must be applied during dummy cycles. Number of dummy cycles 
+in Table 6.10 includes number of mode bit cycles. If dummy cycles are configured as 6 cycles, data output will 
+start right after mode bits and 4 additional dummy cycles are applied. 
+ 
+If the FRQIO instruction in QPI mode is issued while an Erase, Program or Write cycle is in process (WIP=1) the 
+instruction is ignored and will not have any effects on the current cycle. 
+ 
+Figure 8.10 Fast Read Quad I/O Sequence IN QPI MOde 
+ 
+EBh
+CE#
+SCK
+IO[3:0]
+6 Dummy Cycles
+3-byte Address
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+...
+13
+14
+15
+16
+17
+Mode 3
+Mode 0
+23:20
+7:4
+3:0
+7:4
+3:0
+Data 1
+Data 2
+19:16 15:12 11:8
+7:4
+3:0
+...
+tV
+Instruction
+Mode Bits
+7:4
+3:0
+...
+ 
+Note: Number of dummy cycles depends on Read Parameter setting. Detailed information in Table 6.10 Read Dummy 
+Cycles. 
+ 
+ 
+ 
+
+
+=== PDF PAGE 38 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  38   
+Rev. L11 
+06/27/2024 
+8.8 PAGE PROGRAM OPERATION (PP, 02h) 
+The Page Program (PP) instruction allows up to 256 bytes data to be programmed into memory in a single 
+operation. The destination of the memory to be programmed must be outside the protected memory area set by 
+the Block Protection (BP3, BP2, BP1, BP0) bits. A PP instruction which attempts to program into a page that is 
+write-protected will be ignored. Before the execution of PP instruction, the Write Enable Latch (WEL) must be 
+enabled through a Write Enable (WREN) instruction. 
+ 
+The PP instruction code, three address bytes and program data (1 to 256 bytes) are input via the SI line. Program 
+operation will start immediately after the CE# is brought high, otherwise the PP instruction will not be executed. 
+The internal control logic automatically handles the programming voltages and timing. The progress or completion 
+of the program operation can be determined by reading the WIP bit in Status Register via a RDSR instruction. If 
+the WIP bit is “1”, the program operation is still in progress. If WIP bit is “0”, the program operation has completed. 
+ 
+If more than 256 bytes data are sent to a device, the address counter rolls over within the same page, the 
+previously latched data are discarded, and the last 256 bytes are kept to be programmed into the page. The 
+starting byte can be anywhere within the page. When the end of the page is reached, the address will wrap around 
+to the beginning of the same page. If the data to be programmed are less than a full page, the data of all other 
+bytes on the same page will remain unchanged. 
+Note:  A program operation can alter “1”s into “0”s, but an erase operation is required to change “0”s back to “1”s. 
+A byte cannot be reprogrammed without first erasing the whole sector or block. 
+ 
+ 
+ 
+
+
+=== PDF PAGE 39 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  39   
+Rev. L11 
+06/27/2024 
+Figure 8.11 Page Program Sequence 
+ 
+Instruction = 02h
+23
+CE#
+SCK
+SI
+7
+6
+SO
+7
+3-byte Address
+High Impedance
+22
+...
+0
+Data In 1
+Data In 256
+0
+1
+...
+7
+8
+9
+...
+31
+32
+33
+...
+39
+...
+2072
+...
+2079
+Mode 3
+Mode 0
+...
+0
+...
+...
+0
+ 
+ 
+ 
+Figure 8.12 Page Program QPI Sequence 
+ 
+02h
+CE#
+SCK
+IO[3:0]
+3-byte Address
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+Mode 3
+Mode 0
+23:20
+7:4
+3:0
+7:4
+3:0
+Data In 1
+Data In 2
+19:16 15:12 11:8
+7:4
+3:0
+7:4
+3:0
+7:4
+3:0
+Data In 3
+Data In 4
+...
+...
+ 
+ 
+ 
+
+
+=== PDF PAGE 40 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  40   
+Rev. L11 
+06/27/2024 
+8.9 QUAD INPUT PAGE PROGRAM OPERATION (PPQ, 32h/38h) 
+The Quad Input Page Program instruction allows up to 256 bytes data to be programmed into memory in a single 
+operation with four pins (IO0, IO1, IO2 and IO3). The destination of the memory to be programmed must be 
+outside the protected memory area set by the Block Protection (BP3, BP2, BP1, BP0) bits. A Quad Input Page 
+Program instruction which attempts to program into a page that is write-protected will be ignored.  
+ 
+Before the execution of Quad Input Page Program instruction, the QE bit in the Status Register must be set to “1” 
+and the Write Enable Latch (WEL) must be enabled through a Write Enable (WREN) instruction. 
+ 
+Program operation will start immediately after the CE# is brought high, otherwise the Quad Input Page Program 
+instruction will not be executed. The internal control logic automatically handles the programming voltages and 
+timing. The progress or completion of the program operation can be determined by reading the WIP bit in Status 
+Register via a RDSR instruction. If the WIP bit is “1”, the program operation is still in progress. If WIP bit is “0”, the 
+program operation has completed. 
+ 
+If more than 256 bytes data are sent to a device, the address counter rolls over within the same page, the 
+previously latched data are discarded, and the last 256 bytes data are kept to be programmed into the page. The 
+starting byte can be anywhere within the page. When the end of the page is reached, the address will wrap around 
+to the beginning of the same page. If the data to be programmed are less than a full page, the data of all other 
+bytes on the same page will remain unchanged. 
+Note: A program operation can alter “1”s into “0”s. The same byte location or page may be programmed more than 
+once, to incrementally change “1”s to “0”s. An erase operation is required to change “0”s to “1”s. 
+ 
+Figure 8.13 Quad Input Page Program Sequence 
+ 
+Instruction = 32h/38h
+23
+CE#
+SCK
+4
+0
+4
+0
+3-byte Address
+High Impedance
+22
+...
+0
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+31
+32
+33
+34
+35
+Mode 3
+Mode 0
+IO0
+IO1
+5
+1
+5
+1
+6
+2
+6
+2
+7
+3
+7
+3
+Data In 2
+IO2
+IO3
+...
+Data In 1
+...
+...
+...
+...
+...
+ 
+ 
+ 
+
+
+=== PDF PAGE 41 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  41   
+Rev. L11 
+06/27/2024 
+8.10 ERASE OPERATION 
+The Erase command sets all bits in the addressed sector or block to “1”s. 
+ 
+The memory array of the device is organized into uniform 4 Kbyte sectors or 32/64 Kbyte uniform blocks (a block 
+consists of eight/sixteen adjacent sectors respectively). 
+ 
+Before a byte is reprogrammed, the sector or block that contains the byte must be erased (erasing sets bits to 
+“1”). In order to erase the device, there are three erase instructions available: Sector Erase (SER), Block Erase 
+(BER) and Chip Erase (CER). A sector erase operation allows any individual sector to be erased without affecting 
+the data in other sectors. A block erase operation erases any individual block. A chip erase operation erases the 
+whole memory array of a device. A sector erase, block erase, or chip erase operation can be executed prior to 
+any programming operation. 
+ 
+ 
+ 
+ 
+
+
+=== PDF PAGE 42 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  42   
+Rev. L11 
+06/27/2024 
+8.11 SECTOR ERASE OPERATION (SER, D7h/20h) 
+A Sector Erase (SER) instruction erases a 4 Kbyte sector before the execution of a SER instruction, the Write 
+Enable Latch (WEL) must be set via a Write Enable (WREN) instruction. The WEL bit is automatically reset after 
+the completion of Sector Erase operation. 
+ 
+A SER instruction is entered, after CE# is pulled low to select the device and stays low during the entire instruction 
+sequence. The SER instruction code, and three address bytes are input via SI. Erase operation will start 
+immediately after CE# is pulled high. The internal control logic automatically handles the erase voltage and timing. 
+ 
+The progress or completion of the erase operation can be determined by reading the WIP bit in the Status Register 
+using a RDSR instruction. 
+ 
+If the WIP bit is “1”, the erase operation is still in progress. If the WIP bit is “0”, the erase operation has been 
+completed. 
+ 
+Figure 8.14 Sector Erase Sequence 
+ 
+Instruction = D7h/20h
+23
+CE#
+SCK
+SI
+3
+2
+SO
+1
+0
+3-byte Address
+High Impedance
+22
+21
+...
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+...
+28
+29
+30
+31
+Mode 3
+Mode 0
+ 
+ 
+ 
+Figure 8.15 Sector Erase QPI Sequence 
+ 
+D7h/20h
+CE#
+SCK
+IO[3:0]
+3-byte Address
+0
+1
+2
+3
+4
+5
+6
+7
+Mode 3
+Mode 0
+23:20 19:16 15:12 11:8
+7:4
+3:0
+ 
+ 
+ 
+
+
+=== PDF PAGE 43 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  43   
+Rev. L11 
+06/27/2024 
+8.12 BLOCK ERASE OPERATION (BER32K:52h, BER64K:D8h) 
+A Block Erase (BER) instruction erases a 32/64 Kbyte block. Before the execution of a BER instruction, the Write 
+Enable Latch (WEL) must be set via a Write Enable (WREN) instruction. The WEL is reset automatically after the 
+completion of a block erase operation. 
+ 
+The BER instruction code and three address bytes are input via SI. Erase operation will start immediately after 
+the CE# is pulled high, otherwise the BER instruction will not be executed. The internal control logic automatically 
+handles the erase voltage and timing. 
+ 
+Figure 8.16 Block Erase (64KB) Sequence 
+ 
+Instruction = D8h
+23
+CE#
+SCK
+SI
+3
+2
+SO
+1
+0
+3-byte Address
+High Impedance
+22
+21
+...
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+...
+28
+29
+30
+31
+Mode 3
+Mode 0
+ 
+ 
+ 
+Figure 8.17 Block Erase (64KB) QPI Sequence 
+ 
+D8h
+CE#
+SCK
+IO[3:0]
+3-byte Address
+0
+1
+2
+3
+4
+5
+6
+7
+Mode 3
+Mode 0
+23:20 19:16 15:12 11:8
+7:4
+3:0
+ 
+ 
+ 
+ 
+
+
+=== PDF PAGE 44 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  44   
+Rev. L11 
+06/27/2024 
+Figure 8.18 Block Erase (32KB) Sequence 
+ 
+Instruction = 52h
+23
+CE#
+SCK
+SI
+3
+2
+SO
+1
+0
+3-byte Address
+High Impedance
+22
+21
+...
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+...
+28
+29
+30
+31
+Mode 3
+Mode 0
+ 
+ 
+ 
+Figure 8.19 Block Erase (32KB) QPI Sequence 
+ 
+52h
+CE#
+SCK
+IO[3:0]
+3-byte Address
+0
+1
+2
+3
+4
+5
+6
+7
+Mode 3
+Mode 0
+23:20 19:16 15:12 11:8
+7:4
+3:0
+ 
+ 
+ 
+ 
+
+
+=== PDF PAGE 45 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  45   
+Rev. L11 
+06/27/2024 
+8.13 CHIP ERASE OPERATION (CER, C7h/60h) 
+A Chip Erase (CER) instruction erases the entire memory array. Before the execution of CER instruction, the Write 
+Enable Latch (WEL) must be set via a Write Enable (WREN) instruction. The WEL is automatically reset after 
+completion of a chip erase operation. 
+ 
+The CER instruction code is input via the SI. Erase operation will start immediately after CE# is pulled high, 
+otherwise the CER instruction will not be executed. The internal control logic automatically handles the erase 
+voltage and timing. 
+ 
+Figure 8.20 Chip Erase Sequence 
+ 
+Instruction = C7h/60h
+CE#
+SCK
+SI
+0
+1
+2
+3
+4
+5
+6
+7
+Mode 3
+Mode 0
+SO
+High Impedance
+ 
+ 
+ 
+Figure 8.21 Chip Erase QPI Sequence 
+ 
+C7h/60h
+CE#
+SCK
+IO[3:0]
+0
+1
+Mode 3
+Mode 0
+ 
+ 
+ 
+ 
+ 
+
+
+=== PDF PAGE 46 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  46   
+Rev. L11 
+06/27/2024 
+8.14 WRITE ENABLE OPERATION (WREN, 06h) 
+The Write Enable (WREN) instruction is used to set the Write Enable Latch (WEL) bit. The WEL bit is reset to the 
+write-protected state after power-up. The WEL bit must be write enabled before any write operation, including 
+Sector Erase, Block Erase, Chip Erase, Page Program, Program Information Row, Write Status Register, and 
+Write Function Register operations. The WEL bit will be reset to the write-protected state automatically upon 
+completion of a write operation. The WREN instruction is required before any above operation is executed. 
+ 
+Figure 8.22 Write Enable Sequence 
+ 
+Instruction = 06h
+CE#
+SCK
+SI
+0
+1
+2
+3
+4
+5
+6
+7
+Mode 3
+Mode 0
+SO
+High Impedance
+ 
+ 
+ 
+Figure 8.23 Write Enable QPI Sequence 
+ 
+06h
+CE#
+SCK
+IO[3:0]
+0
+1
+Mode 3
+Mode 0
+ 
+ 
+ 
+ 
+ 
+
+
+=== PDF PAGE 47 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  47   
+Rev. L11 
+06/27/2024 
+8.15 WRITE DISABLE OPERATION (WRDI, 04h) 
+The Write Disable (WRDI) instruction resets the WEL bit and disables all write instructions. The WRDI instruction 
+is not required after the execution of a write instruction, since the WEL bit is automatically reset. 
+ 
+Figure 8.24 Write Disable Sequence 
+ 
+Instruction = 04h
+CE#
+SCK
+SI
+0
+1
+2
+3
+4
+5
+6
+7
+Mode 3
+Mode 0
+SO
+High Impedance
+ 
+ 
+ 
+Figure 8.25 Write Disable QPI Sequence 
+ 
+04h
+CE#
+SCK
+IO[3:0]
+0
+1
+Mode 3
+Mode 0
+ 
+ 
+
+
+=== PDF PAGE 48 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  48   
+Rev. L11 
+06/27/2024 
+8.16 READ STATUS REGISTER OPERATION (RDSR, 05h) 
+The Read Status Register (RDSR) instruction provides access to the Status Register. During the execution of a 
+program, erase or write Status Register operation, RDSR instruction can be used to check the progress or 
+completion of an operation by reading the WIP bit of Status Register. 
+ 
+Figure 8.26 Read Status Register Sequence 
+ 
+Instruction = 05h
+7
+CE#
+SCK
+SI
+3
+2
+SO
+1
+0
+Data Out
+6
+5
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+Mode 3
+Mode 0
+4
+tV
+ 
+Figure 8.27 Read Status Register QPI Sequence 
+ 
+05h
+0
+1
+Mode 3
+Mode 0
+2
+3
+7:4
+3:0
+CE#
+SCK
+IO[3:0]
+tV
+Data Out
+ 
+ 
+ 
+
+
+=== PDF PAGE 49 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  49   
+Rev. L11 
+06/27/2024 
+8.17 WRITE STATUS REGISTER OPERATION (WRSR, 01h) 
+The Write Status Register (WRSR) instruction allows the user to enable or disable the block protection and Status 
+Register write protection features by writing “0”s or “1”s into the non-volatile BP3, BP2, BP1, BP0, and SRWD 
+bits. Also WRSR instruction allows the user to disable or enable quad operation by writing “0” or “1” into the non-
+volatile QE bit. 
+ 
+Figure 8.28 Write Status Register Sequence 
+ 
+Instruction = 01h
+CE#
+SCK
+SI
+SO
+Data In
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+Mode 3
+Mode 0
+7
+3
+2
+1
+0
+6
+5
+4
+High Impedence
+ 
+ 
+ 
+Figure 8.29 Write Status Register QPI Sequence 
+ 
+01h
+0
+1
+Mode 3
+Mode 0
+2
+3
+7:4
+3:0
+CE#
+SCK
+IO[3:0]
+Data In
+ 
+ 
+ 
+ 
+
+
+=== PDF PAGE 50 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  50   
+Rev. L11 
+06/27/2024 
+8.18 READ FUNCTION REGISTER OPERATION (RDFR, 48h) 
+The Read Function Register (RDFR) instruction provides access to the Function Register. Refer to Table 6.6 
+Function Register Bit Definition for more detail. 
+ 
+Figure 8.30 Read Function Register Sequence 
+ 
+Instruction = 48h
+7
+CE#
+SCK
+SI
+3
+2
+SO
+1
+0
+Data Out
+6
+5
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+Mode 3
+Mode 0
+4
+tV
+ 
+ 
+Figure 8.31 Read Function Register QPI Sequence 
+ 
+48h
+0
+1
+Mode 3
+Mode 0
+2
+3
+7:4
+3:0
+CE#
+SCK
+IO[3:0]
+tV
+Data Out
+ 
+ 
+ 
+
+
+=== PDF PAGE 51 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  51   
+Rev. L11 
+06/27/2024 
+8.19 WRITE FUNCTION REGISTER OPERATION (WRFR, 42h) 
+The Write Function Register (WRFR) instruction allows the user to change from top block area (default) to bottom 
+block area by setting TBS bit to “1”.  
+Also Information Row Lock bits (IRL3~IRL0) can be set to “1” individually by WRFR instruction in order to lock 
+Information Row. Since TBS bit and IRL bits are OTP, once it is set to “1”, it cannot be set back to “0” again.  
+ 
+Figure 8.32 Write Function Register Sequence 
+ 
+Instruction = 42h
+CE#
+SCK
+SI
+SO
+Data In
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+Mode 3
+Mode 0
+7
+3
+2
+1
+0
+6
+5
+4
+High Impedence
+ 
+ 
+ 
+Figure 8.33 Write Function Register QPI Sequence 
+ 
+42h
+0
+1
+Mode 3
+Mode 0
+2
+3
+7:4
+3:0
+CE#
+SCK
+IO[3:0]
+Data In
+ 
+ 
+ 
+ 
+
+
+=== PDF PAGE 52 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  52   
+Rev. L11 
+06/27/2024 
+8.20 ENTER QUAD PERIPHERAL INTERFACE (QPI) MODE OPERATION (QPIEN,35h; QPIDI,F5h) 
+The Enter Quad Peripheral Interface (QPIEN) instruction, 35h, enables the Flash device for QPI bus operation. 
+Upon completion of the instruction, all instructions thereafter will be 4-bit multiplexed input/output until a power 
+cycle or an Exit Quad Peripheral Interface instruction is sent to device. 
+ 
+The Exit Quad Peripheral Interface (QPIDI) instruction, F5h, resets the device to 1-bit SPI protocol operation. To 
+execute an Exit Quad Peripheral Interface operation, the host drives CE# low, sends the QPIDI instruction, then 
+drives CE# high. The device just accepts QPI (2 clocks) command cycles. 
+ 
+ 
+Figure 8.34 Enter Quad Peripheral Interface (QPI) Mode Sequence 
+ 
+Instruction = 35h
+CE#
+SCK
+SI
+0
+1
+2
+3
+4
+5
+6
+7
+Mode 3
+Mode 0
+SO
+High Impedance
+ 
+ 
+ 
+Figure 8.35 Exit Quad Peripheral Interface (QPI) Mode Sequence 
+ 
+ 
+F5h
+CE#
+SCK
+IO[3:0]
+0
+1
+Mode 3
+Mode 0
+ 
+ 
+ 
+
+
+=== PDF PAGE 53 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  53   
+Rev. L11 
+06/27/2024 
+8.21 PROGRAM/ERASE SUSPEND & RESUME 
+The device allows the interruption of Sector-Erase, Block-Erase or Page-Program operations to conduct other 
+operations. 75h/B0h command for suspend and 7Ah/30h for resume will be used (SPI/QPI all acceptable). 
+Function Register bit2 (PSUS) and bit3 (ESUS) are used to check whether or not the device is in suspend mode. 
+ 
+Suspend to read ready timing (tSUS): 100µs (MAX) 
+Resume to another suspend timing (tRS): 80µs (TYP) 
+ 
+SUSPEND DURING SECTOR-ERASE OR BLOCK-ERASE (PERSUS 75h/B0h) 
+The Suspend command allows the interruption of Sector Erase and Block Erase operations. But Suspend 
+command will be ignored during Chip Erase operation. After the Suspend command, other commands include 
+array read operation can be accepted.  
+ 
+But Write Status Register command (01h) and Erase instructions are not allowed during Erase Suspend. Also, 
+array read for being erased sector/block is not allowed. 
+ 
+To execute Erase Suspend operation, the host drives CE# low, sends the Suspend command cycle (75h/B0h), 
+then drives CE# high. The Function Register indicates that the Erase has been suspended by setting the ESUS 
+bit from “0” to “1”, but the device will not accept another command until it is ready. To determine when the device 
+will accept a new command, poll the WIP bit or wait the specified time tSUS. When ESUS bit is set to “1”, the Write 
+Enable Latch (WEL) bit clears to “0”. 
+ 
+SUSPEND DURING PAGE PROGRAMMING (PERSUS 75h/B0h) 
+The Suspend command also allows the interruption of all array Program operations. After the Suspend command, 
+other commands include array read operation can be accepted can be accepted. 
+ 
+But Write Status Register instruction (01h) and Program instructions are not allowed during Program Suspend. 
+Also, array read for being programmed page is not allowed. 
+ 
+To execute the Program Suspend operation, the host drives CE# low, sends the Suspend command cycle 
+(75h/B0h), then drives CE# high. The Function Register indicates that the programming has been suspended by 
+setting the PSUS bit from “0” to “1”, but the device will not accept another command until it is ready. To determine 
+when the device will accept a new command, poll the WIP bit or wait the specified time tSUS. When PSUS bit is 
+set to “1”, the Write Enable Latch (WEL) bit clears to “0”. 
+ 
+ 
+PROGRAM/ERASE RESUME (PERRSM 7Ah/30h) 
+The Program/Erase Resume restarts the Program or Erase command that was suspended, and clears the 
+suspend status bit in the Function Register (ESUS or PSUS bits) to “0”. To execute the Program/Erase Resume 
+operation, the host drives CE# low, sends the Program/Erase Resume command cycle (7Ah/30h), then drives 
+CE# high. A cycle is two nibbles long, most significant nibble first. To issue another Erase Suspend operation 
+after Erase Resume operation, Erase Resume to another Erase Suspend delay (tRS) is required, but it could 
+require longer Erase time to complete Erase operation.  
+ 
+To determine if the internal, self-timed Write operation completed, poll the WIP bit. 
+ 
+ 
+ 
+ 
+
+
+=== PDF PAGE 54 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  54   
+Rev. L11 
+06/27/2024 
+Table 8.3 Instructions accepted during Suspend 
+Operation 
+Suspended 
+Instruction Allowed 
+Name 
+Hex Code 
+Operation 
+Program or Erase 
+NORD 
+03h 
+Read Data Bytes from Memory at Normal Read Mode 
+Program or Erase 
+FRD 
+0Bh 
+Read Data Bytes from Memory at Fast Read Mode 
+Program or Erase 
+FRDIO 
+BBh 
+Fast Read Dual I/O 
+Program or Erase 
+FRDO 
+3Bh 
+Fast Read Dual Output 
+Program or Erase 
+FRQIO 
+EBh 
+Fast Read Quad I/O 
+Program or Erase 
+FRDTR 
+0Dh 
+Fast Read DTR Mode 
+Program or Erase 
+FRDDTR 
+BDh 
+Fast Read Dual I/O DTR  
+Program or Erase 
+FRQDTR 
+EDh 
+Fast Read Quad I/O DTR 
+Program or Erase 
+RDSR 
+05h 
+Read Status Register 
+Program or Erase 
+RDFR 
+48h 
+Read Function Register 
+Program or Erase 
+PERRSM 
+7Ah/30h 
+Resume program/erase 
+Program or Erase 
+RDID 
+ABh 
+Read Manufacturer and Product ID 
+Program or Erase 
+SRV 
+C0 
+Set Read Parameters (Volatile) 
+Program or Erase 
+RDJDID 
+9Fh 
+Read Manufacturer and Product ID by JEDEC ID Command 
+Program or Erase 
+RDMDID 
+90h 
+Read Manufacturer and Device ID 
+Program or Erase 
+RDJDIDQ 
+AFh 
+Read JEDEC ID QPI mode 
+Program or Erase 
+RDUID 
+4Bh 
+Read Unique ID Number 
+Program or Erase 
+RDSFDP 
+5Ah 
+SFDP Read 
+Program or Erase 
+NOP 
+00h 
+No Operation 
+Program or Erase 
+RSTEN 
+66h 
+Software reset enable 
+Program or Erase 
+RST 
+99h 
+Reset (Only along with 66h) 
+Program or Erase 
+IRRD 
+68h 
+Read Information Row 
+ 
+ 
+
+
+=== PDF PAGE 55 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  55   
+Rev. L11 
+06/27/2024 
+8.22 ENTER DEEP POWER DOWN (DP, B9h) 
+The Enter Deep Power-down (DP) instruction is for setting the device on the minimizing the power consumption 
+(enter into Power-down mode). During this mode, standby current is reduced from Isb1 to Isb2. While in the Power-
+down mode, the device is not active and all Write/Program/Erase instructions are ignored. The instruction is 
+initiated by driving the CE# pin low and shifting the instruction code into the device. The CE# pin must be driven 
+high after the instruction has been latched, or Power-down mode will not engage. Once CE# pin driven high, the 
+Power-down mode will be entered within the time duration of tDP. While in the Power-down mode only the Release 
+from Power-down/RDID instruction, which restores the device to normal operation, will be recognized. All other 
+instructions are ignored, including the Read Status Register instruction which is always available during normal 
+operation. Ignoring all but one instruction makes the Power Down state a useful condition for securing maximum 
+write protection. It is available in both SPI and QPI mode. 
+ 
+Figure 8.36 Enter Deep Power Down Mode Sequence 
+ 
+Instruction = B9h
+CE#
+SCK
+SI
+0
+1
+2
+3
+4
+5
+6
+7
+Mode 3
+Mode 0
+tDP
+SO
+High Impedance
+ 
+ 
+ 
+Figure 8.37 Enter Deep Power Down Mode QPI Sequence 
+ 
+B9h
+CE#
+SCK
+IO[3:0]
+0
+1
+Mode 3
+Mode 0
+tDP
+ 
+ 
+
+
+=== PDF PAGE 56 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  56   
+Rev. L11 
+06/27/2024 
+8.23 RELEASE DEEP POWER DOWN (RDPD, ABh) 
+The Release Deep Power-down/Read Device ID instruction is a multi-purpose command. To release the device 
+from the Power-down mode, the instruction is issued by driving the CE# pin low, shifting the instruction code “ABh” 
+and driving CE# high. 
+ 
+Releasing the device from Power-down mode will take the time duration of tRES1 before normal operation is 
+restored and other instructions are accepted. The CE# pin must remain high during the tRES1 time duration. If the 
+Release Deep Power-down/RDID instruction is issued while an Erase, Program or Write cycle is in progress 
+(WIP=1) the instruction is ignored and will not have any effects on the current cycle. 
+ 
+Figure 8.38 Release Power Down Sequence 
+ 
+tRES1
+Instruction = ABh
+CE#
+SCK
+SI
+0
+1
+2
+3
+4
+5
+6
+7
+Mode 3
+Mode 0
+SO
+High Impedance
+ 
+ 
+ 
+Figure 8.39 Release Power Down QPI Sequence 
+ 
+tRES1
+ABh
+CE#
+SCK
+IO[3:0]
+0
+1
+Mode 3
+Mode 0
+ 
+ 
+ 
+
+
+=== PDF PAGE 57 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  57   
+Rev. L11 
+06/27/2024 
+8.24 SET READ PARAMETERS OPERATION (SRP, C0h) 
+ 
+Set Read Operational Driver Strength 
+ 
+This device supports configurable Operational Driver Strengths in both SPI and QPI modes by setting three bits 
+within the READ Register (ODS0, ODS1, ODS2). To set the ODS bits the SRP operation (C0h) instruction is 
+required. The device’s driver strength can be reduced as low as 12.50% of full drive strength. Details regarding 
+the driver strength can be found in table 6.11. 
+Note: The default driver strength is set to 50% 
+ 
+Figure 8.40 Set Read Parameters Sequence 
+ 
+Instruction = C0h
+CE#
+SCK
+SI
+SO
+Data In
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+Mode 3
+Mode 0
+7
+3
+2
+1
+0
+6
+5
+4
+High Impedence
+ 
+ 
+ 
+Figure 8.41 Set Read Parameters QPI Sequence 
+ 
+C0h
+0
+1
+Mode 3
+Mode 0
+2
+3
+7:4
+3:0
+CE#
+SCK
+IO[3:0]
+Data In
+ 
+ 
+ 
+ 
+
+
+=== PDF PAGE 58 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  58   
+Rev. L11 
+06/27/2024 
+Read with “8/16/32/64-Byte Wrap Around” 
+ 
+The device is capable of burst read with wrap around in both SPI and QPI mode. The size of burst length is 
+configurable by using P0, P1, and P2 bits in READ Register. P2 bit (Wrap enable) enables the burst mode feature. 
+P0 and P1 define the size of burst. Burst lengths of 8, 16, 32, and 64 bytes are supported. By default, address 
+increases by one up through the entire array. By setting the burst length, the data being accessed can be limited 
+to the length of burst boundary within a 256 byte page. The first output will be the data at the initial address which 
+is specified in the instruction. Following data will come out from the next address within the burst boundary. Once 
+the address reaches the end of boundary, it will automatically move to the first address of the boundary. CE# high 
+will terminate the command. 
+ 
+For example, if burst length of 8 and initial address being applied is 0h, following byte output will be from address 
+00h and continue to 01h,..,07h, 00h, 01h… until CE# terminates the operation. If burst length of 8 and initial 
+address being applied is FEh(254d), following byte output will be from address FEh and continue to FFh, F8h, 
+F9h, FAh, FBh, FCh, FDh, and repeat from FEh until CE# terminates the operation. 
+ 
+The command, “SET READ PARAMETERS OPERATION (C0h)”, is used to configure the burst length. If the 
+following data input is one of “00h”,”01h”,”02h”, and ”03h”, the device will be in default operation mode. It will be 
+continuous burst read of the whole array. If the following data input is one of “04h”,”05h”,”06h”, and ”07h”, the 
+device will set the burst length as 8,16,32 and 64 respectively. 
+ 
+To exit the burst mode, another “C0h” command is necessary to set P2 to 0. Otherwise, the burst mode will be 
+retained until either power down or reset operation. To change burst length, another “C0h” command should be 
+executed to set P0 and P1 (Detailed information in Table 6.8 Burst Length Data). All read commands operate in 
+burst mode once the READ Register is set to enable burst mode. 
+ 
+Refer to Figures 8.40 and 8.41 for instruction sequence. 
+ 
+ 
+ 
+
+
+=== PDF PAGE 59 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  59   
+Rev. L11 
+06/27/2024 
+8.25 READ PRODUCT IDENTIFICATION (RDID, ABh) 
+The Release from Power-down/Read Device ID instruction is a multi-purpose instruction. It can support both SPI 
+and QPI modes. The Read Product Identification (RDID) instruction is for reading out the old style of 8-bit 
+Electronic Signature, whose values are shown as table of Product Identification. 
+ 
+The RDID instruction code is followed by three dummy bytes, each bit being latched-in on SI during the rising 
+SCK edge. Then the Device ID is shifted out on SO with the MSB first, each bit been shifted out during the falling 
+edge of SCK. The RDID instruction is ended by driving CE# high. The Device ID (ID7-ID0) outputs repeatedly if 
+additional clock cycles are continuously sent to SCK while CE# is at low. 
+ 
+Table 8.4 Product Identification 
+Manufacturer ID 
+(MF7-MF0) 
+ISSI Serial Flash 
+9Dh 
+Instruction 
+ABh 
+90h 
+9Fh 
+Device Density 
+Device ID (ID7-ID0) 
+Memory Type + Capacity 
+(ID15-ID0) 
+128Mb 
+17h 
+6018h 
+ 
+ 
+Figure 8.42 Read Product Identification Sequence 
+ 
+Device ID
+(ID7-ID0)
+Data Out
+32
+33
+...
+39
+Instruction = ABh
+CE#
+SCK
+SI
+SO
+0
+1
+...
+7
+8
+9
+...
+31
+Mode 3
+Mode 0
+3 Dummy Bytes
+tV
+ 
+ 
+ 
+ 
+
+
+=== PDF PAGE 60 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  60   
+Rev. L11 
+06/27/2024 
+Figure 8.43 Read Product Identification QPI Sequence 
+ 
+ABh
+CE#
+SCK
+IO[3:0]
+0
+1
+Mode 3
+Mode 0
+2
+3
+4
+5
+6
+7
+8
+9
+6 Dummy Cycles
+Device ID
+(ID7-ID0)
+tV
+ 
+ 
+ 
+ 
+
+
+=== PDF PAGE 61 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  61   
+Rev. L11 
+06/27/2024 
+8.26 READ PRODUCT IDENTIFICATION BY JEDEC ID OPERATION (RDJDID, 9Fh; RDJDIDQ, AFh) 
+The JEDEC ID READ instruction allows the user to read the Manufacturer and product ID of devices. Refer to 
+Table 8.4 Product Identification for Manufacturer ID and Device ID. After the JEDEC ID READ command (9Fh in 
+SPI mode and QPI mode, AFh in QPI mode) is input, the Manufacturer ID is shifted out MSB first followed by the 
+2-byte electronic ID (ID15-ID0) that indicates Memory Type and Capacity, one bit at a time. Each bit is shifted out 
+during the falling edge of SCK. If CE# stays low after the last bit of the 2-byte electronic ID, the Manufacturer ID 
+and 2-byte electronic ID will loop until CE# is pulled high. 
+ 
+Figure 8.44 Read Product Identification by JEDEC ID Read Sequence in SPI mode 
+ 
+Instruction = 9Fh
+Memory Type
+(ID15-ID8)
+CE#
+SCK
+SI
+Capacity
+(ID7-ID0)
+SO
+0
+1
+...
+7
+8
+9
+...
+15
+16
+17
+...
+23
+24
+25
+...
+31
+Mode 3
+Mode 0
+Manufacturer ID
+(MF7-MF0)
+tV
+ 
+ 
+ 
+Figure 8.45 RDJDID and RDJDIDQ (Read JEDEC ID) Sequence in QPI mode 
+ 
+AFh
+CE#
+SCK
+IO[3:0]
+0
+1
+Mode 3
+Mode 0
+2
+3
+7:4
+3:0
+4
+5
+7:4
+3:0
+6
+7
+7:4
+3:0
+MF7-MF0
+ID15-ID8
+ID7-ID0
+tV
+ 
+ 
+ 
+ 
+
+
+=== PDF PAGE 62 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  62   
+Rev. L11 
+06/27/2024 
+8.27 READ DEVICE MANUFACTURER AND DEVICE ID OPERATION (RDMDID, 90h) 
+The Read Device Manufacturer and Device ID (RDMDID) instruction allows the user to read the Manufacturer and 
+product ID of devices. Refer to Table 8.4 Product Identification for Manufacturer ID and Device ID. The RDMDID 
+instruction code is followed by two dummy bytes and one byte address (A7~A0), each bit being latched-in on SI 
+during the rising edge of SCK. If one byte address is initially set as A0 = 0, then the Manufacturer ID is shifted out 
+on SO with the MSB first followed by the Device ID (ID7- ID0). Each bit is shifted out during the falling edge of 
+SCK. If one byte address is initially set as A0 = 1, then Device ID will be read first followed by the Manufacturer 
+ID. The Manufacturer and Device ID can be read continuously alternating between the two until CE# is driven 
+high. 
+ 
+Figure 8.46 Read Product Identification by RDMDID Sequence 
+ 
+Instruction = 90h
+Manufacturer ID
+(MF7-MF0)
+CE#
+SCK
+SI
+Device ID
+(ID7-ID0)
+SO
+0
+1
+...
+7
+8
+9
+...
+31
+32
+33
+...
+39
+40
+41
+...
+47
+Mode 3
+Mode 0
+3-byte Address
+tV
+Notes: 
+1. ADDRESS A0 = 0, will output the 1-byte Manufacturer ID (MF7-MF0) → 1-byte Device ID (ID7-ID0) 
+ADDRESS A0 = 1, will output the 1-byte Device ID (ID7-ID0) → 1-byte Manufacturer ID (MF7-MF0) 
+2. The Manufacturer and Device ID can be read continuously and will alternate from one to the other until CE# pin is pulled high. 
+ 
+ 
+Figure 8.47 Read Product Identification by RDMDID QPI Read Sequence 
+ 
+90h
+CE#
+SCK
+IO[3:0]
+3-byte Address
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+Mode 3
+Mode 0
+23:20
+7:4
+3:0
+7:4
+3:0
+19:16 15:12 11:8
+7:4
+3:0
+tV
+Instruction
+Manufacturer 
+ID (MF7-MF0)
+Device ID
+(ID7-ID0)
+ 
+Notes: 
+1. ADDRESS A0 = 0, will output the 1-byte Manufacturer ID (MF7-MF0) → 1-byte Device ID (ID7-ID0) 
+ADDRESS A0 = 1, will output the 1-byte Device ID (ID7-ID0) → 1-byte Manufacturer ID (MF7-MF0) 
+2. The Manufacturer and Device ID can be read continuously and will alternate from one to the other until CE# pin is pulled high. 
+ 
+ 
+
+
+=== PDF PAGE 63 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  63   
+Rev. L11 
+06/27/2024 
+8.28 READ UNIQUE ID NUMBER (RDUID, 4Bh) 
+The Read Unique ID Number (RDUID) instruction accesses a factory-set read-only 16-byte number that is unique 
+to the device. The ID number can be used in conjunction with user software methods to help prevent copying or 
+cloning of a system. The RDUID instruction is instated by driving the CE# pin low and shifting the instruction code 
+(4Bh) followed by 3 address bytes and a dummy byte. After which, the 16-byte ID is shifted out on the falling edge 
+of SCK as shown below.  
+ 
+As a result, the sequence of RDUID instruction is same as FAST READ except for the instruction code. RDUID 
+QPI sequence is also same as FAST READ QPI except for the instruction code. Refer to the FAST READ QPI 
+operation. 
+Note: 16 bytes of data will repeat as long as CE# is low and SCK is toggling. 
+ 
+Figure 8.48 RDUID Sequence 
+ 
+Instruction = 4Bh
+Dummy Byte
+CE#
+SCK
+SI
+SO
+0
+1
+...
+7
+8
+9
+...
+31
+32
+33
+...
+39
+40
+41
+...
+47
+Mode 3
+Mode 0
+3 Byte Address
+Data Out
+tV
+...
+ 
+ 
+Table 8.5 Unique ID Addressing 
+A[23:16] 
+A[15:9] 
+A[8:4] 
+A[3:0] 
+XXh 
+XXh 
+00h 
+0h Byte address 
+XXh 
+XXh 
+00h 
+1h Byte address 
+XXh 
+XXh 
+00h 
+2h Byte address 
+XXh 
+XXh 
+00h 
+… 
+XXh 
+XXh 
+00h 
+Fh Byte address 
+Note: XX means “don’t care”. 
+ 
+ 
+
+
+=== PDF PAGE 64 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  64   
+Rev. L11 
+06/27/2024 
+8.29 READ SFDP OPERATION (RDSFDP, 5Ah) 
+The Serial Flash Discoverable Parameters (SFDP) standard provides a consistent method of describing the 
+functions and features of serial Flash devices in a standard set of internal parameter tables. These parameters 
+can be interrogated by host system software to enable adjustments needed to accommodate divergent features 
+from multiple vendors. For more details please refer to the JEDEC Standard JESD216A (Serial Flash Discoverable 
+Parameters). 
+ 
+The sequence of issuing RDSFDP instruction is same as FAST_READ: CE# goes low → Send RDSFDP 
+instruction (5Ah) → Send 3 address bytes on SI pin → Send 1 dummy byte on SI pin → Read SFDP code on SO 
+→ End RDSFDP operation by driving CE# high at any time during data out. Refer to ISSI’s Application note for 
+SFDP table. The data at the addresses that are not specified in SFDP table are undefined. 
+ 
+The sequence of RDSFDP instruction is same as FAST READ except for the instruction code. RDSFDP QPI 
+sequence is also same as FAST READ QPI except for the instruction code. Refer to the FAST READ QPI 
+operation. 
+ 
+ 
+Figure 8.49 RDSFDP (Read SFDP) Sequence 
+ 
+Instruction = 5Ah
+Dummy Byte
+CE#
+SCK
+SI
+SO
+0
+1
+...
+7
+8
+9
+...
+31
+32
+33
+...
+39
+40
+41
+...
+47
+Mode 3
+Mode 0
+3 Byte Address
+Data Out
+tV
+...
+ 
+ 
+8.30 NO OPERATION (NOP, 00h) 
+The No Operation command solely cancels a Reset Enable command and has no impact on any other commands. 
+It is available in both SPI and QPI modes. To execute a NOP, the host drives CE# low, sends the NOP command 
+cycle (00h), then drives CE# high. 
+ 
+ 
+ 
+
+
+=== PDF PAGE 65 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  65   
+Rev. L11 
+06/27/2024 
+8.31 SOFTWARE RESET (RESET-ENABLE (RSTEN, 66h) AND RESET (RST, 99h)) AND HARDWARE RESET 
+The Software Reset operation is used as a system reset that puts the device in normal operating mode. During 
+the Reset operation, the value of volatile registers will default back to the value in the corresponding non-volatile 
+register. This operation consists of two commands: Reset-Enable (RSTEN) and Reset (RST). The operation 
+requires the Reset-Enable command followed by the Reset command. Any command other than the Reset 
+command after the Reset-Enable command will disable the Reset-Enable. 
+ 
+Execute the CE# pin low → sends the Reset-Enable command (66h), and drives CE# high. Next, the host drives 
+CE# low again, sends the Reset command (99h), and pulls CE# high. 
+ 
+Only for the dedicated parts that have the RESET# pin, Hardware Reset function is available. The RESET# pin 
+will be solely applicable in SPI mode and when the QE bit is disabled. The RESET# pin has the highest priority 
+among all the input signals and will reset the device to its initial power-on state regardless of the state of all other 
+pins (CE#, IOs, SCK, and WP#). 
+ 
+In order to activate Hardware Reset, the RESET# pin must be driven low for a minimum period of tRESET (1µs). 
+Drive RESET# low for a minimum period of tRESET will interrupt any on-going internal and external operations, 
+release the device from deep power down mode1, disable all input signals, force the output pin enter a state of 
+high impedance, and reset all the read parameters. If the RESET# pulse is driven for a period shorter than 1µs, it 
+may still reset the device, however the 1µs minimum period is recommended to ensure the reliable operation. The 
+required wait time after activating a HW Reset before the device will accept another instruction (tHWRST) is the 
+same as the maximum value of tSUS (100µs). 
+ 
+If a reset is initiated while a Write, Program, or Erase operation is in progress or suspended, the operation is 
+aborted and data may be corrupted. 
+ 
+Note 1: The Status and Function Registers remain unaffected. 
+ 
+Figure 8.50 Software Reset Enable and Software Reset Sequence (RSTEN, 66h + RST, 99h) 
+ 
+Instruction = 66h
+CE#
+SCK
+SI
+0
+1
+Mode 3
+Mode 0
+2
+3
+4
+5
+6
+7
+Instruction = 99h
+8
+9
+10
+11
+12
+13
+14
+15
+SO
+High Impedance
+ 
+ 
+ 
+
+
+=== PDF PAGE 66 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  66   
+Rev. L11 
+06/27/2024 
+Figure 8.51 Software Reset Enable and Software Reset QPI Sequence (RSTEN, 66h + RST, 99h) 
+ 
+66h
+CE#
+SCK
+IO[3:0]
+0
+1
+Mode 3
+Mode 0
+99h
+0
+1
+ 
+ 
+ 
+8.32 SECURITY INFORMATION ROW 
+The security Information Row is comprised of an additional 4 x 256 bytes of programmable information. The 
+security bits can be reprogrammed by the user. Any program security instruction issued while an erase, program 
+or write cycle is in progress is rejected without having any effect on the cycle that is in progress. 
+ 
+Table 8.6 Information Row Valid Address Range 
+Address Assignment  
+A[23:16] 
+A[15:8] 
+A[7:0] 
+IRL0 (Information Row Lock0) 
+00h 
+00h 
+Byte address 
+IRL1  
+00h 
+10h 
+Byte address 
+IRL2  
+00h 
+20h 
+Byte address 
+IRL3  
+00h 
+30h 
+Byte address 
+ 
+Bit 7~4 of the Function Register is used to permanently lock the programmable memory array. 
+ 
+When Function Register bit IRLx = “0”, the 256 bytes of the programmable memory array can be programmed. 
+When Function Register bit IRLx = “1”, the 256 bytes of the programmable memory array function as read only. 
+ 
+ 
+ 
+
+
+=== PDF PAGE 67 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  67   
+Rev. L11 
+06/27/2024 
+8.33 INFORMATION ROW ERASE OPERATION (IRER, 64h) 
+Information Row Erase (IRER) instruction erases the data in the Information Row x (x: 0~3) array. Prior to the 
+operation, the Write Enable Latch (WEL) must be set via a Write Enable (WREN) instruction. The WEL bit is 
+automatically reset after the completion of the operation. 
+ 
+The sequence of IRER operation: Pull CE# low to select the device → Send IRER instruction code → Send three 
+address bytes → Pull CE# high. CE# should remain low during the entire instruction sequence. Once CE# is 
+pulled high, Erase operation will begin immediately. The internal control logic automatically handles the erase 
+voltage and timing. 
+ 
+Figure 8.52 IRER (Information Row Erase) Sequence 
+ 
+Instruction = 64h
+23
+CE#
+SCK
+SI
+3
+2
+SO
+1
+0
+3-byte Address
+High Impedance
+22
+21
+...
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+...
+28
+29
+30
+31
+Mode 3
+Mode 0
+ 
+ 
+ 
+ 
+ 
+
+
+=== PDF PAGE 68 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  68   
+Rev. L11 
+06/27/2024 
+8.34 INFORMATION ROW PROGRAM OPERATION (IRP, 62h) 
+The Information Row Program (IRP) instruction allows up to 256 bytes data to be programmed into the memory 
+in a single operation. Before the execution of IRP instruction, the Write Enable Latch (WEL) must be enabled 
+through a Write Enable (WREN) instruction. 
+ 
+The IRP instruction code, three address bytes and program data (1 to 256 bytes) should be sequentially input. 
+Three address bytes has to be input as specified in the Table 8.6 Information Row Valid Address Range. Program 
+operation will start once the CE# goes high, otherwise the IRP instruction will not be executed. The internal control 
+logic automatically handles the programming voltages and timing. The progress or completion of the program 
+operation can be determined by reading the WIP bit in Status Register via a RDSR instruction. If the WIP bit is 
+“1”, the program operation is still in progress. If WIP bit is “0”, the program operation has completed. 
+ 
+If more than 256 bytes data are sent to a device, the address counter rolls over within the same page. The 
+previously latched data are discarded and the last 256 bytes data are kept to be programmed into the page. The 
+starting byte can be anywhere within the page. When the end of the page is reached, the address will wrap around 
+to the beginning of the same page. If the data to be programmed are less than a full page, the data of all other 
+bytes on the same page will remain unchanged. 
+Note: A program operation can alter “1”s into “0”s, but an erase operation is required to change “0”s back to “1”s. A 
+byte cannot be reprogrammed without first erasing the corresponding Information Row array which is one of 
+IR0~3. 
+ 
+Figure 8.53 IRP (Information Row Program) Sequence 
+ 
+Instruction = 62h
+23
+CE#
+SCK
+SI
+7
+6
+SO
+7
+3-byte Address
+High Impedance
+22
+...
+0
+Data In 1
+Data In 256
+0
+1
+...
+7
+8
+9
+...
+31
+32
+33
+...
+39
+...
+2072
+...
+2079
+Mode 3
+Mode 0
+...
+0
+...
+...
+0
+ 
+ 
+ 
+
+
+=== PDF PAGE 69 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  69   
+Rev. L11 
+06/27/2024 
+8.35 INFORMATION ROW READ OPERATION (IRRD, 68h) 
+The IRRD instruction is used to read memory data at up to a 133MHz clock in the voltage range, 2.7V to 3.6V. 
+ 
+The IRRD instruction code is followed by three address bytes (A23 - A0) and a dummy byte, transmitted via the 
+SI line, with each bit latched-in during the rising edge of SCK. Then the first data byte addressed is shifted out on 
+the SO line, with each bit shifted out at a maximum frequency fCT, during the falling edge of SCK. 
+ 
+The address is automatically incremented by one after each byte of data is shifted out. Once the address reaches 
+the last address of each 256 byte Information Row, the next address will not be valid and the data of the address 
+will be garbage data. It is recommended to repeat four times IRRD operation that reads 256 byte with a valid 
+starting address of each Information Row in order to read all data in the 4 x 256 byte Information Row array. The 
+IRRD instruction is terminated by driving CE# high (VIH). 
+ 
+If an IRRD instruction is issued while an Erase, Program or Write cycle is in process (WIP=1) the instruction is 
+ignored and will not have any effects on the current cycle. 
+ 
+The sequence of IRRD instruction is same as FAST READ except for the instruction code. IRRD QPI sequence 
+is also same as FAST READ QPI except for the instruction code. Refer to the FAST READ QPI operation. 
+ 
+Figure 8.54 IRRD (Information Row Read) Sequence 
+ 
+Instruction = 68h
+Dummy Cycles
+CE#
+SCK
+SI
+SO
+0
+1
+...
+7
+8
+9
+...
+31
+32
+33
+...
+39
+40
+41
+...
+47
+Mode 3
+Mode 0
+3 Byte Address
+Data Out
+tV
+...
+ 
+ 
+
+
+=== PDF PAGE 70 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  70   
+Rev. L11 
+06/27/2024 
+8.36 FAST READ DTR MODE OPERATION (FRDTR, 0Dh) 
+The FRDTR instruction is for doubling the data in and out. Signals are triggered on both rising and falling edge of 
+clock. The address is latched on both rising and falling edge of SCK, and data of each bit shifts out on both rising 
+and falling edge of SCK at a maximum frequency. The 2-bit address can be latched-in at one clock, and 2-bit data 
+can be read out at one clock, which means one bit at the rising edge of clock, the other bit at the falling edge of 
+clock. 
+ 
+The first address byte can be at any location. The address is automatically increased to the next higher address 
+after each byte of data is shifted out, so the whole memory can be read out in a single FRDTR instruction. The 
+address counter rolls over to 0 when the highest address is reached. 
+ 
+The sequence of issuing FRDTR instruction is: CE# goes low → Sending FRDTR instruction code (1bit per clock) 
+→ 3-byte address on SI (2-bit per clock) → 4 dummy clocks on SI → Data out on SO (2-bit per clock) → End 
+FRDTR operation via driving CE# high at any time during data out. 
+ 
+While a Program/Erase/Write Status Register cycle is in progress, FRDTR instruction will be rejected without any 
+effect on the current cycle. 
+ 
+Figure 8.55 FRDTR Sequence 
+ 
+CE#
+SCK
+SI
+SO
+Data Out 1
+Instruction = 0Dh
+CE#
+SCK
+SI
+SO
+3-byte Address
+High Impedance
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+...
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+...
+Mode 3
+Mode 0
+tV
+23 22 21
+0
+7
+6
+5
+4
+3
+2
+1
+0
+Data Out 2
+7
+6
+5
+4
+3
+2
+1
+0
+Data Out 3
+7
+6
+5
+4
+3
+2
+1
+0
+4 Dummy 
+Cycles
+20 19 18 17
+...
+Data Out ...
+7
+6
+5
+...
+ 
+ 
+ 
+
+
+=== PDF PAGE 71 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  71   
+Rev. L11 
+06/27/2024 
+FAST READ DTR QPI MODE OPERATION (FRDTR QPI, 0Dh) 
+The FRDTR QPI instruction utilizes all four IO lines to input the instruction code so that only two clocks are 
+required, while the FRDTR instruction requires that the byte-long instruction code is shifted into the device only 
+via IO0 line in eight clocks. In addition, subsequent address and data out are shifted in/out via all four IO lines 
+unlike the FRDTR instruction. Eventually this operation is same as the FRQDTR QPI, but the only different thing 
+is that AX mode is not available in the FRDTR QPI operation.  
+ 
+The sequence of issuing FRDTR QPI instruction is: CE# goes low → Sending FRDTR QPI instruction (4-bit per 
+clock) → 24-bit address interleave on IO3, IO2, IO1 & IO0 (8-bit per clock) → 3 dummy clocks (configurable, 
+default is 3 clocks) → Data out interleave on IO3, IO2, IO1 & IO0 (8-bit per clock) → End FRDTR QPI operation 
+by driving CE# high at any time during data out. 
+ 
+If the FRDTR QPI instruction is issued while a Program/Erase/Write Status Register cycle is in progress (WIP=1), 
+the instruction will be rejected without any effect on the current cycle. 
+ 
+Figure 8.56 FRDTR QPI Sequence 
+ 
+Instruction
+= 0Dh
+CE#
+SCK
+3-byte Address
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+Mode 3
+Mode 0
+tV
+20 16 12
+5
+1
+21 17 13
+4
+0
+IO0
+IO1
+22 18 14
+23 19 15
+8
+4
+0
+9
+5
+1
+10 6
+2
+11 7
+3
+3 Dummy Cycles
+IO2
+IO3
+6
+2
+7
+3
+5
+1
+4
+0
+6
+2
+7
+3
+Data
+Out
+Data
+Out
+...
+4
+0
+5
+1
+6
+2
+7
+3
+5
+1
+4
+0
+6
+2
+7
+3
+Data
+Out
+5
+1
+4
+0
+6
+2
+7
+3
+Data
+Out
+5
+1
+4
+0
+6
+2
+7
+3
+Data
+Out
+...
+...
+...
+...
+ 
+ 
+Notes: 
+1. Number of dummy cycles depends on clock speed. Detailed information in Table 6.10 Read Dummy Cycles. 
+2. Sufficient dummy cycles are required to avoid I/O contention. 
+ 
+ 
+
+
+=== PDF PAGE 72 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  72   
+Rev. L11 
+06/27/2024 
+8.37 FAST READ DUAL IO DTR MODE OPERATION (FRDDTR, BDh) 
+The FRDDTR instruction enables Double Transfer Rate throughput on dual I/O of the device in read mode. The 
+address (interleave on dual I/O pins) is latched on both rising and falling edge of SCK, and the data (interleave on 
+dual I/O pins) shift out on both rising and falling edge of SCK at a maximum frequency. The 4-bit address can be 
+latched-in at one clock, and 4-bit data can be read out at one clock, which means two bits at the rising edge of 
+clock, the other two bits at the falling edge of clock. 
+ 
+The first address byte can be at any location. The address is automatically increased to the next higher address 
+after each byte of data is shifted out, so the whole memory can be read out with a single FRDDTR instruction. 
+The address counter rolls over to 0 when the highest address is reached. Once writing FRDDTR instruction, the 
+following address/dummy/data out will perform as 4-bit instead of previous 1-bit. 
+ 
+The sequence of issuing FRDDTR instruction is: CE# goes low → Sending FRDDTR instruction (1-bit per clock) 
+→ 24-bit address interleave on IO1 & IO0 (4-bit per clock) → 2 dummy clocks (configurable, default is 2 clocks) 
+on IO1 & IO0 → Data out interleave on IO1 & IO0 (4-bit per clock) → End FRDDTR operation via pulling CE# high 
+at any time during data out (Please refer to Figure 8.57 for 2 x I/O Double Transfer Rate Read Mode Timing 
+Waveform). 
+ 
+If AXh (where X is don’t care) is input for the mode bits during dummy cycles, the device will enter AX read 
+operation mode which enables subsequent FRDDTR execution skips command code. It saves cycles as described 
+in Figure 8.58. When the code is different from AXh, the device exits the AX read operation. After finishing the 
+read operation, device becomes ready to receive a new command. Since the number of dummy cycles and AX 
+bit cycles are same in this case, X should be Hi-Z to avoid I/O contention 
+ 
+If the FRDDTR instruction is issued while a Program/Erase/Write Status Register cycle is in progress (WIP=1), 
+the instruction will be rejected without any effect on the current cycle. 
+ 
+ 
+ 
+
+
+=== PDF PAGE 73 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  73   
+Rev. L11 
+06/27/2024 
+Figure 8.57 FRDDTR Sequence (with command decode cycles) 
+ 
+CE#
+SCK
+SI
+SO
+Instruction = BDh
+CE#
+SCK
+SI
+SO
+3-byte Address
+High Impedance
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+...
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+...
+Mode 3
+Mode 0
+tV
+22 20 18
+0
+7
+5
+3
+1
+7
+5
+3
+1
+7
+5
+3
+1
+7
+5
+3
+1
+7
+5
+3
+1
+7
+5
+3
+1
+2 Dummy Cycles
+23 21 19
+1
+Data Out
+6
+4
+2
+0
+6
+4
+2
+0
+6
+4
+2
+0
+6
+4
+2
+0
+6
+4
+2
+0
+6
+4
+2
+0
+Data Out
+Data Out
+Data Out
+Data Out
+Data Out
+16 14 12
+17 15 13
+10
+11
+7
+5
+6
+4
+3
+1
+2
+0
+Mode Bits
+Mode Bits
+...
+...
+7
+5
+6
+4
+...
+...
+ 
+ 
+Notes: 
+1. If the mode bits=AXh (where X is don’t care), it can execute the AX read mode (without command). When the 
+mode bits are different from AXh, the device exits the AX read operation. 
+2. Number of dummy cycles depends on clock speed. Detailed information in Table 6.10 Read Dummy Cycles. 
+3. Since the number of dummy cycles and AX bit cycles are same in the above Figure, X should be Hi-Z to avoid I/O 
+contention. 
+ 
+ 
+ 
+
+
+=== PDF PAGE 74 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  74   
+Rev. L11 
+06/27/2024 
+Figure 8.58 FRDDTR AX Read Sequence (without command decode cycles) 
+ 
+SI
+SO
+3-byte Address
+...
+tV
+22 20 18
+7
+5
+3
+1
+7
+5
+3
+1
+7
+5
+3
+1
+2 Dummy Cycles
+23 21 19
+6
+4
+2
+0
+6
+4
+2
+0
+6
+4
+2
+0
+Data Out
+Data Out
+Data Out
+16 14 12
+17 15 13
+10
+11
+SCK
+0
+1
+2
+...
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+Mode 3
+Mode 0
+CE#
+7
+5
+3
+1
+6
+4
+2
+0
+0
+1
+Mode Bits
+...
+...
+7
+5
+6
+4
+...
+...
+ 
+ 
+Notes: 
+1. If the mode bits=AXh (where X is don’t care), it will keep executing the AX read mode (without command). When 
+the mode bits are different from AXh, the device exits the AX read operation. 
+2. Number of dummy cycles depends on clock speed. Detailed information in Table 6.10 Read Dummy Cycles. 
+3. Since the number of dummy cycles and AX bit cycles are same in the above Figure, X should be Hi-Z to avoid I/O 
+contention 
+ 
+ 
+
+
+=== PDF PAGE 75 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  75   
+Rev. L11 
+06/27/2024 
+8.38 FAST READ QUAD IO DTR MODE OPERATION (FRQDTR, EDh) 
+The FRQDTR instruction enables Double Transfer Rate throughput on quad I/O of the device in read mode.  
+ 
+A Quad Enable (QE) bit of Status Register must be set to "1" before sending the FRQDTR instruction.  
+ 
+The address (interleave on 4 I/O pins) is latched on both rising and falling edge of SCK, and data (interleave on 
+4 I/O pins) shift out on both rising and falling edge of SCK at a maximum frequency. The 8-bit address can be 
+latched-in at one clock, and 8-bit data can be read out at one clock, which means four bits at the rising edge of 
+clock, the other four bits at the falling edge of clock. 
+ 
+The first address byte can be at any location. The address is automatically increased to the next higher address 
+after each byte data is shifted out, so the whole memory can be read out with a single FRQDTR instruction. The 
+address counter rolls over to 0 when the highest address is reached. Once writing FRQDTR instruction, the 
+following address/dummy/data out will perform as 8-bit instead of previous 1-bit. 
+ 
+The sequence of issuing FRQDTR instruction is: CE# goes low → Sending FRQDTR instruction (1-bit per clock) 
+→ 24-bit address interleave on IO3, IO2, IO1 & IO0 (8-bit per clock) → 3 dummy clocks (configurable, default is 
+3 clocks) → Data out interleave on IO3, IO2, IO1 & IO0 (8-bit per clock) → End FRQDTR operation by driving 
+CE# high at any time during data out. 
+ 
+If AXh (where X is don’t care) is input for the mode bits during dummy cycles, the device will enter AX read 
+operation mode which enables subsequent FRQDTR execution skips command code. It saves cycles as 
+described in Figure 8.60. When the code is different from AXh, the device exits the AX read operation. After 
+finishing the read operation, device becomes ready to receive a new command. 
+ 
+If the FRQDTR instruction is issued while a Program/Erase/Write Status Register cycle is in progress (WIP=1), 
+the instruction will be rejected without any effect on the current cycle. 
+ 
+ 
+ 
+
+
+=== PDF PAGE 76 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  76   
+Rev. L11 
+06/27/2024 
+Figure 8.59 FRQDTR Sequence (with command decode cycles) 
+ 
+CE#
+SCK
+Instruction = EDh
+CE#
+SCK
+3-byte Address
+High Impedance
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+...
+Mode 3
+Mode 0
+tV
+20 16 12
+5
+1
+21 17 13
+Data
+Out
+4
+0
+IO0
+IO1
+IO0
+22 18 14
+23 19 15
+8
+4
+0
+9
+5
+1
+10 6
+2
+11 7
+3
+3 Dummy Cycles
+IO2
+IO3
+IO1
+IO2
+IO3
+6
+2
+7
+3
+5
+1
+4
+0
+6
+2
+7
+3
+5
+1
+4
+0
+6
+2
+7
+3
+5
+1
+4
+0
+6
+2
+7
+3
+5
+1
+4
+0
+6
+2
+7
+3
+5
+1
+4
+0
+6
+2
+7
+3
+5
+1
+4
+0
+6
+2
+7
+3
+5
+1
+4
+0
+6
+2
+7
+3
+5
+1
+4
+0
+6
+2
+7
+3
+5
+1
+4
+0
+6
+2
+7
+3
+5
+1
+4
+0
+6
+2
+7
+3
+5
+1
+4
+0
+6
+2
+7
+3
+Data
+Out
+Data
+Out
+Data
+Out
+Data
+Out
+Data
+Out
+Data
+Out
+Data
+Out
+Data
+Out
+Data
+Out
+Data
+Out
+Data
+Out
+13
+5
+1
+4
+0
+6
+2
+7
+3
+Mode Bits
+...
+...
+...
+...
+5
+1
+4
+0
+6
+2
+7
+3
+Data
+Out
+ 
+ 
+Notes: 
+1. If the mode bits=AXh (where X is don’t care), it can execute the AX read mode (without command). When the 
+mode bits are different from AXh, the device exits the AX read operation. 
+2. Number of dummy cycles depends on clock speed. Detailed information in Table 6.10 Read Dummy Cycles. 
+3. Sufficient dummy cycles are required to avoid I/O contention. If the number of dummy cycles and AX bit cycles 
+are same, then X should be Hi-Z. 
+ 
+ 
+
+
+=== PDF PAGE 77 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  77   
+Rev. L11 
+06/27/2024 
+Figure 8.60 FRQDTR AX Read Sequence (without command decode cycles) 
+ 
+CE#
+SCK
+3-byte Address
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+Mode 3
+Mode 0
+tV
+20 16 12
+5
+1
+21 17 13
+Data
+Out
+4
+0
+IO0
+IO1
+22 18 14
+23 19 15
+8
+4
+0
+9
+5
+1
+10 6
+2
+11 7
+3
+3 Dummy Cycles
+IO2
+IO3
+6
+2
+7
+3
+5
+1
+4
+0
+6
+2
+7
+3
+5
+1
+4
+0
+6
+2
+7
+3
+5
+1
+4
+0
+6
+2
+7
+3
+5
+1
+4
+0
+6
+2
+7
+3
+5
+1
+4
+0
+6
+2
+7
+3
+5
+1
+4
+0
+6
+2
+7
+3
+Data
+Out
+Data
+Out
+Data
+Out
+Data
+Out
+Data
+Out
+Data
+Out
+5
+1
+4
+0
+6
+2
+7
+3
+Mode Bits
+12
+...
+...
+...
+...
+...
+ 
+ 
+Notes: 
+1. If the mode bits=AXh (where X is don’t care), it will keep executing the AX read mode (without command). When 
+the mode bits are different from AXh, the device exits the AX read operation. 
+2. Number of dummy cycles depends on clock speed. Detailed information in Table 6.10 Read Dummy Cycles. 
+3. Sufficient dummy cycles are required to avoid I/O contention. If the number of dummy cycles and AX bit cycles 
+are same, then X should be Hi-Z. 
+ 
+ 
+
+
+=== PDF PAGE 78 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  78   
+Rev. L11 
+06/27/2024 
+FAST READ QUAD IO DTR QPI MODE OPERATION (FRQDTR QPI, EDh) 
+The FRQDTR QPI instruction utilizes all four IO lines to input the instruction code so that only two clocks are 
+required, while the FRQDTR instruction requires that the byte-long instruction code is shifted into the device only 
+via IO0 line in eight clocks. As a result, 6 command cycles will be reduced by the FRQDTR QPI instruction. In 
+addition, subsequent address and data out are shifted in/out via all four IO lines like the FRQDTR instruction. In 
+fact, except for the command cycle, the FRQDTR QPI operation is exactly same as the FRQDTR.  
+ 
+It is not required to set QE bit to “1”.before Fast Read Quad I/O DTR instruction in QPI mode. 
+ 
+The sequence of issuing FRQDTR QPI instruction is: CE# goes low → Sending FRQDTR QPI instruction (4-bit 
+per clock) → 24-bit address interleave on IO3, IO2, IO1 & IO0 (8-bit per clock) → 3 dummy clocks (configurable, 
+default is 3 clocks) → Data out interleave on IO3, IO2, IO1 & IO0 (8-bit per clock) → End FRQDTR QPI operation 
+by driving CE# high at any time during data out. 
+ 
+If AXh (where X is don’t care) is input for the mode bits during dummy cycles, the device will enter AX read 
+operation mode which enables subsequent FRQDTR QPI execution skips command code. It saves cycles as 
+described in Figure 8.60. When the code is different from AXh, the device exits the AX read operation. After 
+finishing the read operation, device becomes ready to receive a new command. 
+ 
+If the FRQDTR QPI instruction is issued while a Program/Erase/Write Status Register cycle is in progress 
+(WIP=1), the instruction will be rejected without any effect on the current cycle. 
+ 
+Figure 8.61 FRQDTR QPI Sequence (with command decode cycles) 
+ 
+Instruction
+= EDh
+CE#
+SCK
+3-byte Address
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+Mode 3
+Mode 0
+tV
+20 16 12
+5
+1
+21 17 13
+4
+0
+IO0
+IO1
+22 18 14
+23 19 15
+8
+4
+0
+9
+5
+1
+10 6
+2
+11 7
+3
+3 Dummy Cycles
+IO2
+IO3
+6
+2
+7
+3
+5
+1
+4
+0
+6
+2
+7
+3
+Data
+Out
+Data
+Out
+5
+1
+4
+0
+6
+2
+7
+3
+Mode Bits
+...
+4
+0
+5
+1
+6
+2
+7
+3
+5
+1
+4
+0
+6
+2
+7
+3
+Data
+Out
+5
+1
+4
+0
+6
+2
+7
+3
+Data
+Out
+5
+1
+4
+0
+6
+2
+7
+3
+Data
+Out
+...
+...
+...
+...
+ 
+ 
+Notes: 
+1. If the mode bits=AXh (where X is don’t care), it can execute the AX read mode (without command). When the mode 
+bits are different from AXh, the device exits the AX read operation. 
+2. Number of dummy cycles depends on clock speed. Detailed information in Table 6.10 Read Dummy Cycles. 
+3. Sufficient dummy cycles are required to avoid I/O contention. If the number of dummy cycles and AX bit cycles 
+are same, then X should be Hi-Z. 
+ 
+ 
+
+
+=== PDF PAGE 79 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  79   
+Rev. L11 
+06/27/2024 
+8.39 SECTOR LOCK/UNLOCK FUNCTIONS 
+ 
+SECTOR UNLOCK OPERATION (SECUNLOCK, 26h) 
+ 
+The Sector Unlock command allows the user to select a specific sector to allow program and erase operations. 
+This instruction is effective when the blocks are designated as write-protected through the BP0, BP1, BP2, and 
+BP3 bits in the Status Register. Only one sector can be enabled at any time. To enable a different sector, a 
+previously enabled sector must be disabled by executing a Sector Lock command. The instruction code is followed 
+by a 24-bit address specifying the target sector, but A0 through A11 are not decoded. The remaining sectors 
+within the same block remain as read-only. 
+ 
+Figure 8.62 Sector Unlock Sequence 
+ 
+Instruction = 26h
+23
+CE#
+SCK
+SI
+3
+2
+SO
+1
+0
+3-byte Address
+High Impedance
+22
+21
+...
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+...
+28
+29
+30
+31
+Mode 3
+Mode 0
+ 
+ 
+ 
+Figure 8.63 Sector Unlock QPI Sequence 
+ 
+26h
+CE#
+SCK
+IO[3:0]
+3-byte Address
+0
+1
+2
+3
+4
+5
+6
+7
+Mode 3
+Mode 0
+23:20 19:16 15:12 11:8
+7:4
+3:0
+Instruction
+ 
+ 
+ 
+
+
+=== PDF PAGE 80 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  80   
+Rev. L11 
+06/27/2024 
+SECTOR LOCK OPERATION (SECLOCK, 24h) 
+ 
+The Sector Lock command relocks a sector that was previously unlocked by the Sector Unlock command. The 
+instruction code does not require an address to be specified, as only one sector can be enabled at a time. The 
+remaining sectors within the same block remain in read-only mode. 
+ 
+Figure 8.64 Sector Lock Sequence 
+ 
+Instruction = 24h
+CE#
+SCK
+SI
+0
+1
+2
+3
+4
+5
+6
+7
+Mode 3
+Mode 0
+SO
+High Impedance
+ 
+ 
+ 
+Figure 8.65 Sector Lock QPI Sequence 
+ 
+24h
+CE#
+SCK
+IO[3:0]
+0
+1
+Mode 3
+Mode 0
+ 
+ 
+ 
+ 
+
+
+=== PDF PAGE 81 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  81   
+Rev. L11 
+06/27/2024 
+9. ELECTRICAL CHARACTERISTICS 
+9.1 ABSOLUTE MAXIMUM RATINGS (1) 
+Storage Temperature 
+-65°C to +150°C 
+Surface Mount Lead Soldering Temperature 
+Standard Package 
+240°C 3 Seconds 
+Lead-free Package 
+260°C 3 Seconds 
+Input Voltage with Respect to Ground on All Pins 
+-0.5V to VCC + 0.5V 
+All Output Voltage with Respect to Ground  
+-0.5V to VCC + 0.5V 
+VCC 
+-0.5V to +6.0V 
+Electrostatic Discharge Voltage (Human Body Model)(2) 
+-2000V to +2000V 
+Note: 
+1. Applied conditions greater than those listed in “Absolute Maximum Ratings” may cause permanent damage to the 
+device. This is a stress rating only and functional operation of the device at these or any other conditions above 
+those indicated in the operational sections of this specification is not implied. Exposure to absolute maximum 
+rating conditions for extended periods may affect reliability. 
+2. ANSI/ESDA/JEDEC JS-001 
+ 
+9.2 OPERATING RANGE 
+Part Number 
+IS25LP128 
+Operating Temperature (Extended Grade E) 
+-40°C to 105°C 
+Operating Temperature (Automotive Grade A3) 
+-40°C to 125°C 
+VCC Power Supply 
+2.7V (VMIN) – 3.6V (VMAX); 3.0V (Typ), Max. 133MHz  
+2.3V (VMIN) – 3.6V (VMAX); 3.0V (Typ), Max. 104MHz  
+ 
+ 
+ 
+
+
+=== PDF PAGE 82 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  82   
+Rev. L11 
+06/27/2024 
+9.3 DC CHARACTERISTICS 
+(Under operating range) 
+Symbo
+l 
+Parameter 
+Condition 
+Min 
+Typ(2) 
+Max 
+Units 
+ICC1  
+VCC Active Read current(3) 
+NORD at 50MHz,  
+ 
+5 
+9 
+mA 
+FRD Single at 133MHz 
+ 
+7 
+11 
+FRD Quad at 133MHz 
+ 
+10 
+14 
+FRD Quad DTR at 66MHz 
+ 
+10 
+14 
+ICC2 
+VCC Program Current 
+CE# = VCC 
+85°C 
+ 
+17 
+   20(4) 
+105°C 
+ 
+   22(4) 
+125°C 
+ 
+25 
+ICC3 
+VCC WRSR Current 
+CE# = VCC 
+85°C 
+ 
+17 
+   20(4) 
+105°C 
+ 
+   22(4) 
+125°C 
+ 
+25 
+ICC4 
+VCC Erase Current 
+(SER/BER32K/BER64K) 
+CE# = VCC 
+85°C 
+ 
+17 
+   20(4) 
+105°C 
+ 
+   22(4) 
+125°C 
+ 
+25 
+ICC5 
+VCC Erase Current (CE) 
+CE# = VCC 
+85°C 
+ 
+17 
+   20(4) 
+105°C 
+ 
+   22(4) 
+125°C 
+ 
+25 
+ISB1  
+VCC Standby Current 
+CMOS 
+VCC = VMAX, CE# = VCC 
+85°C 
+ 
+10 
+   20(4) 
+µA 
+105°C 
+ 
+   45(4) 
+125°C 
+ 
+65  
+ISB2  
+Deep power down 
+current 
+VCC = VMAX, CE# = VCC 
+85°C 
+ 
+5 
+   10(4) 
+105°C 
+ 
+   25(4) 
+125°C 
+ 
+ 30  
+ILI  
+Input Leakage Current  
+VIN = 0V to VCC 
+ 
+ 
+1 
+ILO  
+Output Leakage Current 
+VIN = 0V to VCC 
+ 
+ 
+1 
+VIL (1) 
+Input Low Voltage  
+ 
+-0.5 
+ 
+0.3VCC 
+V 
+VIH (1) 
+Input High Voltage  
+ 
+0.7VCC 
+ 
+VCC + 0.3 
+VOL  
+Output Low Voltage  
+VMIN < VCC < VMAX 
+IOL = 100 µA 
+ 
+ 
+0.2 
+VOH  
+Output High Voltage  
+IOH = -100 µA  
+VCC - 0.2 
+ 
+ 
+Notes: 
+1. Maximum DC voltage on input or I/O pins is VCC + 0.5V. During voltage transitions, input or I/O pins may overshoot 
+VCC by +2.0V for a period of time not to exceed 20ns. Minimum DC voltage on input or I/O pins is -0.5V. During 
+voltage transitions, input or I/O pins may undershoot GND by -2.0V for a period of time not to exceed 20ns. 
+2. Typical values are included for reference only and are not guaranteed or tested. Typical values are measured at 
+VCC = VCC (Typ), TA=25°C. 
+3. Outputs are unconnected during reading data so that output switching current is not included. 
+4. These parameters are characterized and are not 100% tested. 
+ 
+ 
+ 
+
+
+=== PDF PAGE 83 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  83   
+Rev. L11 
+06/27/2024 
+9.4 AC MEASUREMENT CONDITIONS 
+Symbol 
+Parameter 
+Min 
+Max 
+Units 
+CL 
+Load Capacitance up to 104MHz 
+ 
+30 
+pF 
+Load Capacitance up to 133MHz 
+ 
+15 
+pF 
+TR,TF  
+Input Rise and Fall Times 
+ 
+5 
+ns 
+VIN 
+Input Pulse Voltages 
+0.2VCC to 0.8VCC 
+V 
+VREFI 
+Input Timing Reference Voltages 
+0.3VCC to 0.7VCC 
+V 
+VREFO 
+Output Timing Reference Voltages 
+0.5VCC 
+V 
+ 
+ 
+Figure9.1 Output test load & AC measurement I/O Waveform 
+ 
+OUTPUT PIN
+1.8k
+1.2k
+15/30pf
+0.8VCC
+0.2VCC
+Input
+VCC/2
+AC 
+Measurement 
+Level
+ 
+ 
+ 
+ 
+ 
+ 
+9.5 PIN CAPACITANCE (TA = 25°C, VCC=3V , 1MHZ) 
+Symbol 
+Parameter 
+Test Condition 
+Min 
+Typ 
+Max 
+Units 
+CIN 
+Input Capacitance 
+   (CE#, SCK) 
+VIN = 0V 
+- 
+- 
+6 
+pF 
+CIN/OUT 
+Input/Output Capacitance 
+    (other pins) 
+VIN/OUT = 0V 
+- 
+- 
+8 
+pF 
+Notes: 
+1. These parameters are characterized and are not 100% tested. 
+ 
+ 
+ 
+
+
+=== PDF PAGE 84 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  84   
+Rev. L11 
+06/27/2024 
+9.6 AC CHARACTERISTICS 
+ 
+ (Under operating range, refer to section 9.4 for AC measurement conditions) 
+Symbol  
+Parameter  
+Min 
+Typ(3) 
+Max 
+Units 
+fCT 
+Clock Frequency except for fast read 
+DTR and read (03h) 
+Vcc=2.7V~3.6V 
+0 
+ 
+133 
+MHz 
+Vcc=2.3V~3.6V 
+0 
+ 
+104 
+MHz 
+Clock Frequency for fast read DTR: 
+SPI DTR, Dual DTR, Dual I/O DTR, Quad I/O DTR, and 
+QPI DTR. 
+0 
+ 
+66 
+MHz 
+fC  
+Clock Frequency for read (03h) 
+0 
+ 
+50 
+MHz 
+tCLCH(1) 
+SCK Rise Time (peak to peak) 
+0.1 
+ 
+ 
+V/ns 
+tCHCL(1) 
+SCK Fall Time ( peak to peak) 
+0.1 
+ 
+ 
+V/ns 
+tCKH  
+SCK High Time  
+For read (03h) 
+0.45 x 1/fCmax 
+ 
+ 
+ns 
+For others 
+0.45 x 1/fCTmax 
+ 
+ 
+tCKL  
+SCK Low Time  
+For read (03h) 
+0.45 x 1/fCmax 
+ 
+ 
+ns 
+For others 
+0.45 x 1/fCTmax 
+ 
+ 
+tCEH  
+CE# High Time  
+7 
+ 
+ 
+ns 
+tCS  
+CE# Setup Time  
+6 
+ 
+ 
+ns 
+tCH  
+CE# Hold Time  
+6 
+ 
+ 
+ns 
+tDS  
+Data In Setup Time  
+STR 
+2 
+ 
+ 
+ns 
+DTR 
+1.5 
+ 
+ 
+tDH  
+Data in Hold Time  
+STR 
+2 
+ 
+ 
+ns 
+DTR 
+1.5 
+ 
+ 
+tV  
+Output Valid 
+@ 133MHz (CL = 15pF) 
+ 
+ 
+7 
+ns 
+@ 104MHz (CL = 30pF) 
+ 
+ 
+8 
+tOH  
+Output Hold Time 
+2 
+ 
+ 
+ns 
+tDIS(1) 
+Output Disable Time  
+ 
+ 
+8 
+ns 
+tHLCH 
+HOLD Active Setup Time relative to SCK 
+5 
+ 
+ 
+ns 
+tCHHH 
+HOLD Active Hold Time relative to SCK 
+5 
+ 
+ 
+ns 
+tHHCH 
+HOLD Not Active Setup Time relative to SCK 
+5 
+ 
+ 
+ns 
+tCHHL 
+HOLD Not Active Hold Time relative to SCK 
+5 
+ 
+ 
+ns 
+tLZ(1) 
+HOLD to Output Low Z 
+ 
+ 
+12 
+ns 
+tHZ(1) 
+HOLD to Output High Z 
+ 
+ 
+12 
+ns 
+tEC  
+Sector Erase Time (4Kbyte) 
+ 
+70 
+300 
+ms 
+Block Erase Time (32Kbyte) 
+ 
+0.1 
+0.5 
+s 
+Block Erase time (64Kbyte) 
+ 
+0.15 
+1.0 
+s 
+Chip Erase Time 
+1
+ 
+30 
+90 
+s 
+tPP  
+Page Program Time  
+ 
+0.2 
+0.8 
+ms 
+ 
+ 
+ 
+
+
+=== PDF PAGE 85 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  85   
+Rev. L11 
+06/27/2024 
+Symbol  
+Parameter  
+Min 
+Typ(3) 
+Max 
+Units 
+tRES1(1) 
+Release deep power down 
+ 
+ 
+3 
+µs 
+tDP(1) 
+Deep power down 
+ 
+ 
+3 
+µs 
+tW 
+Write Status Register time 
+ 
+2 
+15 
+ms 
+tSUS(1) 
+Suspend to read ready 
+ 
+- 
+100 
+µs 
+tRS(1) 
+Resume to next suspend 
+ 
+80 
+- 
+µs 
+tSRST(1) 
+Software Reset recovery time 
+ 
+ 
+100 
+µs 
+tRESET(1),(4) 
+RESET# pin low pulse width 
+1(2) 
+ 
+ 
+µs 
+tHWRST(1),(4) 
+Hardware Reset recovery time 
+ 
+ 
+100 
+µs 
+Notes: 
+1. These parameters are characterized and not 100% tested. 
+2. If the RESET# pulse is driven for a period shorter than 1µs (tRESET minimum), it may still reset the device, however 
+the 1µs minimum period is recommended to ensure reliable operation. 
+3. Typical values are included for reference only and are not guaranteed or tested. Typical values are measured at 
+VCC = VCC (Typ), TA=25°C. 
+4. Only applicable to the parts that have the RESET# pin option. 
+ 
+
+
+=== PDF PAGE 86 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  86   
+Rev. L11 
+06/27/2024 
+9.7 SERIAL INPUT/OUTPUT TIMING 
+Figure 9.2 SERIAL INPUT/OUTPUT TIMING (Normal Mode) (1) 
+HI-Z
+SO
+SI
+SCK
+CE#
+VALID IN
+tCS
+tCKH
+tCKL
+tDS
+tDH
+tCH
+tCEH
+tV
+tDIS
+HI-Z
+tOH
+VALID IN
+VALID OUTPUT
+ 
+Note1. For SPI Mode 0 (0,0) 
+ 
+ 
+Figure 9.3 SERIAL INPUT/OUTPUT TIMING (DTR Mode) (1) 
+HI-Z
+SO
+SI
+SCK
+CE#
+VALID IN
+tCS
+tCKH
+tCKL
+tDS
+tDH
+tCH
+tCEH
+tV
+tDIS
+HI-Z
+tOH
+VALID IN
+VALID IN
+Output
+Output
+tV
+ 
+Note1. For SPI Mode 0 (0,0) 
+ 
+ 
+
+
+=== PDF PAGE 87 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  87   
+Rev. L11 
+06/27/2024 
+Figure 9.4 HOLD TIMING 
+ 
+SI
+SO
+SCK
+CE#
+HOLD#
+tCHHL
+tHLCH
+tCHHH
+tHHCH
+tHZ
+tLZ
+ 
+ 
+ 
+
+
+=== PDF PAGE 88 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  88   
+Rev. L11 
+06/27/2024 
+9.8 POWER-UP AND POWER-DOWN 
+At Power-up and Power-down, the device must be NOT SELECTED until Vcc reaches at the right level. (Adding 
+a simple pull-up resistor on CE# is recommended.) 
+ 
+Power up timing 
+VCC
+VCC(max)
+VCC(min)
+VWI
+tVCE
+Device is fully 
+accessible
+Chip Selection Not Allowed
+= Vcc min. to CE# Low
+Time
+ 
+ 
+Symbol 
+Parameter 
+Min. 
+Max 
+Unit 
+tVCE(1) 
+Vcc(min) to CE# Low 
+300 
+ 
+us 
+VWI(1) 
+Write Inhibit Voltage 
+ 
+2.1 
+V 
+Note: These parameters are characterized and not 100% tested. 
+ 
+ 
+ 
+
+
+=== PDF PAGE 89 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  89   
+Rev. L11 
+06/27/2024 
+9.9 PROGRAM/ERASE PERFORMANCE 
+Parameter 
+Typ 
+Max 
+Unit 
+Sector Erase Time (4Kbyte) 
+70 
+300 
+ms 
+Block Erase Time (32Kbyte) 
+0.1 
+0.5 
+s 
+Block Erase Time (64Kbyte) 
+0.15 
+1.0 
+s 
+Chip Erase Time  
+30 
+90 
+s 
+Page Programming Time 
+0.2 
+0.8 
+ms 
+Byte Program 
+8 
+40 
+µs 
+Note: These parameters are characterized and not 100% tested. 
+ 
+9.10 RELIABILITY CHARACTERISTICS 
+Parameter 
+Min 
+Max 
+Unit 
+Test Method 
+Endurance 
+100,000 
+- 
+Cycles 
+JEDEC Standard A117 
+Data Retention 
+20 
+- 
+Years 
+JEDEC Standard A117 
+Latch-Up 
+-100  
++100  
+mA 
+JEDEC Standard 78 
+Note: These parameters are characterized and not 100% tested. 
+ 
+ 
+
+
+=== PDF PAGE 90 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  90   
+Rev. L11 
+06/27/2024 
+10. PACKAGE TYPE INFORMATION 
+10.1 8-PIN JEDEC 208MIL BROAD SMALL OUTLINE INTEGRATED CIRCUIT (SOIC) PACKAGE (B) 
+ 
+ 
+ 
+ 
+
+
+=== PDF PAGE 91 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  91   
+Rev. L11 
+06/27/2024 
+10.2 8-CONTACT ULTRA-THIN SMALL OUTLINE NO-LEAD (WSON) PACKAGE 6X5MM (K) 
+ 
+Note:  
+1. Please click here to refer to Application Note (AN25D011, Thin USON/WSON/XSON package 
+handling precautions) for assembly guidelines. 
+ 
+
+
+=== PDF PAGE 92 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  92   
+Rev. L11 
+06/27/2024 
+10.3 8-CONTACT ULTRA-THIN SMALL OUTLINE NO-LEAD (WSON) PACKAGE 8X6MM (L) 
+ 
+Note:  
+1. Please click here to refer to Application Note (AN25D011, Thin USON/WSON/XSON package 
+handling precautions) for assembly guidelines. 
+ 
+ 
+ 
+ 
+
+
+=== PDF PAGE 93 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  93   
+Rev. L11 
+06/27/2024 
+10.4 16-LEAD PLASTIC SMALL OUTLINE PACKAGE (300 MILS BODY WIDTH) (M) 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+=== PDF PAGE 94 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  94   
+Rev. L11 
+06/27/2024 
+10.5 24-BALL THIN PROFILE FINE PITCH BGA 6X8MM 4X6 BALL ARRAY (G) 
+ 
+ 
+ 
+ 
+
+
+=== PDF PAGE 95 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  95   
+Rev. L11 
+06/27/2024 
+10.6 24-BALL THIN PROFILE FINE PITCH BGA 6X8MM 5X5 BALL ARRAY (H) 
+ 
+ 
+ 
+ 
+
+
+=== PDF PAGE 96 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  96   
+Rev. L11 
+06/27/2024 
+11. ORDERING INFORMATION- Valid Part Numbers 
+ 
+     IS25LP 128     -     J     B     L     E - TR   
+ 
+PACKING 
+TR = Tape and Reel 
+TY = Tray 
+Blank = Bulk 
+ 
+ 
+TEMPERATURE RANGE 
+E = Extended (-40°C to +105°C) 
+A3 = Automotive Grade (-40°C to +125°C) 
+ 
+ 
+PACKAGING CONTENT 
+L = Green Package (RoHS Compliant, Halogen-free) and 
+      TSCA Compliant 
+ 
+ 
+PACKAGE Type  
+B = 8-pin SOIC 208mil 
+K = 8-contact WSON 6x5mm  
+L = 8-contact WSON 8x6mm  
+M = 16-pin SOIC 300mil 
+G = 24-ball TFBGA 6x8mm 4x6 ball array 
+H = 24-ball TFBGA 6x8mm 5x5 ball array (Call Factory) 
+W = KGD (Call Factory) 
+ 
+ 
+Option 
+J = Standard 
+Q = QE bit set to 1 
+S = RESET# (IO3) instead of Hold# (IO3) (Call Factory) 
+ 
+ 
+SPEED 
+Blank = 133MHz  
+ 
+ 
+Density 
+128 = 128 Mb 
+ 
+ 
+BASE PART NUMBER 
+IS = Integrated Silicon Solution Inc. 
+25LP = FLASH, 2.3V ~ 3.6V, QPI 
+ 
+ 
+ 
+ 
+ 
+
+
+=== PDF PAGE 97 ===
+                                                                                             IS25LP128 
+ 
+Integrated Silicon Solution, Inc.- www.issi.com 
+   
+ 
+  97   
+Rev. L11 
+06/27/2024 
+ 
+ 
+ 
+*Special Option: Order with SPA# U1635A for SFDP support 
+Density 
+Frequency 
+(MHz) 
+Order Part Number 
+Package 
+128Mb 
+133 
+IS25LP128-JBLE* 
+8-pin SOIC 208mil 
+IS25LP128-JKLE* 
+8-contact WSON 6x5mm 
+IS25LP128-JLLE* 
+8-contact WSON 8x6mm 
+IS25LP128-JMLE* 
+16-pin SOIC 300mil 
+IS25LP128-JGLE* 
+24-ball TFBGA 6x8mm 4x6 ball array 
+IS25LP128-QBLE* 
+8-pin SOIC 208mil 
+IS25LP128-QKLE* 
+8-contact WSON 6x5mm 
+IS25LP128-QLLE* 
+8-contact WSON 8x6mm 
+IS25LP128-QMLE* 
+16-pin SOIC 300mil 
+IS25LP128-QGLE* 
+24-ball TFBGA 6x8mm 4x6 ball array 
+IS25LP128-JBLA3* 
+8-pin SOIC 208mil 
+IS25LP128-JKLA3* 
+8-contact WSON 6x5mm 
+IS25LP128-JLLA3* 
+8-contact WSON 8x6mm 
+IS25LP128-JMLA3* 
+16-pin SOIC 300mil 
+IS25LP128-JGLA3* 
+24-ball TFBGA 6x8mm 4x6 ball array 
+IS25LP128-QBLA3* 
+8-pin SOIC 208mil 
+IS25LP128-QKLA3* 
+8-contact WSON 6x5mm 
+IS25LP128-QLLA3* 
+8-contact WSON 8x6mm 
+IS25LP128-QMLA3* 
+16-pin SOIC 300mil  
+IS25LP128-QGLA3* 
+24-ball TFBGA 6x8mm 4x6 ball array  
